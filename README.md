@@ -1,15 +1,13 @@
 # Vibe Rules Collection by copyleftdev
 
-<p align="center">
-  <img src="assets/logo.png" alt="Vibe Rules Collection Logo" width="200"/>
-</p>
+
 
 <p align="center">
   <em>Surf smarter. Code smoother. Let the vibes guide you.</em>
 </p>
 
 <p align="center">
-  <img src="assets/vibey_coding_surfer_dolphin.png" alt="Vibey the Coding Surfer Dolphin" width="240"/>
+  <img src="assets/logo.png" alt="Vibey the Coding Surfer Dolphin" width="240"/>
 </p>
 
 <p align="center">
