@@ -1,0 +1,35 @@
+# Windsurf Rules: Backtesting Techniques for Trading Strategies
+
+## Guiding Principles
+
+- **Goal:** Realistically simulate strategy performance on historical data to estimate future potential, avoiding common pitfalls.
+- **Data:**
+    - Use high-quality historical data (OHLCV, tick data if necessary). Account for adjustments (splits, dividends).
+    - Ensure data covers various market regimes (bull, bear, sideways).
+    - Be aware of survivorship bias (using data only from assets that survived).
+- **Simulation Engine:**
+    - Process data chronologically, point-in-time. NO lookahead bias (using future information).
+    - Accurately model transaction costs (commissions, fees, slippage). Slippage can be modeled as a fixed amount, percentage, or based on volatility/volume.
+    - Model order execution realistically (e.g., assume market orders fill at next bar's open or based on slippage model; limit orders fill if price touches the limit).
+    - Handle position sizing, margin calls (if applicable), and portfolio value updates correctly.
+- **Metrics & Analysis:**
+    - Calculate standard performance metrics: Total Return, CAGR, Sharpe Ratio, Sortino Ratio, Max Drawdown, Calmar Ratio, Win Rate, Profit Factor, Average Win/Loss.
+    - Analyze trade logs: distribution of returns, holding periods, drawdown periods.
+    - Visualize results: Equity curve, drawdown chart, return distribution.
+- **Avoiding Overfitting:**
+    - Test on out-of-sample data (data not used during strategy development/parameter tuning).
+    - Perform sensitivity analysis on strategy parameters.
+    - Consider walk-forward optimization instead of optimizing over the entire dataset at once.
+    - Be skeptical of overly complex strategies with many parameters.
+- **Common Pitfalls:** Lookahead bias, survivorship bias, ignoring costs/slippage, overfitting, unrealistic execution assumptions.
+
+## AI Instructions
+
+- **Lookahead Bias Prevention:** When generating backtesting loops or logic, emphasize processing data sequentially. Add comments warning against using future data within a given time step's logic (e.g., `// Ensure no lookahead bias here`).
+- **Cost & Slippage Modeling:** Include placeholders or parameters in generated backtesting code for commission rates and slippage models. Remind the user to configure these realistically.
+    - Example: `trade_cost = commission + slippage * fill_price * quantity`
+- **Realistic Execution:** Generate simulation logic that assumes fills based on the *next* available price after a signal, incorporating slippage, rather than assuming fills at the signal bar's close or ideal price.
+- **Metrics Calculation:** Generate code snippets for calculating key performance metrics (Sharpe, Drawdown, etc.) using libraries like `quantstats`, `empyrical`, or `numpy`/`pandas`.
+- **Overfitting Warnings:** When discussing parameter optimization or strategy results, include reminders about the danger of overfitting and the importance of out-of-sample testing or walk-forward analysis.
+- **Data Handling:** Remind the user about the importance of clean, adjusted historical data and potential biases (survivorship).
+- **Code Structure:** Suggest structuring backtesting code with clear separation between the data feed, strategy logic, execution simulation, and performance analysis components.

@@ -1,0 +1,38 @@
+# Windsurf Rules: Financial Modeling Patterns (Python)
+
+## Guiding Principles
+
+- **Clarity & Readability:** Code should be understandable by others (and your future self). Use meaningful variable names. Add comments for complex calculations or assumptions.
+- **Data Handling (Pandas Focus):**
+    - Use `pandas` DataFrames and Series for time series and tabular financial data.
+    - Leverage vectorized operations (`.sum()`, `.mean()`, arithmetic operators) instead of explicit loops over rows where possible for performance.
+    - Handle missing data (`NaN`) explicitly (e.g., `fillna()`, `dropna()`, interpolation).
+    - Use appropriate data types (e.g., `float` for prices/returns, `datetime64[ns]` for dates).
+- **Modularity:** Break down complex models into smaller, reusable functions (e.g., function for calculating returns, volatility, specific indicator).
+- **Input Assumptions:** Clearly define and document model inputs and assumptions (e.g., risk-free rate, volatility estimates, growth rates).
+- **Common Calculations:**
+    - **Returns:** Log returns (`np.log(price / price.shift(1))`) often preferred for time series analysis over simple returns (`price.pct_change()`).
+    - **Volatility:** Rolling standard deviation (`.rolling(window=...).std()`) is common. Annualize appropriately (e.g., `std * np.sqrt(252)` for daily data).
+    - **Moving Averages:** Simple (`.rolling(window=...).mean()`), Exponential (`.ewm(span=...).mean()`).
+    - **Risk Metrics:** Value at Risk (VaR), Conditional Value at Risk (CVaR) - often calculated using historical simulation, parametric methods, or Monte Carlo.
+- **Visualization (Matplotlib/Seaborn):**
+    - Create clear plots to visualize data, model outputs, and relationships.
+    - Label axes, add titles, and include legends.
+- **Testing & Validation:**
+    - Validate model logic with simple, known inputs.
+    - Compare results against established benchmarks or alternative models where possible.
+    - Test edge cases.
+- **Performance (Optional):** For large datasets or complex calculations, consider performance optimization techniques (vectorization, `NumPy`, potentially `Numba` or `Cython` if needed).
+
+## AI Instructions
+
+- **Pandas/NumPy Usage:** Generate code using `pandas` for data manipulation and `numpy` for numerical operations. Prioritize vectorized operations over loops.
+    - Example: `returns = np.log(df['Adj Close'] / df['Adj Close'].shift(1))`
+- **Function Generation:** Define calculations within functions with clear inputs and outputs.
+    - Example: `def calculate_sharpe_ratio(returns, risk_free_rate): ...`
+- **Standard Calculations:** Generate code snippets for common financial calculations like log returns, rolling volatility (annualized), moving averages, basic VaR.
+- **Data Handling Placeholders:** Include `.dropna()` or suggest `fillna()` when performing calculations sensitive to missing data (like returns).
+- **Visualization Snippets:** Generate basic plotting code using `matplotlib.pyplot` or `seaborn` to visualize results (e.g., plotting time series, histograms).
+    - Example: `plt.plot(df.index, df['Adj Close']); plt.title('Price History'); plt.xlabel('Date'); plt.ylabel('Price'); plt.show()`
+- **Readability:** Use clear variable names (e.g., `daily_returns`, `annualized_volatility`). Add comments explaining non-trivial calculations or assumptions.
+- **Model Assumption Comments:** Add comments indicating where model assumptions (like risk-free rate) are used.

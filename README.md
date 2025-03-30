@@ -99,6 +99,8 @@ Configure your project to load rule files automatically or use them contextually
 ### Financial
 - `algorithmic_trading_principles.windsurfrules`
 - `alpaca_python_sdk.windsurfrules`
+- `backtesting_techniques.windsurfrules`
+- `financial_modeling_patterns.windsurfrules`
 
 ### Frameworks
 - Express, Flask, Rails, Unity, ASP.NET Core
