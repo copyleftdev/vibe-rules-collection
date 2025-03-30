@@ -130,6 +130,7 @@ Configure your project to load rule files automatically or use them contextually
 - `performance_testing_principles.windsurfrules`
 - `chaos_engineering_principles.windsurfrules`
 - `accessibility_testing_a11y.windsurfrules`
+- `context_driven_testing_principles.windsurfrules`
 
 ---
 

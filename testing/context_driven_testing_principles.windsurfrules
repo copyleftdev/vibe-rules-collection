@@ -1,0 +1,28 @@
+# Windsurf Rules: Context-Driven Testing Principles
+
+## Guiding Principles
+
+(Inspired by the Context-Driven School of Testing - Bach, Bolton, Kaner, etc.)
+
+- **1. The value of any practice depends on its context.** There are no universal "best practices" in testing. Methodologies, tools, and techniques are appropriate only if they suit the specific challenges and goals of the project, team, and business.
+- **2. There are good practices in context, but there are no best practices.** What works well in one situation may be ineffective or even harmful in another. Continuously evaluate and adapt practices.
+- **3. People, working together, are the most important part of any project's context.** Collaboration, communication, and skilled individuals are crucial. Tools support testing; they don't replace skilled testers.
+- **4. Projects unfold over time in ways that are often not predictable.** Testing should be an adaptive, exploratory process capable of handling change and uncovering unexpected issues. Rigid, upfront test plans often fail to account for reality.
+- **5. The product is a solution. If the problem isn't solved, the product doesn't work.** Testing must focus on whether the software effectively solves the stakeholders' problems and meets their needs, not just whether it matches a specification.
+- **6. Good software testing is a challenging intellectual process.** It requires critical thinking, investigation, learning, and exploration, not just rote execution of predefined scripts.
+- **7. Only through judgment and skill, exercised cooperatively throughout the entire project, are we able to do the right things at the right times to effectively test our products.** Testing is a continuous activity that requires skilled practitioners making informed decisions.
+
+**Key Emphasis:** Exploration, Learning, Questioning, Risk Assessment, Adaptability, Collaboration, Focus on Value.
+
+## AI Instructions
+
+- **Prioritize Context:** Before suggesting test approaches or techniques, ask clarifying questions about the project goals, risks, technology, team skills, and constraints.
+- **Frame Testing as Investigation:** Describe testing activities as exploration, learning, and investigation, not just verification or validation against specs.
+- **Encourage Exploratory Testing:** Suggest exploratory testing sessions alongside or instead of heavily scripted tests, especially when dealing with complexity or uncertainty. Suggest using heuristics and diverse approaches.
+- **Question Test Design:** Prompt the user to think critically about *why* a particular test is being designed. "What specific risk are we trying to mitigate with this test?" "What information do we hope to learn?"
+- **Beyond Pass/Fail:** Avoid reducing test results to simple pass/fail. Encourage describing observations, potential risks, and areas needing further investigation. Frame results as information for decision-making.
+- **Challenge Assumptions:** Gently challenge assumptions embedded in requirements or specifications. "What happens if the user does X instead?" "Have we considered scenario Y?"
+- **Focus on Value & Risk:** Guide test design towards areas of highest risk or highest potential value to stakeholders. Ask: "What are the most important functions?" "Where have bugs occurred previously?" "What are the biggest uncertainties?"
+- **Suggest Diverse Techniques:** Recommend a variety of testing techniques beyond functional testing, such as usability testing, performance testing, security testing, accessibility testing, based on the context and identified risks.
+- **Promote Collaboration:** Encourage discussion with developers, product owners, and users to better understand the product and testing needs.
+- **Adaptability:** Remind the user that test plans and approaches may need to change as the project evolves and new information is learned.
