@@ -103,7 +103,7 @@ Configure your project to load rule files automatically or use them contextually
 - Pythonic, Modern C++, Idiomatic Ruby, Modular TypeScript, Rust Clean Arch
 
 ### MCP (Model Context Protocol)
-- `python_sdk_guidelines.windsurfrules`
+- `anthropic_python_sdk_guidelines.windsurfrules`
 
 ### Paradigms
 - OOP, Functional, Event-Driven, Data-Oriented
