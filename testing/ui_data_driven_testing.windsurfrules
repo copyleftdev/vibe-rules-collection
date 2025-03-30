@@ -1,0 +1,45 @@
+# Windsurf Rules: UI Testing - Data-Driven Testing
+
+## Guiding Principles
+
+- **Goal:** Separate test logic from test data, allowing the same test script to be executed multiple times with different input and expected output values.
+- **Concept:**
+    - Test data (inputs, expected results, configurations) is stored externally, often in files (CSV, JSON, YAML, Excel) or databases.
+    - The test script reads data from the external source.
+    - The script logic is executed iteratively for each data set (row or record).
+    - Test frameworks often provide mechanisms (decorators, annotations, specific runners) to facilitate this.
+- **Benefits:**
+    - **Increased Coverage:** Easily test numerous variations and edge cases without writing duplicate test logic.
+    - **Maintainability:** Test data can be updated without modifying the test script code.
+    - **Scalability:** Adding new test cases often just means adding new data rows.
+    - **Collaboration:** Non-programmers (like BAs or manual testers) can potentially contribute test data.
+- **Implementation Approaches:**
+    - **Framework Support:** Many test runners (pytest, TestNG, JUnit, NUnit, Jest) have built-in or plugin support for parameterization or data-driven tests.
+        - Pytest: `@pytest.mark.parametrize`
+        - TestNG: `@DataProvider`
+        - Jest: `test.each`
+    - **Manual Implementation:** Read data from a file (using standard file I/O, CSV readers, JSON parsers) within the test script and loop through the data.
+- **Best Practices:**
+    - Keep data sources clean and well-structured.
+    - Ensure the test logic correctly handles different data types from the source.
+    - Consider data generation tools if large, systematic datasets are needed.
+    - Combine with POM: Data is passed into Page Object methods.
+
+## AI Instructions
+
+- **Suggest Data-Driven Approach:** When a UI test needs to be run with multiple input combinations (e.g., testing login with various valid/invalid credentials, testing a form with different data types), suggest using a data-driven approach.
+- **Utilize Framework Features:** Generate data-driven tests using the specific features of the relevant test framework.
+    - Example (pytest): `
+      @pytest.mark.parametrize("username, password, expected_outcome", [
+          ("valid_user", "valid_pass", "Login Success"),
+          ("invalid_user", "any_pass", "Login Failed"),
+          ("valid_user", "invalid_pass", "Login Failed"),
+      ])
+      def test_login(username, password, expected_outcome):
+          # ... test logic using username, password ...
+          # ... assert based on expected_outcome ...
+    `
+- **Show External Data Reading:** Provide examples of reading data from common file formats (CSV, JSON) within a test setup or using framework features that support external files.
+- **Parameterize Test Logic:** Show how the input data (read from the source or provided by the framework) is used within the test script logic, typically passed as arguments to the test function.
+- **Connect with POM:** Demonstrate how parameterized data can be passed into Page Object methods (e.g., `login_page.login(username_from_data, password_from_data)`).
+- **Data Structure:** Recommend clear structures for the test data files (e.g., header rows in CSV, key-value pairs in JSON).

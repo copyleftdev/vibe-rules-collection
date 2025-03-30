@@ -1,0 +1,35 @@
+# Windsurf Rules: UI Testing - Page Object Model (POM)
+
+## Guiding Principles
+
+- **Goal:** Enhance test maintenance and reduce code duplication in UI automation by creating an object repository for UI elements and interactions.
+- **Concept:**
+    - Each web page, or significant component/widget on a page, is represented by a corresponding Page Object class.
+    - This class encapsulates:
+        - **Locators:** Definitions for finding the UI elements on that page (e.g., CSS selectors, XPath, IDs).
+        - **Actions:** Methods that represent user interactions with those elements (e.g., `login(username, password)`, `search(term)`, `click_submit_button()`).
+    - Test scripts use these Page Object methods to interact with the UI, instead of directly using WebDriver/Playwright/Cypress commands and raw locators.
+- **Benefits:**
+    - **Maintainability:** If the UI changes, only the corresponding Page Object needs updating, not potentially hundreds of test scripts.
+    - **Readability:** Test scripts become cleaner and express the *intent* of the test (business logic) rather than the *implementation* details of UI interaction.
+    - **Reusability:** Page Objects and their methods can be reused across multiple tests.
+    - **Reduced Duplication:** Locators and interaction logic are defined in one place.
+- **Structure:**
+    - Base Page (Optional): Common functionality like navigation, waiting for elements.
+    - Page-Specific Classes: Inherit from Base Page (if used), contain locators and action methods for that page.
+    - Test Classes: Import Page Objects, call their methods to drive the UI and perform assertions.
+- **Locator Strategy:** Prefer stable, user-facing locators (like IDs, `data-testid` attributes, ARIA roles) over brittle ones (like complex XPath or generated CSS classes).
+
+## AI Instructions
+
+- **Suggest POM:** When generating UI automation test scripts (using Selenium, Playwright, Cypress, etc.), strongly suggest organizing the code using the Page Object Model.
+- **Generate Page Object Classes:** Create boilerplate Page Object classes for given web pages/components.
+    - Include placeholders for locators (e.g., `USERNAME_INPUT = (By.ID, "username")` for Selenium, `usernameInput: '#username'` for Playwright/Cypress).
+    - Generate methods representing user actions (e.g., `def enter_username(self, username): ...`, `function enterUsername(username) { ... }`).
+    - Methods should encapsulate WebDriver/Playwright/Cypress calls.
+    - Action methods should ideally return the *next* relevant Page Object if the action causes navigation (e.g., `login()` might return `HomePage`).
+- **Refactor Direct Calls:** If existing test code has direct WebDriver/Playwright/Cypress calls and locators, suggest refactoring it into Page Objects.
+- **Locator Best Practices:** Generate locators using preferred strategies (ID, `data-testid`) and add comments about locator stability.
+- **Separate Tests from Objects:** Generate test scripts that instantiate and use Page Objects, keeping assertion logic within the test script itself, separate from the Page Object actions.
+    - Example Test Snippet: `login_page = LoginPage(driver); home_page = login_page.login("user", "pass"); assert home_page.is_user_profile_visible()`
+- **Waits:** Generate action methods within Page Objects that include appropriate waits (explicit or implicit) for elements to be present/interactable before acting on them.

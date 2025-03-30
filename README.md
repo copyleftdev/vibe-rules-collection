@@ -131,6 +131,9 @@ Configure your project to load rule files automatically or use them contextually
 - `chaos_engineering_principles.windsurfrules`
 - `accessibility_testing_a11y.windsurfrules`
 - `context_driven_testing_principles.windsurfrules`
+- `ui_page_object_model.windsurfrules`
+- `ui_screenplay_pattern.windsurfrules`
+- `ui_data_driven_testing.windsurfrules`
 
 ---
 

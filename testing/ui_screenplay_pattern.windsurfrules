@@ -1,0 +1,38 @@
+# Windsurf Rules: UI Testing - Screenplay Pattern
+
+## Guiding Principles
+
+- **Goal:** Create highly readable, maintainable, and scalable UI tests by focusing on user goals and capabilities, inspired by SOLID principles and Behavior-Driven Development (BDD).
+- **Core Concepts:**
+    - **Actors:** Represent users (or external systems) interacting with the application. They have *Abilities* and perform *Tasks*.
+    - **Abilities:** Enable Actors to interact with specific interfaces (e.g., `BrowseTheWeb` using Selenium/Playwright, `CallAnApi`).
+    - **Tasks:** High-level actions composed of multiple lower-level *Interactions*, representing a user goal (e.g., `Login`, `SearchForItem`).
+    - **Interactions:** Low-level actions directly manipulating the UI or system (e.g., `Click`, `Enter`, `Navigate`). Often interact with Page Objects or similar UI element abstractions.
+    - **Questions:** Used to query the state of the application (e.g., `TextOf`, `VisibilityOf`). Actors ask Questions to perform assertions.
+- **Structure (Example Flow):**
+    - `actor.attempts_to(Navigate.to_login_page())`
+    - `actor.attempts_to(Login.with_credentials(user, pass))`
+    - `actor.should(see_that(TextOf(WELCOME_MESSAGE), contains_string("Welcome")))`
+- **Benefits:**
+    - **Extreme Readability:** Tests read like user journeys.
+    - **Scalability:** Components (Tasks, Interactions) are highly reusable and composable.
+    - **Role-Based:** Clear separation of user roles (Actors) and their capabilities (Abilities).
+    - **Extensibility:** Easy to add new Abilities, Tasks, or Interactions.
+    - Encourages a business-logic focus in tests.
+- **Relationship to POM:** Screenplay often uses Page Objects (or similar abstractions like Components) within Interactions to locate and manipulate elements, but it adds layers for Tasks and Actors on top.
+- **Frameworks:** Serenity BDD (Java/JS), ScreenPy (Python), Boa Constrictor (C#).
+
+## AI Instructions
+
+- **Suggest Screenplay:** For complex UI testing scenarios or when aiming for high readability and scalability (especially if familiar with BDD), suggest the Screenplay pattern.
+- **Generate Actor Setup:** Show how to create an Actor and give them Abilities.
+    - Example (ScreenPy): `actor = AnActor.named("User").who_can(BrowseTheWeb.using_firefox())`
+- **Generate Task/Interaction Structure:** Provide boilerplate for Task and Interaction classes.
+    - Task: `class Login(Task): def perform_as(self, actor): actor.attempts_to(...)`
+    - Interaction: `class Click(Interaction): def perform_as(self, actor): target = self.target.resolve_for(actor); target.click()`
+- **Generate Question Structure:** Provide boilerplate for Question classes.
+    - Example: `class TextOf(Question): def answered_by(self, actor): return self.target.resolve_for(actor).text`
+- **Compose Tasks:** Show how high-level Tasks are composed of lower-level Tasks or Interactions.
+- **Generate Test Flow:** Create test examples demonstrating the `actor.attempts_to(...)` and `actor.should(see_that(...))` flow.
+- **Connect to UI Elements:** Explain that Interactions often need a way to locate elements, potentially using Page Objects or dedicated Component classes passed as targets.
+- **Compare to POM:** Explain how Screenplay builds upon or utilizes concepts similar to POM but adds actor-centric layers.
