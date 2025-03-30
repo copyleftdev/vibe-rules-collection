@@ -1,0 +1,26 @@
+# Windsurf Rules: Helm Charts Best Practices
+
+## Guiding Principles
+- **Chart Structure:** Follow the standard Helm chart directory structure (`templates/`, `Chart.yaml`, `values.yaml`, `charts/`, `crds/`).
+- **`Chart.yaml`:** Define chart metadata accurately, including `apiVersion` (use `v2` for Helm 3+), `name`, `version`, `appVersion`, and `description`.
+- **`values.yaml`:** Define default configuration values clearly. Structure values logically. Add comments explaining each value.
+- **Templates:** Use Go templating (`{{ }}`) within Kubernetes manifest templates (`templates/*.yaml`). Keep templates readable and well-commented.
+    - **Variables:** Access values using `.Values.<path>`. Use the `required` function for mandatory values.
+    - **Control Structures:** Use template functions and control structures (`if`, `range`, `with`) effectively.
+    - **Named Templates (`_helpers.tpl`):** Define reusable template snippets (helpers) in `templates/_helpers.tpl` to avoid repetition and improve readability (e.g., for generating names, labels).
+    - **Resource Definitions:** Ensure generated Kubernetes manifests are valid and adhere to Kubernetes best practices.
+- **Dependencies:** Manage chart dependencies using the `dependencies` field in `Chart.yaml` and the `charts/` directory.
+- **Notes (`NOTES.txt`):** Provide useful post-installation instructions or information in `templates/NOTES.txt`.
+- **Linting & Testing:** Use `helm lint` to validate chart structure and templates. Consider using `helm test` for basic post-deployment verification.
+- **Secrets Management:** Avoid hardcoding secrets in templates or default `values.yaml`. Reference external secrets or inject them at deploy time.
+
+## AI Instructions
+- **Chart Scaffolding:** Generate the standard Helm chart directory structure and basic files (`Chart.yaml`, `values.yaml`, `templates/_helpers.tpl`, `templates/deployment.yaml`, etc.).
+- **`Chart.yaml` Generation:** Populate `Chart.yaml` with appropriate metadata, defaulting to `apiVersion: v2`.
+- **`values.yaml` Structure:** Generate a well-commented `values.yaml` with common configuration options (image repository/tag, replicas, service type/port).
+- **Template Generation:** Create Kubernetes manifest templates (`deployment.yaml`, `service.yaml`, etc.) using Go templating to reference `.Values`. Utilize common helper templates.
+- **Helper Templates (`_helpers.tpl`):** Generate standard helper templates (e.g., for full name, chart name, labels) in `_helpers.tpl` and use them in resource templates.
+- **Value Referencing:** Ensure templates correctly access values using `.Values` and scope functions like `with`.
+- **Linting Command:** Suggest running `helm lint` after generating or modifying charts.
+- **`NOTES.txt` Stub:** Provide a basic `templates/NOTES.txt`.
+- **Dependency Management:** Show how to define dependencies in `Chart.yaml`.

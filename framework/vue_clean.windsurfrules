@@ -1,0 +1,22 @@
+# Windsurf Rules: Clean Vue.js Development
+
+## Guiding Principles
+- **Composition API:** Strongly prefer the Composition API (`setup` script syntax) over the Options API for better logic reuse, organization, and TypeScript support.
+- **Reactivity:** Understand and utilize Vue's reactivity system effectively (`ref`, `reactive`, `computed`, `watch`).
+- **Component Structure:** Create small, focused Single File Components (SFCs - `.vue` files). Keep templates readable and component logic well-organized within the `<script setup>` block.
+- **Props & Events:** Define clear component APIs using `defineProps` (with type definitions if using TS/JS) and `defineEmits`.
+- **State Management:**
+    - Use Composition API functions (`ref`, `reactive`) for local component state.
+    - For cross-component state, use official state management library Pinia. Avoid manual provide/inject for complex state.
+- **Composables:** Extract reusable stateful logic into composable functions (e.g., `useFeature.js`).
+- **Readability & Style:** Follow the official Vue style guide. Use linters (ESLint with Vue plugin) and formatters (Prettier).
+- **TypeScript:** Leverage TypeScript for enhanced type safety and developer experience.
+
+## AI Instructions
+- **Composition API (`<script setup>`):** Generate Vue components using the Composition API with the `<script setup>` syntax. Avoid the Options API unless specifically requested.
+- **Reactivity Functions:** Use `ref` for primitive values and `reactive` for objects where appropriate. Use `computed` for derived state and `watch`/`watchEffect` for side effects reacting to state changes.
+- **Props & Emits:** Define props using `defineProps` and events using `defineEmits`, including type information (especially if using TypeScript).
+- **Pinia for State:** When global or feature-level state management is needed, suggest or implement solutions using Pinia stores.
+- **Composables:** Identify opportunities to extract reusable logic into composable functions and generate them accordingly.
+- **Vue Style Guide:** Generate code that aligns with the official Vue style guide recommendations.
+- **TypeScript Integration:** If the project uses TypeScript, generate components and composables with strong type definitions.

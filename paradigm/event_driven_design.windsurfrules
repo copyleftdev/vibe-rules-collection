@@ -1,0 +1,16 @@
+# Windsurf Rules: Event-Driven Design
+
+## Guiding Principles
+- **Loose Coupling:** Design components (services, modules) that communicate primarily through events, minimizing direct dependencies.
+- **Asynchronous Communication:** Favor asynchronous message passing (events) over synchronous request/response calls for inter-component communication.
+- **Event-Centric:** Model system behavior around domain events. Events should represent significant occurrences within the domain.
+- **Event Structure:** Define clear, well-structured event schemas (e.g., using JSON Schema, Avro, Protocol Buffers). Include relevant data and metadata (timestamp, event ID, source).
+- **Event Handlers/Subscribers:** Implement dedicated handlers or subscribers that react to specific events. Handlers should be idempotent where possible.
+- **Choreography vs. Orchestration:** Understand and choose appropriately between event choreography (decentralized control) and orchestration (centralized control).
+
+## AI Instructions
+- **Event Definition:** When generating code for event-driven systems, define clear event structures/schemas.
+- **Asynchronous Patterns:** Implement event publishing and subscription logic using asynchronous patterns suitable for the language/framework (e.g., message queues, event buses, async functions).
+- **Decoupled Components:** Generate code for event publishers and subscribers that minimizes direct knowledge of each other, interacting primarily through the event mechanism.
+- **Idempotency:** Where appropriate, design event handlers to be idempotent (safe to execute multiple times with the same event).
+- **Error Handling:** Implement robust error handling for event processing (e.g., dead-letter queues, retry mechanisms).

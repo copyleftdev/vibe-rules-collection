@@ -1,0 +1,16 @@
+# Windsurf Rules: Functional Programming Principles
+
+## Guiding Principles
+- **Pure Functions:** Prefer pure functions—functions whose output depends only on their input arguments and have no side effects. Minimize mutations and shared state.
+- **Immutability:** Treat data as immutable. Avoid modifying data structures in place; instead, create new instances with the desired changes.
+- **Declarative Style:** Write code that describes *what* to do, rather than *how* to do it. Utilize higher-order functions (e.g., `map`, `filter`, `reduce`).
+- **First-Class Functions:** Treat functions as first-class citizens—pass them as arguments, return them from other functions, assign them to variables.
+- **Recursion:** Use recursion for iteration where appropriate, especially in languages with tail-call optimization.
+- **Composition:** Build complex functionality by composing smaller, reusable functions.
+
+## AI Instructions
+- **Purity Emphasis:** Generate pure functions whenever possible. Clearly identify and isolate side effects if they are unavoidable.
+- **Immutability:** Generate code that avoids in-place mutation of data. Use immutable data structures or techniques appropriate for the language (e.g., spreading objects/arrays in JS/TS, persistent data structures).
+- **Declarative Constructs:** Utilize functional constructs like `map`, `filter`, `reduce`, and function composition.
+- **Higher-Order Functions:** Employ higher-order functions to create abstractions and reusable logic.
+- **Avoid Side Effects:** Minimize reliance on global state or external dependencies within functions.

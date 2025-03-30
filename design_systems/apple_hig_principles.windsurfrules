@@ -1,0 +1,26 @@
+# Windsurf Rules: Apple Human Interface Guidelines (HIG) Principles
+
+## Guiding Principles
+- **Core Themes:** Adhere to Apple's primary design themes:
+    - **Clarity:** Text is legible, icons precise, adornments subtle, focus on functionality.
+    - **Deference:** UI helps users understand and interact with content, but doesn't compete with it. Fluid motion and crisp UI defer to content.
+    - **Depth:** Visual layers and realistic motion convey hierarchy, state, and relationships.
+- **Platform Consistency:** Design interfaces that feel familiar and intuitive within the target Apple ecosystem (iOS, macOS, watchOS, tvOS, visionOS). Use standard controls and views provided by the platform's SDKs (UIKit, AppKit, SwiftUI, WatchKit).
+- **Aesthetic Integrity:** Consider how appearance and behavior integrate to create a cohesive product (e.g., an app focused on productivity might prioritize efficiency over whimsy).
+- **Direct Manipulation:** Allow users to interact directly with onscreen content whenever possible.
+- **Feedback:** Provide perceptible feedback for user actions. Highlight changes and progress.
+- **Metaphors:** Use familiar metaphors (physical objects, real-world interactions) where they enhance understanding, but avoid unnecessary skeuomorphism.
+- **User Control:** Put the user in control. Ensure actions are reversible (Undo), keep users informed, and allow them to manage their experience.
+- **Ergonomics / Input Methods:** Design for the specific input methods of the platform (touch, pointer, keyboard, voice, Apple Pencil, Digital Crown, spatial input).
+- **Accessibility (a11y):** Implement Apple's accessibility features (VoiceOver, Dynamic Type, Reduce Motion, etc.) to ensure apps are usable by everyone.
+- **Standard Controls & Views:** Prefer standard system-provided UI elements over custom ones unless there's a clear functional or branding need. Users already know how standard elements work.
+
+## AI Instructions
+- **Platform Focus:** Generate UI code using native SDK components (SwiftUI, UIKit, AppKit) rather than generic web components when the target is an Apple platform.
+- **HIG Terminology:** Use HIG terminology when describing UI elements or interactions (e.g., "Modal Views", "Navigation Bars", "Tab Bars").
+- **Standard Element Preference:** Suggest using standard system controls (e.g., `Button`, `TextField`, `Slider` in SwiftUI) first.
+- **Accessibility Attributes:** Include relevant accessibility modifiers/attributes (e.g., `.accessibilityLabel`, `.accessibilityHint` in SwiftUI).
+- **Layout Conventions:** Generate layouts following platform conventions (e.g., safe area guides, standard spacing).
+- **Feedback Mechanisms:** Suggest standard feedback patterns (e.g., haptics on iOS/watchOS, subtle animations).
+- **User Control Emphasis:** Generate code that includes clear cancellation or undo options where appropriate.
+- **Principle Alignment:** When designing interactions or layouts, explain how they align with HIG principles like Clarity, Deference, or Depth.

@@ -1,0 +1,24 @@
+# Windsurf Rules: Modular Django Development
+
+## Guiding Principles
+- **App Structure:** Design Django projects with multiple, focused applications ('apps'). Each app should represent a distinct feature or domain area of the project.
+- **Fat Models, Thin Views, Utility Functions/Services:**
+    - **Models:** Place core business logic and data validation within model methods or custom managers (`models.Manager`).
+    - **Views:** Keep views lean, focusing on handling HTTP requests/responses, basic input validation, user authentication/authorization, and orchestrating calls to models and services/utilities. Avoid complex business logic in views.
+    - **Services/Utilities:** Extract reusable business logic or complex operations that don't fit neatly into models into separate utility modules or service layers within apps.
+- **Django ORM:** Utilize the Django ORM effectively. Understand query optimization (`select_related`, `prefetch_related`).
+- **Forms:** Use Django Forms for handling user input validation and cleaning.
+- **Templates:** Keep templates focused on presentation. Use template tags and filters for simple display logic. Avoid complex logic in templates.
+- **URL Configuration:** Use clear and consistent URL naming patterns. Include namespaces for apps.
+- **Settings Management:** Organize settings logically (e.g., separate base, development, production settings). Avoid hardcoding sensitive information.
+- **Testing:** Write tests (unit, integration) for models, views, forms, and utility functions using Django's testing framework.
+
+## AI Instructions
+- **App Organization:** When adding features, suggest creating new Django apps or placing code within existing, relevant apps based on domain.
+- **Model Logic:** Place business logic related to data directly in model methods or managers.
+- **View Logic:** Generate views that handle request/response flow and delegate complex logic to models or services/utility functions.
+- **Service Layer:** Suggest or create service functions/classes within apps for reusable business logic not tied directly to a model.
+- **ORM Usage:** Generate efficient ORM queries, utilizing `select_related` and `prefetch_related` where appropriate.
+- **Forms:** Generate Django Forms for data validation.
+- **URL Namespacing:** Use named URLs and namespaces when generating URL patterns and references.
+- **Testing Stubs:** Suggest basic test structures for generated models, views, or forms.

@@ -1,0 +1,19 @@
+# Windsurf Rules: High Performance Computing
+
+## Guiding Principles
+- **Algorithmic Efficiency:** Choose algorithms with the best time and space complexity suitable for the problem size and constraints. Analyze Big O notation.
+- **Memory Efficiency:** Minimize memory allocations and deallocations. Reuse memory where possible. Be mindful of data structure overhead.
+- **Cache Locality:** Optimize data access patterns to maximize CPU cache hits (spatial and temporal locality). Consider Data-Oriented Design principles.
+- **Parallelism & Concurrency:** Identify opportunities for parallel execution (e.g., using threads, SIMD instructions, GPU computing) or efficient concurrency.
+- **Minimize I/O:** Reduce the frequency and volume of I/O operations (disk, network). Use buffering techniques.
+- **Language/Platform Optimizations:** Leverage performance features specific to the language or platform (e.g., compiler optimizations, low-level intrinsics, efficient library calls).
+- **Profiling:** Use profiling tools to identify performance bottlenecks accurately before optimizing.
+
+## AI Instructions
+- **Algorithm Selection:** When applicable, suggest or implement algorithms known for better performance characteristics for the task at hand.
+- **Memory Optimization:** Generate code that is mindful of memory usage. Suggest data structures with lower overhead or patterns that reduce allocations.
+- **Data-Oriented Suggestions:** In performance-critical sections, suggest Data-Oriented Design patterns (e.g., Structure of Arrays vs. Array of Structures) if applicable.
+- **Concurrency/Parallelism Identification:** Point out sections of code that might benefit from parallelization or concurrent execution.
+- **I/O Reduction:** Suggest techniques like batching or buffering for I/O operations.
+- **Platform Awareness:** If the target platform/language is known, utilize specific performance features or libraries (e.g., optimized math libraries, concurrency primitives).
+- **Avoid Premature Optimization:** Focus optimizations on identified bottlenecks or critical code paths. Generate readable code first, then suggest targeted optimizations.

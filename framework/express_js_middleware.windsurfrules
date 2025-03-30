@@ -1,0 +1,26 @@
+# Windsurf Rules: Express.js Best Practices (Node.js)
+
+## Guiding Principles
+- **Middleware Architecture:** Understand and leverage the middleware pattern. Keep middleware functions small, focused, and potentially reusable.
+- **Routing:** Define routes clearly using `app.METHOD(PATH, HANDLER)` or `express.Router()`. Group related routes using `Router`.
+- **Asynchronous Operations:** Handle asynchronous operations (I/O, database calls) correctly using Promises (`async`/`await` preferred) or callbacks. Ensure errors are propagated to Express error handlers.
+- **Error Handling:** Implement centralized error handling middleware (defined last, with 4 arguments: `(err, req, res, next)`).
+- **Request/Response Objects:** Utilize the `req` (request) and `res` (response) objects effectively. Use methods like `res.json()`, `res.send()`, `res.status()`, `res.render()`.
+- **Configuration Management:** Externalize configuration (database credentials, API keys, ports) using environment variables (e.g., via `dotenv`) or configuration files. Do not hardcode configuration.
+- **Templating Engines:** Integrate templating engines (EJS, Pug, Handlebars) using `app.set('view engine', ...)` for server-side rendering if needed.
+- **Static Files:** Serve static assets (CSS, client-side JS, images) using the `express.static()` middleware.
+- **Security Middleware:** Use essential security middleware like `helmet` (sets various HTTP headers) and potentially rate limiting middleware.
+- **Modularity:** Structure larger applications by breaking down routes, controllers, services, and models into separate modules/files.
+- **Testing:** Write tests for routes and middleware using libraries like Supertest, Jest, or Mocha/Chai.
+
+## AI Instructions
+- **Middleware Generation:** Generate small, focused middleware functions with the correct signature (`(req, res, next)`).
+- **Routing Structure:** Generate route definitions using `app.get/post/...` or `express.Router()`. Group related routes.
+- **Async/Await Usage:** Generate route handlers and middleware using `async/await` for asynchronous operations, including `try/catch` blocks that call `next(err)`.
+- **Error Handling Middleware:** Generate the structure for a centralized error handling middleware.
+- **Response Methods:** Use appropriate `res` methods (`res.json`, `res.status`, `res.send`).
+- **Configuration:** Generate code that reads configuration from `process.env`.
+- **Static File Serving:** Show how to configure `express.static()`.
+- **Security Middleware Setup:** Generate code to include `helmet()`.
+- **Modular Structure:** Suggest organizing code into separate files/directories for routes, controllers, etc.
+- **Testing Snippets:** Provide basic test examples using Supertest.

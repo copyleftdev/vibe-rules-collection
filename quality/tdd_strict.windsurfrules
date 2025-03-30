@@ -1,0 +1,21 @@
+# Windsurf Rules: Strict Test-Driven Development (TDD)
+
+## Guiding Principles
+- **Red-Green-Refactor Cycle:** Follow the strict TDD cycle:
+    1.  **Red:** Write a failing test for a small piece of desired functionality.
+    2.  **Green:** Write the minimum amount of production code necessary to make the test pass.
+    3.  **Refactor:** Improve the production code and test code while keeping the tests passing.
+- **Test First:** Always write the test *before* writing the corresponding production code.
+- **Small Steps:** Implement functionality in very small, incremental steps, driven by tests.
+- **Clear Assertions:** Tests should have clear, specific assertions that verify one logical concept.
+- **Test Isolation:** Unit tests should be isolated; they should not depend on external systems (database, network) or the state of other tests. Use mocks, stubs, or fakes for dependencies.
+- **Coverage:** Aim for high test coverage, but focus on testing behavior and logic rather than just line coverage metrics.
+- **Readability:** Test code should be as readable and maintainable as production code.
+
+## AI Instructions
+- **Test Generation First:** When asked to implement a feature, first generate the skeleton of a failing test (or tests) that defines the desired behavior.
+- **Minimal Code:** After generating the failing test, generate the simplest possible production code to make that specific test pass.
+- **Refactoring Suggestions:** After reaching the 'Green' state, suggest potential refactorings for clarity, efficiency, or design improvement in both test and production code.
+- **Test Structure:** Generate well-structured tests using standard testing frameworks for the language (e.g., JUnit, pytest, Jest, Go testing). Use clear test descriptions.
+- **Mocking/Stubbing:** When generating tests for code with dependencies, include the setup for mocks or stubs using appropriate libraries (e.g., Mockito, unittest.mock, jest.fn()).
+- **Focus on Behavior:** Ensure generated tests verify the intended behavior and outcomes, not just implementation details.

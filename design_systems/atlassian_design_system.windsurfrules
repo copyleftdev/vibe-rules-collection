@@ -1,0 +1,29 @@
+# Windsurf Rules: Atlassian Design System Principles
+
+## Guiding Principles
+- **Foundations:** Build upon Atlassian's foundations:
+    - **Color:** Use the defined color palettes, tokens, and guidelines for applying color purposefully (branding, status, hierarchy).
+    - **Typography:** Apply the specified type scale and fonts for clear information hierarchy.
+    - **Spacing:** Use the standard spacing scale for consistent rhythm and layout.
+    - **Iconography:** Utilize icons from the Atlassian icon library.
+    - **Grids:** Employ grid systems for organized and responsive layouts.
+    - **Elevation:** Use shadow and border guidelines to create depth and separation.
+- **Components:** Leverage the components provided by the Atlassian Design System libraries (e.g., `@atlaskit/button`, `@atlaskit/textfield`, `@atlaskit/table-tree`).
+    - Understand the props and variations available for each component.
+    - Compose complex UIs from these building blocks.
+- **Patterns:** Apply established patterns for common interactions and layouts (e.g., forms, navigation, feedback, data display) documented in the system.
+- **Content:** Follow guidelines for writing clear, concise, and helpful UI text (microcopy).
+- **Brand:** Ensure the UI aligns with Atlassian's brand expression.
+- **Accessibility (a11y):** Adhere to Atlassian's accessibility standards. Use components correctly to leverage their built-in a11y features. Test for keyboard navigation, screen reader compatibility, and color contrast.
+- **Theming:** Utilize theming capabilities (especially for light/dark modes) provided by the design system libraries.
+- **Focus:** Design interfaces optimized for productivity, collaboration, and information management, reflecting Atlassian's product focus.
+
+## AI Instructions
+- **Component Usage:** Generate code importing and using standard Atlaskit components (e.g., `<Button>`, `<TextField>`, `<DropdownMenu>`, `<PageHeader>`).
+- **Token Usage:** When possible, reference design tokens (e.g., for color, spacing, typography) provided by `@atlaskit/tokens` or similar mechanisms, rather than hardcoded values.
+- **Layout Components:** Use Atlaskit layout components or grid principles for structuring interfaces.
+- **Icon Integration:** Generate code using icons from the Atlaskit icon library.
+- **Pattern Application:** Suggest or generate code following established Atlassian patterns (e.g., form structure with validation feedback).
+- **Theming Awareness:** Generate code compatible with Atlaskit theming.
+- **Accessibility Props:** Include necessary ARIA attributes if not automatically handled by the components.
+- **Prop Usage:** Use appropriate props for component configuration based on Atlassian documentation.

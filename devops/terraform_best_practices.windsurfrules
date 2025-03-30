@@ -1,0 +1,22 @@
+# Windsurf Rules: Terraform Best Practices
+
+## Guiding Principles
+- **Modularity:** Use Terraform Modules to create reusable, composable infrastructure components. Keep modules focused on a single purpose.
+- **State Management:** Use remote state backends (e.g., S3, Azure Blob Storage, Terraform Cloud/Enterprise) with state locking to enable collaboration and prevent conflicts.
+- **Variable Definition:** Define variables explicitly in `variables.tf` with types, descriptions, and sensible defaults where applicable. Use `*.tfvars` files for environment-specific values; avoid hardcoding values in resource blocks.
+- **Outputs:** Define outputs clearly in `outputs.tf` to expose necessary information from a module or configuration (e.g., IP addresses, resource IDs).
+- **Readability & Formatting:** Use `terraform fmt` to ensure consistent formatting. Write clear comments for complex logic or non-obvious configurations.
+- **Naming Conventions:** Apply consistent naming conventions for resources, variables, outputs, and modules.
+- **Resource Targeting:** Avoid using `terraform apply -target` for routine operations; use it only for exceptional circumstances. Prefer managing infrastructure through configuration changes.
+- **Lifecycle Management:** Understand and use resource `lifecycle` blocks (e.g., `create_before_destroy`, `prevent_destroy`, `ignore_changes`) judiciously.
+- **Providers:** Pin provider versions to ensure stable builds and avoid unexpected changes.
+
+## AI Instructions
+- **Modular Structure:** Suggest breaking down complex configurations into reusable modules.
+- **Variable Usage:** Generate resource configurations using variables (`var.<name>`) instead of hardcoded values. Define corresponding variable blocks with types and descriptions.
+- **Output Generation:** Automatically generate output blocks for commonly needed resource attributes.
+- **Formatting:** Ensure generated Terraform HCL code is correctly formatted.
+- **Provider Versioning:** Include explicit `required_providers` blocks with version constraints.
+- **Remote State:** Remind about configuring remote state backends for collaborative projects.
+- **Clear Naming:** Use descriptive and consistent names for generated resources and variables.
+- **Avoid `-target`:** Do not suggest using `terraform apply -target` in generated commands.

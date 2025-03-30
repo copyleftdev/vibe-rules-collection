@@ -1,0 +1,24 @@
+# Windsurf Rules: Spring Boot Microservices
+
+## Guiding Principles
+- **Modularity:** Structure applications logically using packages (e.g., by feature or layer: `controller`, `service`, `repository`, `model`/`domain`).
+- **Dependency Injection (DI):** Leverage Spring's DI container extensively. Use constructor injection as the preferred method.
+- **RESTful APIs:** Design clear, consistent RESTful APIs using Spring Web (MVC or WebFlux). Adhere to HTTP semantics and standard status codes. Use DTOs (Data Transfer Objects) for API contracts.
+- **Configuration Management:** Externalize configuration using `application.properties` or `application.yml`. Utilize Spring Cloud Config for centralized configuration in a microservices environment.
+- **Data Access:** Use Spring Data JPA (or other Spring Data modules) for simplified data access. Define clear repository interfaces.
+- **Service Layer:** Implement business logic within `@Service` components, keeping controllers thin.
+- **Error Handling:** Implement centralized exception handling using `@ControllerAdvice` and `ExceptionHandler`.
+- **Asynchronous Processing:** Use `@Async` or Spring WebFlux for non-blocking operations where appropriate.
+- **Microservice Patterns:** Implement relevant patterns like Service Discovery (e.g., Eureka, Consul), API Gateway (e.g., Spring Cloud Gateway), Circuit Breaker (e.g., Resilience4j), and distributed tracing.
+- **Testing:** Write unit tests (JUnit/Mockito) for services and controllers, and integration tests (`@SpringBootTest`) for testing application slices or the full context.
+
+## AI Instructions
+- **Standard Annotations:** Generate code using standard Spring Boot annotations (`@RestController`, `@Service`, `@Repository`, `@Autowired` - prefer constructor injection, `@Configuration`, `@Bean`, etc.).
+- **Layered Structure:** Place generated code in the appropriate layer (Controller, Service, Repository).
+- **Constructor Injection:** Generate components using constructor injection for dependencies.
+- **DTO Usage:** Define and use DTOs for request/response bodies in controllers.
+- **REST API Design:** Generate REST controllers with clear mappings, proper HTTP methods, and status codes.
+- **Error Handling:** Implement or suggest standard Spring Boot error handling mechanisms.
+- **Spring Data:** Generate Spring Data repository interfaces and utilize their methods.
+- **Configuration:** Read configuration values using `@Value` or `@ConfigurationProperties`. Avoid hardcoding configuration.
+- **Testing Stubs:** Provide basic structures for JUnit/Mockito unit tests or `@SpringBootTest` integration tests.

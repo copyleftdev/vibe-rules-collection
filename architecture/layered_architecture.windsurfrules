@@ -1,0 +1,18 @@
+# Windsurf Rules: Layered (N-Tier) Architecture
+
+## Guiding Principles
+- **Layer Separation:** Organize the application into distinct horizontal layers, each with a specific responsibility (e.g., Presentation, Application/Service, Business/Domain, Persistence/Data Access, Database).
+- **Strict Layering:** Layers should typically only communicate with the layer directly below them. Avoid direct calls from lower layers to upper layers or skipping layers.
+- **Dependency Direction:** Dependencies flow downwards. Upper layers depend on interfaces or functionalities provided by lower layers. Lower layers should not have knowledge of upper layers.
+- **Interface Definition:** Define clear interfaces (APIs, service contracts) between layers to decouple them.
+- **Data Transfer Objects (DTOs):** Use DTOs to transfer data between layer boundaries, preventing layers from being coupled to the internal data structures of other layers.
+- **Abstraction:** Lower layers should abstract implementation details (e.g., the data access layer abstracts the specific database technology from the business layer).
+- **Cohesion:** Keep logic within each layer highly cohesive and focused on its specific responsibility.
+
+## AI Instructions
+- **Layer Placement:** Generate code within the appropriate layer based on its responsibility (e.g., UI logic in Presentation, business rules in Business, database interactions in Persistence).
+- **Dependency Flow:** Ensure generated code respects the downward dependency flow. Avoid adding dependencies from lower layers to upper layers.
+- **Interface Generation:** Define and use interfaces for communication between layers.
+- **DTO Usage:** Generate or suggest the use of DTOs for transferring data across layer boundaries.
+- **Abstraction Implementation:** Generate data access layers or other lower layers that hide implementation details behind interfaces or repositories.
+- **Enforce Separation:** Highlight code that appears to violate strict layer separation (e.g., a presentation component directly accessing the database).

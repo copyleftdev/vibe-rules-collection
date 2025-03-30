@@ -1,0 +1,16 @@
+# Windsurf Rules: Data-Oriented Design (Performance Focus)
+
+## Guiding Principles
+- **Data First:** Design based on how data is laid out in memory and accessed, rather than primarily focusing on object abstractions.
+- **Cache Efficiency:** Structure data to maximize CPU cache utilization (locality of reference). Prefer contiguous memory layouts (e.g., arrays of structs vs. arrays of pointers to objects).
+- **Data Transformation Pipelines:** Process data in pipelines, transforming large batches of data rather than processing individual items within complex object methods.
+- **Minimize Indirection:** Reduce pointer chasing and unnecessary indirections that can lead to cache misses.
+- **Structure of Arrays (SoA) vs. Array of Structures (AoS):** Choose the data layout (SoA or AoS) that best suits the access patterns for performance-critical code.
+- **Bulk Operations:** Perform operations on collections of data rather than item by item.
+
+## AI Instructions
+- **Data Layout Awareness:** When generating performance-sensitive code, consider the memory layout of data structures. Suggest or implement layouts that favor cache efficiency (e.g., AoS or SoA based on context).
+- **Transformation Focus:** Structure processing logic around data transformations rather than deep object-oriented hierarchies.
+- **Minimize Abstraction Overhead:** In performance-critical sections, avoid abstractions (like virtual function calls or deep inheritance) that introduce significant overhead or hinder cache performance.
+- **Contiguous Memory:** Prefer data structures that store elements contiguously in memory (e.g., vectors, arrays) for bulk processing.
+- **Contextual Application:** Apply DOD principles primarily in performance-critical sections of the codebase. Balance DOD with other paradigms (like OOP) where appropriate for overall maintainability.

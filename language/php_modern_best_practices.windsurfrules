@@ -1,0 +1,38 @@
+# Windsurf Rules: Modern PHP Best Practices (PHP 7.4/8.x+)
+
+## Guiding Principles
+- **Strict Types:** Enable strict type checking (`declare(strict_types=1);`) at the beginning of files. Use scalar type declarations (`int`, `float`, `string`, `bool`) and return type declarations for functions and methods.
+- **Modern Syntax:** Leverage modern PHP features:
+    - Null coalescing operator (`??`) and null coalescing assignment (`??=`).
+    - Nullsafe operator (`?->`).
+    - Typed properties (PHP 7.4+).
+    - Arrow functions (`fn() => ...`) for concise closures (PHP 7.4+).
+    - Constructor property promotion (PHP 8.0+).
+    - Union types (`Type1|Type2`) (PHP 8.0+).
+    - Attributes (`#[Attribute]`) (PHP 8.0+).
+    - Match expression (`match`) (PHP 8.0+).
+    - Enums (PHP 8.1+).
+    - Readonly properties (PHP 8.1+).
+- **Dependency Management (Composer):** Use Composer for managing project dependencies. Avoid manual `require`/`include` for external libraries.
+- **PSR Standards:** Adhere to relevant PHP Standards Recommendations (PSRs), especially:
+    - PSR-12 (Extended Coding Style) or PSR-1 (Basic Coding Standard).
+    - PSR-4 (Autoloader).
+- **Error Handling:** Use exceptions (`try`/`catch`/`finally`) for error handling instead of triggering errors directly. Use specific exception types.
+- **Security:**
+    - Prevent SQL injection using prepared statements (PDO or ORM).
+    - Prevent Cross-Site Scripting (XSS) by properly escaping output (e.g., using `htmlspecialchars` or templating engines like Twig).
+    - Prevent Cross-Site Request Forgery (CSRF) using tokens.
+    - Use password hashing functions (`password_hash`, `password_verify`).
+    - Validate and sanitize user input.
+- **Readability & Style:** Follow PSR-12 coding style guidelines (indentation, naming conventions - `camelCase` for methods/functions, `PascalCase` for classes/interfaces/traits, `UPPER_SNAKE_CASE` for constants). Keep functions/methods focused.
+- **Avoid Globals:** Minimize the use of global variables and the `global` keyword.
+- **Frameworks & ORMs:** Consider using established frameworks (Symfony, Laravel) and ORMs (Doctrine, Eloquent) for larger applications to promote structure and best practices.
+
+## AI Instructions
+- **Strict Types:** Generate files starting with `declare(strict_types=1);`. Add type hints (scalar, return, union) to function/method signatures and properties.
+- **Modern Syntax Usage:** Generate code utilizing null coalescing, nullsafe operator, typed properties, arrow functions, constructor promotion, match expressions, enums, etc., where applicable for the target PHP version.
+- **Composer Awareness:** Assume Composer is used for dependencies. Generate `use` statements for namespaced classes.
+- **PSR Compliance:** Generate code adhering to PSR-12 styling (indentation, spacing, naming conventions).
+- **Exception Handling:** Generate `try`/`catch` blocks for operations that might fail.
+- **Security Practices:** Generate database interaction code using prepared statements. Apply output escaping (e.g., `htmlspecialchars`) when generating code that renders user input.
+- **Dependency Injection:** Suggest or generate code using dependency injection principles, especially when working within framework contexts.

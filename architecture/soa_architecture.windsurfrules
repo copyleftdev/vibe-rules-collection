@@ -1,0 +1,22 @@
+# Windsurf Rules: Service-Oriented Architecture (SOA)
+
+## Guiding Principles
+- **Service Encapsulation:** Services encapsulate specific business functionalities or capabilities.
+- **Loose Coupling:** Services should be loosely coupled, minimizing dependencies between them. Interaction primarily occurs through well-defined interfaces.
+- **Service Contract:** Each service exposes a formal contract (e.g., WSDL, OpenAPI Specification, defined message schemas) describing its capabilities, data formats, and communication protocols.
+- **Service Abstraction:** Services hide their underlying implementation details behind the contract.
+- **Service Reusability:** Design services to be reusable across different applications or business processes.
+- **Service Autonomy:** Services should ideally manage their own logic and data, having a degree of operational autonomy.
+- **Service Discoverability:** Mechanisms should exist for consumers to find available services and their contracts (e.g., Service Registry).
+- **Standardized Communication:** Often relies on standard communication protocols (e.g., SOAP, REST, messaging queues) and potentially an Enterprise Service Bus (ESB) for mediation, routing, and transformation.
+- **Coarser Granularity:** Services in SOA are typically coarser-grained compared to microservices, often representing larger business capabilities.
+
+## AI Instructions
+- **Service Definition:** Generate code that defines distinct services encapsulating specific business logic.
+- **Contract Definition:** Assist in generating or defining service contracts (e.g., OpenAPI specs for REST, WSDL stubs for SOAP, message schemas for queues).
+- **Interface Implementation:** Generate service implementations that adhere to the defined contract.
+- **Communication Protocols:** Implement service communication using specified protocols (REST, SOAP, messaging). If an ESB is involved, generate code that interacts with the bus.
+- **Decoupling:** Promote loose coupling by ensuring services interact only through their defined contracts.
+- **Reusability Focus:** Design generated services with potential reuse in mind.
+- **Discoverability:** Remind about the need for service registration/discovery mechanisms in an SOA environment.
+- **Error Handling:** Implement robust error handling and potentially compensation logic for distributed operations.

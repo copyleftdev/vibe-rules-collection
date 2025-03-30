@@ -1,0 +1,18 @@
+# Windsurf Rules: Enterprise Team Standard
+
+## Guiding Principles
+- **Consistency:** Strict adherence to the established team/company coding standards, patterns, and chosen frameworks/libraries is paramount.
+- **Maintainability:** Write code that is easy for any team member to understand, modify, and debug over the long term.
+- **Compliance:** Ensure code meets any relevant internal or external compliance requirements (security, logging, auditing, etc.).
+- **Documentation:** Maintain thorough internal documentation (code comments, READMEs, architectural diagrams) as required by team standards.
+- **Approved Technologies:** Use only approved libraries, frameworks, and tools from the enterprise technology stack.
+- **Error Handling & Logging:** Implement robust error handling and standardized logging practices as defined by the team/enterprise.
+- **Backward Compatibility:** Consider backward compatibility requirements when making changes to existing systems or APIs.
+
+## AI Instructions
+- **Strict Standards Adherence:** Prioritize adherence to specified enterprise coding standards above all other general best practices if they conflict. Ask for clarification on specific standards if needed.
+- **Consistency Enforcement:** Generate code that is consistent in style, naming, and structure with the surrounding codebase or provided examples.
+- **Verbose Logging/Error Handling:** Implement logging and error handling according to specified enterprise patterns (ask if specific formats or libraries are required).
+- **Compliance Checks:** If specific compliance rules are provided (e.g., "all external API calls must be logged"), ensure generated code meets these requirements.
+- **Technology Stack:** Use only the libraries and framework features specified as part of the approved enterprise stack.
+- **Documentation Assistance:** Help generate code comments or documentation snippets conforming to team standards.

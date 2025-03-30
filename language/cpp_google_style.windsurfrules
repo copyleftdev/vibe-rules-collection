@@ -1,0 +1,32 @@
+# Windsurf Rules: Google C++ Style Guide
+
+## Guiding Principles
+- **General:** Adhere closely to the rules outlined in the official Google C++ Style Guide.
+- **Naming:**
+    - `TypeName`: PascalCase.
+    - `variable_name`, `function_name`, `member_name_`, `struct_member_name_`: snake_case (note trailing underscore for class members).
+    - `kConstantName`: `k` followed by PascalCase.
+    - `ENUM_VALUE`: SCREAMING_SNAKE_CASE.
+    - `namespace_name`: lowercase_snake_case.
+    - File names: `lowercase_with_underscores.cc` / `.h`.
+- **Formatting:** 2-space indentation. No tabs. 80-column line limit (with exceptions). Specific rules for braces, function declarations, class formatting, etc. (Use `clang-format` with Google style).
+- **Comments:** Use `//` for most comments. Use `/* ... */` for file-level comments or temporarily commenting out code. Specific formats for TODOs (`TODO(username): ...`). Documentation comments (`/** ... */` or `///`) are generally discouraged in favor of clear code and separate documentation.
+- **Language Features:**
+    - Avoid RTTI and exceptions.
+    - Use `nullptr` (not `NULL` or `0`).
+    - Prefer `const` correctness (`const` methods, parameters, variables).
+    - Use namespaces to control scope. Avoid `using namespace ...` in headers.
+    - Specific guidance on templates, inheritance (prefer composition), operator overloading, preprocessor macros (avoid), etc.
+    - Use Google's C++ library (`absl`) where appropriate.
+- **Headers:** Strict include discipline (`#include` what you use), specific include order, use header guards (`#ifndef FOO_BAR_H_ ... #endif`). Forward declarations preferred over includes in headers where possible.
+- **Ownership & Resource Management:** Use smart pointers (`std::unique_ptr`, `std::shared_ptr`) where appropriate, but be mindful of performance. Raw pointers often used for non-owning observation.
+
+## AI Instructions
+- **Formatting:** Generate code formatted according to Google style (2-space indent, 80-col limit, brace placement). Suggest using `clang-format -style=Google`.
+- **Naming:** Strictly apply Google naming conventions for all identifiers.
+- **Language Restrictions:** Avoid generating code that uses exceptions or RTTI. Generate `nullptr`.
+- **Header Guard Generation:** Generate standard `#ifndef` header guards.
+- **Include Order:** Suggest or generate `#include` directives following the Google-specified order (related header, C system, C++ system, other libs, project includes).
+- **Const Correctness:** Apply `const` liberally and correctly.
+- **Smart Pointers:** Generate `std::unique_ptr` for unique ownership, `std::shared_ptr` for shared ownership, but use raw pointers for non-owning references where typical in Google style.
+- **Comment Style:** Generate `//` style comments and `TODO(username)` comments.

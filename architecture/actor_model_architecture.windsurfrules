@@ -1,0 +1,21 @@
+# Windsurf Rules: Actor Model Architecture
+
+## Guiding Principles
+- **Actors as Units of Concurrency:** The fundamental unit is the Actor. Each actor has its own state, behavior, and mailbox.
+- **Asynchronous Message Passing:** Actors communicate *exclusively* by sending immutable messages asynchronously to each other's mailboxes. No direct method calls or shared memory (beyond immutable messages).
+- **State Encapsulation:** An actor's state is private and protected from external access. State is modified only in response to messages processed by the actor.
+- **Sequential Processing:** Each actor processes messages from its mailbox one at a time, ensuring no concurrency issues *within* a single actor.
+- **Location Transparency:** Actors can potentially reside anywhere in a distributed system. Interaction uses actor references/addresses, hiding the physical location.
+- **Fault Tolerance (Supervision):** Actors are typically organized hierarchically. Supervisors monitor child actors and define strategies for handling failures (restart, stop, escalate).
+- **Concurrency & Scalability:** Enables high levels of concurrency by having potentially millions of lightweight actors running in parallel.
+- **Immutable Messages:** Messages sent between actors should be immutable to prevent shared mutable state issues.
+
+## AI Instructions
+- **Actor Definition:** Generate code defining Actors (classes or equivalent) with their state, message handling logic (`receive` method, message handlers), and potentially lifecycle methods.
+- **Message Definition:** Define immutable message types (classes, records, structs) for communication between actors.
+- **Asynchronous Messaging:** Generate code that sends messages asynchronously to actor references/addresses (`tell`/`ask` patterns, `!` syntax).
+- **State Management:** Encapsulate state within actors. Generate message handlers that update the actor's internal state based on received messages.
+- **Supervision Strategies:** When generating parent/supervisor actors, suggest or include basic supervision strategies (e.g., restart children on failure).
+- **Avoid Shared Mutable State:** Ensure generated code does not introduce shared mutable state accessible by multiple actors; rely on message passing.
+- **Framework Specifics:** If a specific Actor framework is mentioned (Akka, Orleans, Akka.NET, Proto.Actor), utilize its specific APIs, patterns, and conventions.
+- **Immutable Message Generation:** Generate immutable message classes/structs.

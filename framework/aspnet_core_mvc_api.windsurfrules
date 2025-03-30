@@ -1,0 +1,31 @@
+# Windsurf Rules: ASP.NET Core Best Practices (C#)
+
+## Guiding Principles
+- **Dependency Injection (DI):** Heavily utilize the built-in DI container. Register services in `Program.cs` (or `Startup.cs` in older templates) with appropriate lifetimes (Singleton, Scoped, Transient). Inject dependencies via constructors.
+- **Middleware Pipeline:** Understand and configure the middleware pipeline in `Program.cs`. Order matters. Use standard middleware (authentication, authorization, static files, routing, CORS, etc.).
+- **Routing:** Use endpoint routing (`app.UseRouting()`, `app.UseEndpoints(...)`). Define routes using attributes (`[Route]`, `[HttpGet]`, etc.) on controllers/actions or using minimal API conventions.
+- **MVC Pattern (for UI):**
+    - **Models:** Plain C# objects (POCOs) or ViewModels representing data.
+    - **Views (Razor):** Use Razor syntax (`.cshtml`) for UI generation. Keep logic minimal. Use Tag Helpers and View Components for reusable UI elements.
+    - **Controllers:** Inherit from `Controller`. Actions return `IActionResult` (e.g., `View()`, `RedirectToAction()`, `Json()`). Handle user input, interact with services, select views.
+- **API Controllers (for APIs):**
+    - Inherit from `ControllerBase`. Add `[ApiController]` attribute (enables conventions like automatic model validation response).
+    - Actions typically return `ActionResult<T>` or specific results (`Ok()`, `NotFound()`, `BadRequest()`).
+- **Configuration:** Use the built-in configuration system (`IConfiguration`). Load settings from `appsettings.json`, environment variables, user secrets, command-line arguments.
+- **Environments:** Utilize environment-specific configurations (`appsettings.Development.json`).
+- **Entity Framework Core (EF Core):** Common ORM choice. Use `DbContext`, define entities, configure relationships (attributes or Fluent API), use migrations for schema changes. Avoid N+1 via `.Include()` / `.ThenInclude()`.
+- **Asynchronous Programming:** Use `async`/`await` throughout the stack for I/O-bound operations (controller actions, service methods, EF Core calls).
+- **Logging:** Use the built-in logging framework (`ILogger<T>`). Configure logging providers and levels.
+- **Security:** Implement authentication (e.g., Identity, JWT, OpenID Connect) and authorization (e.g., `[Authorize]`, policies).
+- **Testing:** Write unit tests (mocking dependencies) and integration tests (using `WebApplicationFactory`).
+
+## AI Instructions
+- **DI Registration/Injection:** Generate service registration code in `Program.cs` and constructor injection in classes.
+- **Middleware Configuration:** Show how to add standard middleware to the pipeline.
+- **Routing Attributes:** Generate controllers/actions with `[Route]`, `[HttpGet]`, etc. attributes.
+- **MVC/API Controller Structure:** Generate controllers inheriting from `Controller` or `ControllerBase` with appropriate action method signatures and return types (`IActionResult`, `ActionResult<T>`).
+- **EF Core Usage:** Generate `DbContext`, entities, basic LINQ queries using `async`/`await`, and `.Include()` for eager loading.
+- **Async/Await:** Generate asynchronous action methods and service calls.
+- **Logging Injection/Usage:** Inject `ILogger<T>` and generate basic logging statements.
+- **Configuration Reading:** Generate code reading configuration values via `IConfiguration`.
+- **Testing Stubs:** Provide basic examples using `WebApplicationFactory` for integration tests.

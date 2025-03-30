@@ -1,0 +1,15 @@
+# Windsurf Rules: Go Best Practices
+
+## Guiding Principles
+- **Simplicity & Clarity:** Write straightforward, readable Go code. Avoid unnecessary complexity. Follow Effective Go guidelines.
+- **Concurrency:** Utilize goroutines and channels effectively for concurrency. Ensure proper synchronization (e.g., using `sync` package primitives) to prevent race conditions. Make channel ownership clear.
+- **Explicit Error Handling:** Handle errors explicitly using Go's standard error handling pattern (`if err != nil`). Avoid panicking for expected errors; use `panic` only for unrecoverable situations.
+- **Package Design:** Design clear, purposeful packages with well-defined APIs. Use short, concise package names. Avoid overly large packages.
+- **Formatting:** Adhere strictly to `gofmt` formatting standards.
+
+## AI Instructions
+- **Standard Error Handling:** Generate code that uses the `if err != nil` pattern for error checking immediately after function calls that return an error.
+- **Concurrency Safety:** When generating concurrent code using goroutines and channels, ensure proper synchronization mechanisms are included (e.g., WaitGroups, Mutexes) or clearly explain the required synchronization.
+- **`gofmt` Compliance:** Ensure all generated Go code is formatted according to `gofmt`.
+- **Clear APIs:** When defining functions or methods, ensure return values, including errors, are clear and explicit.
+- **Simplicity:** Prefer simple, direct code structures. Avoid complex abstractions unless they significantly improve maintainability or clarity.

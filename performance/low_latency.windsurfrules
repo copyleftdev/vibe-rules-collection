@@ -1,0 +1,20 @@
+# Windsurf Rules: Low Latency Systems
+
+## Guiding Principles
+- **Minimize Response Time:** The primary goal is to reduce the time taken to process a request or event.
+- **Predictable Performance:** Aim for consistent response times, minimizing jitter and outliers (long-tail latency).
+- **Non-Blocking Operations:** Heavily favor asynchronous, non-blocking I/O and processing models.
+- **Concurrency Control:** Use efficient, low-contention concurrency mechanisms (e.g., lock-free data structures, careful locking strategies).
+- **Memory Management:** Avoid operations that can trigger garbage collection pauses or unpredictable memory allocation delays in critical paths. Consider memory pooling or pre-allocation.
+- **I/O Optimization:** Minimize network hops, syscalls, and disk access within the critical processing path. Use efficient serialization formats.
+- **Cache Everything:** Aggressively cache frequently accessed data to avoid redundant computations or I/O.
+- **Lean Code Paths:** Keep the code executed within the latency-sensitive path as short and efficient as possible.
+
+## AI Instructions
+- **Asynchronous Focus:** Generate code using non-blocking I/O and asynchronous patterns (e.g., async/await, reactive frameworks, event loops).
+- **Concurrency Primitives:** Utilize efficient concurrency primitives suitable for low-latency scenarios (e.g., atomic operations, non-blocking queues).
+- **GC Awareness:** If using a garbage-collected language, generate code that minimizes object allocation frequency (object pooling, reusing objects) in critical paths.
+- **Serialization Choice:** Suggest or use efficient binary serialization formats (e.g., Protocol Buffers, FlatBuffers, MessagePack) over text-based formats (JSON, XML) for inter-process or network communication.
+- **Caching Strategies:** Suggest appropriate caching mechanisms (in-memory, distributed cache) for frequently needed data.
+- **Code Path Simplification:** Generate direct, simple code for latency-sensitive operations. Avoid unnecessary abstractions or indirections in the hot path.
+- **System Call Reduction:** Be mindful of operations that might incur system call overhead.

@@ -1,0 +1,22 @@
+# Windsurf Rules: Secure Coding Practices (OWASP Focus)
+
+## Guiding Principles
+- **Input Validation:** Validate *all* input from external sources (user input, APIs, files, database) for type, length, format, and range. Assume all input is malicious until proven otherwise.
+- **Output Encoding:** Encode data correctly before sending it to interpreters (e.g., HTML encoding for web pages, SQL parameterization for databases) to prevent injection attacks (XSS, SQLi).
+- **Authentication & Authorization:** Implement robust mechanisms for verifying user identity (authentication) and enforcing access controls (authorization). Follow best practices for password storage (hashing with salt).
+- **Session Management:** Implement secure session management (e.g., using strong, unpredictable session IDs, short timeouts, secure cookie flags).
+- **Least Privilege:** Grant processes and users only the minimum level of access necessary to perform their tasks.
+- **Secure Defaults:** Configure systems and applications with secure settings by default.
+- **Error Handling & Logging:** Avoid revealing sensitive information in error messages. Log security-relevant events.
+- **Dependency Management:** Keep libraries and dependencies updated to patch known vulnerabilities. Use tools to scan for vulnerabilities.
+- **Cryptography:** Use standard, well-vetted cryptographic libraries correctly for encryption, hashing, and signing. Avoid implementing custom cryptography.
+- **OWASP Top 10 Awareness:** Be mindful of common vulnerabilities outlined in the OWASP Top 10 and apply relevant mitigations.
+
+## AI Instructions
+- **Input Validation Generation:** Automatically suggest or add input validation checks for data received from untrusted sources.
+- **Output Encoding Implementation:** Apply appropriate output encoding techniques based on the context (e.g., HTML encoding in web templates, parameterized queries for SQL).
+- **Security Headers:** Suggest standard security headers for web applications (e.g., Content-Security-Policy, Strict-Transport-Security).
+- **Vulnerability Spotting:** Highlight potential security risks in generated or existing code (e.g., potential injection points, insecure configurations).
+- **Secure Library Usage:** Utilize secure functions and library features (e.g., parameterized query APIs, standard crypto libraries).
+- **Sensitive Data Handling:** Avoid logging sensitive information. Be cautious when generating code that handles passwords, API keys, or PII.
+- **Dependency Updates:** Remind about the importance of keeping dependencies updated.

@@ -1,0 +1,20 @@
+# Windsurf Rules: Hexagonal Architecture (Ports & Adapters)
+
+## Guiding Principles
+- **Application Core Isolation:** Isolate the core application logic (domain models, use cases) from external concerns (UI, database, third-party APIs, test frameworks).
+- **Ports:** Define interfaces (Ports) within the application core that represent the interactions needed with the outside world (e.g., `UserRepositoryPort`, `OrderNotifierPort`). These define *what* needs to be done, not *how*.
+    - **Driving Ports (Primary):** APIs exposed by the core application (e.g., use case interfaces).
+    - **Driven Ports (Secondary):** Interfaces required by the core application to interact with external systems (e.g., persistence, messaging).
+- **Adapters:** Implement the Ports outside the application core. Adapters translate between the external technology and the Port interface.
+    - **Driving Adapters (Primary):** Adapt external requests (e.g., REST controllers, GUI events) to call Driving Ports.
+    - **Driven Adapters (Secondary):** Implement Driven Ports using specific technologies (e.g., SQL database adapter, Kafka message publisher adapter).
+- **Dependency Inversion:** Dependencies flow inwards. Adapters depend on Ports defined in the core; the core depends only on its own Ports (interfaces).
+- **Testability:** The application core can be tested in isolation using mock/stub adapters.
+
+## AI Instructions
+- **Core Logic Placement:** Place core business logic and domain models inside the hexagonal core, independent of external technologies.
+- **Port Definition:** Define interfaces (Ports) within the core to specify interactions with the outside world (both driving and driven).
+- **Adapter Implementation:** Implement Adapters outside the core. Ensure Adapters correctly implement or call the corresponding Ports.
+- **Dependency Flow:** Ensure generated code respects the inward dependency flow (Adapters depend on Ports, Core depends on Ports).
+- **Technology Agnosticism:** Keep the core application logic free from specific framework, database, or UI dependencies.
+- **Data Mapping:** Implement data mapping within Adapters to convert between external data formats and the core application's internal data structures.

@@ -1,0 +1,19 @@
+# Windsurf Rules: Microservices Architecture
+
+## Guiding Principles
+- **Single Responsibility:** Each microservice should focus on a specific business capability (Bounded Context).
+- **Decentralized Governance:** Teams should be able to independently develop, deploy, and scale their services.
+- **Decentralized Data Management:** Each microservice typically manages its own database.
+- **Design for Failure:** Implement resilience patterns (e.g., retries, circuit breakers, timeouts) as services can fail independently.
+- **Communication:** Services communicate over a network, typically using lightweight mechanisms like REST APIs or asynchronous messaging (e.g., Kafka, RabbitMQ).
+- **Automation:** High degree of automation for build, test, deployment (CI/CD).
+- **Bounded Contexts (DDD):** Align service boundaries with Domain-Driven Design Bounded Contexts.
+
+## AI Instructions
+- **Service Boundaries:** When designing or adding features, consider the appropriate microservice boundary based on business capability.
+- **API Design (RESTful):** Generate clear, consistent, and well-documented RESTful APIs for synchronous communication between services. Follow REST principles (statelessness, standard methods, resource-based URLs).
+- **Asynchronous Communication:** Implement asynchronous communication patterns (publish/subscribe, message queues) where appropriate for decoupling and resilience.
+- **Data Isolation:** Avoid generating code that requires direct database access across service boundaries. Use APIs or events for data sharing.
+- **Resilience Patterns:** Incorporate resilience patterns (e.g., suggesting retry logic, circuit breaker libraries) when generating inter-service communication code.
+- **Configuration Management:** Externalize configuration (database URLs, API keys, etc.) from the service code.
+- **Statelessness:** Design services to be stateless where possible to simplify scaling and load balancing.

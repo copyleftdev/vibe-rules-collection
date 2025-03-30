@@ -1,0 +1,28 @@
+# Windsurf Rules: Oracle (PL/SQL) Best Practices
+
+## Guiding Principles (Extends Generic SQL)
+- **Naming Conventions:** Often uses `UPPER_SNAKE_CASE` for tables, views, columns, and `Mixed_Case` or `lower_snake_case` for variables in PL/SQL.
+- **Data Types:** Use standard SQL types. Be aware of Oracle-specific types like `NUMBER` (without precision/scale can lead to issues), `VARCHAR2` (preferred over `VARCHAR`), `DATE`, `TIMESTAMP` variants.
+- **PL/SQL Blocks:** Structure procedural logic using anonymous blocks (`DECLARE...BEGIN...EXCEPTION...END;`) or named procedures, functions, packages, and triggers.
+- **Packages:** Group related procedures, functions, types, and variables into packages (`CREATE PACKAGE`, `CREATE PACKAGE BODY`) for modularity, encapsulation, and performance (package state persists within a session).
+- **Error Handling:** Use PL/SQL exception handling (`EXCEPTION WHEN ... THEN ...`) extensively. Define custom exceptions.
+- **Bulk Operations:** Use `BULK COLLECT INTO` and `FORALL ... INSERT/UPDATE/DELETE` to significantly improve performance when processing multiple rows between SQL and PL/SQL.
+- **Cursors:** Use explicit cursors (`CURSOR ... IS ...`, `OPEN`, `FETCH`, `CLOSE`) or cursor FOR loops (`FOR rec IN cursor_name LOOP...`) for row-by-row processing. Prefer implicit cursors (inline `SELECT INTO`) for single-row fetches.
+- **Indexing:** Understand B-tree, bitmap (for low-cardinality columns in data warehouses), function-based, and partitioned indexes.
+- **Optimizer Hints:** Use hints (`/*+ ... */`) cautiously and only after thorough analysis, as they override the optimizer.
+- **Transaction Management:** Use `COMMIT` and `ROLLBACK`. Understand `SAVEPOINT`. Be aware of transaction isolation levels.
+- **Sequence Objects:** Use `SEQUENCE` objects (`CREATE SEQUENCE`) for generating unique primary key values.
+- **Analytics Functions:** Leverage Oracle's powerful analytic (window) functions (`OVER (PARTITION BY ... ORDER BY ...)`).
+- **Explain Plan:** Use `EXPLAIN PLAN FOR ...` and `DBMS_XPLAN.DISPLAY` to analyze query execution plans.
+
+## AI Instructions
+- **Naming Conventions:** Generate SQL/PL/SQL adhering to common Oracle naming conventions (e.g., `UPPER_SNAKE_CASE` for DDL).
+- **Data Type Usage:** Use `VARCHAR2`, `NUMBER` with precision/scale, `DATE`.
+- **PL/SQL Structure:** Generate PL/SQL blocks, procedures, functions, and package structures with proper syntax and exception handling sections.
+- **Bulk Operations:** Generate PL/SQL code using `BULK COLLECT` and `FORALL` for set-based processing.
+- **Cursor Usage:** Generate explicit cursor definitions and loops or implicit `SELECT INTO` statements as appropriate.
+- **Index Syntax:** Provide correct Oracle `CREATE INDEX` syntax.
+- **Optimizer Hints:** Use hints sparingly and explain their purpose if used.
+- **Sequence Usage:** Generate code using `.NEXTVAL` and `.CURRVAL` on sequences.
+- **Analytic Functions:** Generate queries using Oracle analytic functions.
+- **Explain Plan Syntax:** Show how to use `EXPLAIN PLAN` and `DBMS_XPLAN`.

@@ -1,0 +1,28 @@
+# Windsurf Rules: Ruby on Rails Conventions
+
+## Guiding Principles
+- **Convention over Configuration:** Embrace Rails defaults for naming, structure, and behavior unless there's a strong reason not to.
+- **MVC Pattern:** Adhere strictly to the Model-View-Controller separation:
+    - **Models (Active Record):** Contain business logic, data validation, associations, and database interaction logic. Keep models fat, controllers thin.
+    - **Views (Action View):** Handle presentation logic. Use helpers minimally. Avoid complex logic or database queries in views.
+    - **Controllers (Action Controller):** Handle request flow, user input, interaction with models, and selecting views/responses. Keep controllers thin, delegating logic to models or service objects.
+- **RESTful Design:** Structure controllers and routes around RESTful principles using Rails resource routing (`resources :posts`).
+- **Database Migrations (Active Record Migrations):** Use migrations to manage database schema changes version control.
+- **Active Record:** Leverage Active Record associations (`has_many`, `belongs_to`, etc.), validations, callbacks, and query interface. Understand lazy loading and avoid N+1 queries (use `includes` or `preload`).
+- **Helpers (Action View Helpers):** Use helpers for reusable view logic, especially presentation formatting.
+- **Gems & Bundler:** Manage dependencies using `Gemfile` and Bundler.
+- **Testing:** Use Rails' built-in testing framework (Minitest) or alternatives like RSpec. Write model, controller, integration, and system tests.
+- **Background Jobs:** Use frameworks like Sidekiq or Resque for tasks that shouldn't block the web request cycle.
+- **Security:** Be aware of common Rails security practices (strong parameters, CSRF protection, escaping output in views).
+- **Service Objects / Concerns:** For complex logic that doesn't fit neatly into a model or controller, consider using Service Objects or Active Support Concerns.
+
+## AI Instructions
+- **MVC Placement:** Generate code within the correct MVC component (model, view, controller, helper).
+- **Rails Conventions:** Generate code following Rails naming conventions (e.g., model `User` -> table `users`, controller `UsersController`).
+- **Active Record Usage:** Generate Active Record models with associations, validations. Generate queries using the Active Record query interface, suggesting `.includes` to prevent N+1.
+- **RESTful Routing:** Generate `routes.rb` entries using `resources`.
+- **Controller Actions:** Generate standard RESTful controller actions (index, show, new, create, edit, update, destroy).
+- **Strong Parameters:** Generate controller actions using strong parameters for mass assignment protection.
+- **View Generation:** Generate ERB templates with basic Action View helpers.
+- **Migration Generation:** Generate `rails generate migration` commands or migration file skeletons.
+- **Testing Stubs:** Generate basic test structures (Minitest or RSpec syntax).

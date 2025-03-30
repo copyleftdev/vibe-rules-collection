@@ -1,0 +1,24 @@
+# Windsurf Rules: Material Design Principles (Google)
+
+## Guiding Principles
+- **Material You / Foundation:** Embrace the latest Material Design guidelines (currently Material 3 / Material You). Focus on:
+    - **Color:** Use dynamic color, tonal palettes, and define primary, secondary, tertiary, and error colors with corresponding "on-" colors for accessible text/icons.
+    - **Typography:** Utilize the defined type scale (Display, Headline, Title, Body, Label) for consistent hierarchy.
+    - **Shape:** Apply appropriate shape scaling (corner rounding) to components.
+    - **Elevation:** Use surface tints and shadows consistently to indicate elevation and component hierarchy.
+- **Components:** Utilize standard Material Design components (Buttons, Cards, Text Fields, Navigation Bars, Dialogs, etc.) according to their documented use cases and anatomy.
+    - Leverage official component libraries (Material Web Components (MWC), Material UI (MUI) for React, Angular Material, Jetpack Compose for Android).
+- **Layout:** Use responsive layout grids (e.g., 12-column grid) and understand breakpoints for adapting UIs to different screen sizes. Utilize standard layout patterns (e.g., Navigation Rail, App Bar).
+- **Interaction & Motion:** Apply standard Material motion patterns (duration, easing) for transitions and user feedback. Provide clear touch targets and states (hover, focus, pressed, dragged).
+- **Iconography:** Use Material Symbols consistently, following guidelines for style (filled, outlined, rounded, sharp), weight, and optical size.
+- **Accessibility (a11y):** Ensure sufficient color contrast, touch target sizes, ARIA attributes where needed, and keyboard navigation support, following Material's accessibility guidelines.
+- **Theming:** Implement theming capabilities, especially for light/dark modes and dynamic color if applicable.
+
+## AI Instructions
+- **Component Usage:** Generate code using standard Material components from relevant libraries (MUI, MWC, etc.), including necessary props/attributes.
+- **Color System:** When specifying colors, use Material theme tokens (e.g., `primary`, `on-primary`, `surface-container-high`) rather than hardcoded hex values.
+- **Typography Scale:** Apply appropriate typography styles (e.g., `headline-large`, `body-medium`) using library-specific mechanisms (e.g., MUI Typography component, CSS classes).
+- **Layout Structure:** Generate layout code using grid systems and standard Material layout components (e.g., `<Box>`, `<Grid>` in MUI).
+- **Icon Integration:** Generate code to include Material Symbols icons correctly.
+- **Theming Awareness:** Generate code compatible with Material theming (referencing theme variables/tokens).
+- **Accessibility Props:** Include necessary accessibility attributes (e.g., `aria-label`) on generated components.

@@ -1,0 +1,30 @@
+# Windsurf Rules: CQRS & Event Sourcing
+
+## Guiding Principles
+
+**CQRS (Command Query Responsibility Segregation):**
+- **Separation:** Separate the models used for updating data (Commands) from the models used for reading data (Queries).
+- **Command Side:** Handles commands that intend to change state. Often focused on task-based operations and consistency (e.g., using Aggregates from DDD).
+- **Query Side:** Handles queries that retrieve data for display. Optimized for querying performance, potentially using denormalized data views (Read Models).
+- **Data Synchronization:** Implement mechanisms to keep the query side eventually consistent with the command side (e.g., using domain events).
+
+**Event Sourcing (Often used with CQRS):**
+- **State as Events:** Persist the state of an application (typically an Aggregate) as a sequence of immutable domain events, rather than storing the current state directly.
+- **Event Store:** A specialized database optimized for appending and reading streams of events.
+- **Rebuilding State:** The current state of an aggregate is derived by replaying its historical events.
+- **Projections:** Create read models (projections) by subscribing to the event stream and building/updating denormalized views optimized for querying.
+
+## AI Instructions
+
+**CQRS:**
+- **Command/Query Distinction:** Generate separate classes/structures for Commands (intent to change state) and Queries (request for data). Create distinct handlers for each.
+- **Write Model Focus:** When generating command-side logic, focus on aggregates, consistency, and validation.
+- **Read Model Design:** When generating query-side logic, design read models (DTOs, simple data structures) optimized for specific query needs.
+- **Synchronization Logic:** Generate or suggest mechanisms (e.g., event handlers subscribing to domain events) to update read models when the write model changes.
+
+**Event Sourcing:**
+- **Event Definition:** Generate clear, immutable domain event classes/structs representing state changes.
+- **Aggregate Logic:** Generate aggregate logic that validates commands and produces events upon success. Include logic to apply events to rebuild state (`apply` methods).
+- **Event Persistence:** Generate code to append events to an event store abstraction (repository pattern).
+- **Projection Handlers:** Generate event handlers (projectors) that listen to event streams and update corresponding read models.
+- **State Reconstruction:** Generate logic within aggregates or repositories to load an aggregate by replaying its events from the event store.

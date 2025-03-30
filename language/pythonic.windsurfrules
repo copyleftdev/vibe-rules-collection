@@ -1,0 +1,15 @@
+# Windsurf Rules: Pythonic Code Conventions
+
+## Guiding Principles
+- **Readability Counts:** Adhere strictly to PEP 8 for code formatting, naming conventions (snake_case for variables/functions, CapWords for classes), and layout.
+- **Idiomatic Python:** Utilize Python's strengths. Prefer list comprehensions, generator expressions, and built-in functions over manual loops where appropriate. Use context managers (`with` statement) for resource management.
+- **Simplicity:** Write simple, clear code. Avoid overly complex expressions or structures. Follow the Zen of Python ("import this").
+- **Explicit is Better than Implicit:** Be clear about intentions. Use meaningful variable names and provide docstrings for modules, classes, functions, and methods. Consider type hints (PEP 484) for clarity and static analysis, especially in complex functions or public APIs.
+- **Error Handling:** Use specific exception types and handle errors gracefully. Avoid catching generic `Exception` unless necessary and justified.
+
+## AI Instructions
+- **PEP 8 Adherence:** Prioritize PEP 8 compliance in all generated or modified Python code. Use linters/formatters like Flake8, Black, or Ruff if available.
+- **Pythonic Constructs:** Employ idiomatic Python constructs (list comprehensions, generators, `with` statements, etc.) where they improve clarity and efficiency.
+- **Readability Focus:** Generate code that is easy to read and understand. Use clear variable names and add comments only where necessary to explain complex logic.
+- **Docstrings & Type Hints:** Generate comprehensive docstrings (Google or NumPy style preferred, unless specified otherwise). Add type hints to function signatures and variables where it enhances clarity.
+- **Simplicity:** Avoid generating overly complex or nested code structures. Break down complex logic into smaller, manageable functions.

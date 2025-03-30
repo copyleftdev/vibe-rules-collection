@@ -1,0 +1,18 @@
+# Windsurf Rules: Model-View-Controller (MVC) Architecture
+
+## Guiding Principles
+- **Separation of Concerns:** Strictly separate application logic into three interconnected components:
+    - **Model:** Manages the data, logic, and rules of the application. Independent of the UI.
+    - **View:** Renders the Model data into a suitable interface for the user. Should have minimal logic.
+    - **Controller:** Accepts user input, interacts with the Model, and selects a View to render.
+- **Data Flow:** Maintain a clear data flow: User interaction -> Controller -> Model -> View -> User.
+- **Model Independence:** The Model should not have direct knowledge of the View or Controller.
+- **View Simplicity:** Keep Views focused on presentation. Logic should reside primarily in the Controller and Model.
+- **Controller Responsibility:** Controllers act as orchestrators, handling requests, updating the Model, and choosing the appropriate View.
+
+## AI Instructions
+- **Component Placement:** When generating code, place logic in the correct MVC component (data/business logic in Model, presentation in View, request handling/orchestration in Controller).
+- **Strict Separation:** Ensure generated code maintains the separation between Model, View, and Controller. Avoid placing Model logic in Controllers or Views, or presentation logic in Controllers or Models.
+- **Data Flow Adherence:** Generate code that follows the standard MVC data flow.
+- **Framework Conventions:** If using an MVC framework (e.g., Django, Rails, ASP.NET MVC), adhere to its specific conventions for organizing Models, Views, and Controllers.
+- **Interface Definition:** Define clear interfaces (if applicable) between the Controller and Model, and how the Controller provides data to the View.

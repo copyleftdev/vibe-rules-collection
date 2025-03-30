@@ -1,0 +1,23 @@
+# Windsurf Rules: Dockerfile Best Practices
+
+## Guiding Principles
+- **Minimal Base Image:** Start with a minimal, appropriate base image (e.g., `alpine`, `distroless`, slim variants) to reduce image size and attack surface.
+- **Minimize Layers:** Combine related commands using `&&` and backslashes (`\`) to reduce the number of image layers. Order commands logically (install dependencies before copying code).
+- **Leverage Build Cache:** Structure the Dockerfile to maximize layer caching. Place commands that change frequently (like `COPY . .`) later in the file.
+- **Multi-Stage Builds:** Use multi-stage builds to separate build-time dependencies from the final runtime image, resulting in smaller, more secure images.
+- **Least Privilege:** Run containers as a non-root user. Create a dedicated user and group using `RUN groupadd... && useradd...` and switch using the `USER` instruction.
+- **Specific `COPY`/`ADD`:** Be specific about what you `COPY` or `ADD` into the image. Avoid copying unnecessary files (use `.dockerignore`). Prefer `COPY` over `ADD` unless you specifically need `ADD`'s features (URL download, tar extraction).
+- **Explicit Dependencies:** Install explicit versions of packages and dependencies to ensure reproducible builds.
+- **Health Checks:** Implement `HEALTHCHECK` instructions to allow Docker to monitor container health.
+- **Metadata Labels:** Use `LABEL` instructions to add metadata like maintainer information, version, or links to source code.
+
+## AI Instructions
+- **Base Image Selection:** Suggest minimal and appropriate base images.
+- **Layer Optimization:** Combine `RUN` commands using `&&`. Structure Dockerfiles to optimize layer caching.
+- **Multi-Stage Builds:** Suggest and generate multi-stage builds for compiled languages or when build tools aren't needed at runtime.
+- **Non-Root User:** Automatically include steps to create and switch to a non-root user.
+- **`.dockerignore`:** Remind to create or update `.dockerignore` to exclude unnecessary files.
+- **`COPY` vs `ADD`:** Prefer generating `COPY` instructions over `ADD`.
+- **Dependency Pinning:** When generating package installation commands (e.g., `apt-get install`, `pip install`), suggest pinning versions.
+- **`HEALTHCHECK` Stub:** Include a placeholder or basic `HEALTHCHECK` instruction.
+- **Metadata Labels:** Add standard `LABEL` instructions.

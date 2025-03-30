@@ -1,0 +1,21 @@
+# Windsurf Rules: Enterprise Angular Conventions
+
+## Guiding Principles
+- **Modularity (NgModules/Standalone Components):** Organize the application into cohesive feature modules (`NgModule`) or utilize Standalone Components, Services, and Directives for better tree-shakability and simpler architecture.
+- **TypeScript:** Leverage TypeScript's features for strong typing, interfaces, and decorators.
+- **Component Structure:** Follow the official Angular style guide for component structure, naming conventions, and lifecycle hooks.
+- **Services & Dependency Injection (DI):** Encapsulate business logic, data access, and shared functionality within injectable services. Use Angular's DI system effectively.
+- **RxJS for Asynchronicity:** Utilize RxJS observables extensively for handling asynchronous operations (HTTP requests, events), state management, and complex event streams. Use operators correctly and manage subscriptions to prevent memory leaks (e.g., `async` pipe, `takeUntil`).
+- **State Management:** For complex state, consider dedicated state management libraries like NgRx or NGXS, following their established patterns.
+- **Routing:** Use the Angular Router for navigation and organizing application views.
+- **Change Detection:** Understand and optimize Angular's change detection mechanism (e.g., using `OnPush` strategy where appropriate).
+- **Testing:** Write unit tests (Karma/Jasmine or Jest) for components, services, and pipes, and consider integration/e2e tests (Protractor/Cypress/Playwright).
+
+## AI Instructions
+- **Angular Style Guide:** Generate code that adheres to the official Angular style guide (naming conventions, file structure, etc.).
+- **TypeScript Usage:** Generate well-typed Angular code using interfaces and types.
+- **DI & Services:** Create injectable services for shared logic and data access. Inject dependencies correctly via constructors.
+- **RxJS Patterns:** Use RxJS observables and standard operators for async operations. Implement proper subscription management (e.g., suggest using the `async` pipe in templates).
+- **Component Generation:** Generate components with clear separation of template, styles, and component logic. Use `OnPush` change detection where applicable.
+- **Module/Standalone Structure:** Generate code respecting either NgModule-based or Standalone Component architecture as appropriate for the project context.
+- **Testing Stubs:** When generating services or components, suggest basic structures for unit tests.

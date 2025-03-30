@@ -1,0 +1,31 @@
+# Windsurf Rules: MySQL Best Practices
+
+## Guiding Principles (Extends Generic SQL)
+- **Storage Engine Choice:** Choose the appropriate storage engine (typically `InnoDB` for ACID compliance and row-level locking; `MyISAM` for specific read-heavy cases, but generally avoid).
+- **Character Sets & Collations:** Explicitly define character sets (e.g., `utf8mb4`) and collations (e.g., `utf8mb4_unicode_ci`) for tables and columns to handle international characters correctly and ensure consistent comparisons.
+- **Indexing:**
+    - Primarily use B-tree indexes.
+    - Understand covering indexes (where all columns needed for a query are in the index).
+    - Use `FULLTEXT` indexes for full-text searching capabilities.
+    - Be cautious with index prefix lengths (`INDEX(column(length))`).
+- **Data Types:** Use appropriate types. Be mindful of `INT` display widths (largely cosmetic) vs. actual storage size.
+- **Query Optimization:**
+    - Use `EXPLAIN` to analyze query execution plans.
+    - Avoid functions on indexed columns in `WHERE` clauses if possible.
+    - Use `LIMIT` for pagination.
+- **Strict SQL Mode:** Enable Strict SQL Mode (`sql_mode` containing `STRICT_TRANS_TABLES` or `STRICT_ALL_TABLES`) to prevent silent data truncation or invalid data insertion.
+- **Generated Columns:** Use generated columns (`GENERATED ALWAYS AS ... STORED/VIRTUAL`) for derived data where appropriate (MySQL 5.7+).
+- **JSON Support:** Utilize JSON functions and potentially indexes on generated columns derived from JSON fields (MySQL 5.7+).
+- **Window Functions:** Leverage window functions for analytical queries (MySQL 8.0+).
+- **Common Table Expressions (CTEs):** Use `WITH` clauses for complex query organization (MySQL 8.0+).
+
+## AI Instructions
+- **InnoDB Preference:** Default to suggesting `ENGINE=InnoDB` for table creation.
+- **Character Set/Collation:** Include `DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci` in table creation statements.
+- **Index Syntax:** Generate correct MySQL `CREATE INDEX` syntax, including `FULLTEXT` indexes.
+- **EXPLAIN Usage:** Suggest using `EXPLAIN` to analyze generated queries.
+- **Strict Mode Reminder:** Remind about the importance of enabling Strict SQL Mode.
+- **Generated Column Syntax:** Generate syntax for generated columns.
+- **JSON Function Usage:** Show examples of MySQL JSON functions.
+- **Window Function/CTE (MySQL 8+):** Utilize window functions and CTEs when generating queries targeting MySQL 8.0 or later.
+- **Pagination:** Generate queries using `LIMIT offset, count`.

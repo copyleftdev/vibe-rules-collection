@@ -1,0 +1,20 @@
+# Windsurf Rules: Space-Based Architecture (SBA)
+
+## Guiding Principles
+- **Shared Memory Space (Data Grid):** Core component is a distributed, in-memory data grid or tuple space that processing units interact with. Replaces reliance on a central database bottleneck.
+- **Processing Units (PUs):** Independent units of work that interact with the space. They might be triggered by data arrival/changes in the space or external events.
+- **Data Partitioning & Replication:** Data in the space is typically partitioned across nodes for scalability and replicated for high availability.
+- **Event-Driven Interaction:** PUs often react to events or data changes within the space rather than using synchronous request/response.
+- **Colocation:** Logic can sometimes be colocated with the data partitions in the space for optimized performance (data locality).
+- **No Central Database Bottleneck:** A key goal is eliminating the traditional database as a central point of contention for writes.
+- **Elastic Scalability:** The architecture allows for adding more processing units and space nodes dynamically to handle load.
+- **High Availability:** Achieved through data replication and redundant processing units.
+
+## AI Instructions
+- **Space Interaction:** Generate code for Processing Units that interacts with a data grid/space abstraction (e.g., writing data tuples, reading/taking tuples, registering for notifications).
+- **Data Structures:** Design data structures (tuples, objects) intended for storage and retrieval from the space.
+- **Event Handlers:** Generate event listeners or handlers within PUs that are triggered by space events.
+- **Partitioning Awareness:** When generating data access code, remind about considering data partitioning keys for efficient routing and retrieval.
+- **Colocation:** Suggest patterns for colocating processing logic with data if the underlying space technology supports it.
+- **Stateless PUs:** Encourage designing Processing Units to be stateless, retrieving necessary context from the space.
+- **Technology Specifics:** If a specific data grid technology (e.g., Hazelcast, Apache Ignite, GigaSpaces) is mentioned, utilize its specific APIs and patterns.

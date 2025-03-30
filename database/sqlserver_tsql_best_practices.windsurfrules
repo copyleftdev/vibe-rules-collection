@@ -1,0 +1,30 @@
+# Windsurf Rules: SQL Server (T-SQL) Best Practices
+
+## Guiding Principles (Extends Generic SQL)
+- **Schema Usage:** Organize objects into schemas (`CREATE SCHEMA`) other than the default `dbo` for better logical grouping and permission management.
+- **Naming Conventions:** Often uses `PascalCase` for tables, views, procedures, and `camelCase` or `PascalCase` for columns.
+- **Semicolon Termination:** Always terminate T-SQL statements with semicolons (`;`). Although sometimes optional, it's required for certain features and improves clarity.
+- **Data Types:** Use specific types (e.g., `DATETIME2` over `DATETIME`, `VARCHAR(n)`/`NVARCHAR(n)` with appropriate length, avoid `TEXT`/`NTEXT`/`IMAGE`).
+- **Indexing:**
+    - Understand clustered vs. nonclustered indexes. Each table can have only one clustered index (often the primary key).
+    - Use filtered indexes (`CREATE INDEX ... WHERE ...`) for indexes on subsets of rows.
+    - Use included columns (`INCLUDE (...)`) to create covering nonclustered indexes.
+    - Consider columnstore indexes for data warehousing and analytical workloads.
+- **Stored Procedures:** Heavily used for encapsulating business logic. Use input/output parameters. Use `TRY...CATCH` for error handling. Use `SET NOCOUNT ON` to reduce network traffic.
+- **Window Functions:** Leverage powerful window functions (`OVER (PARTITION BY ... ORDER BY ...)`).
+- **Common Table Expressions (CTEs):** Use `WITH` clauses for readability and recursion.
+- **MERGE Statement:** Use the `MERGE` statement for complex INSERT/UPDATE/DELETE logic based on join conditions (upsert).
+- **Transaction Management:** Understand isolation levels (e.g., `READ COMMITTED`, `READ COMMITTED SNAPSHOT`, `SNAPSHOT`). Use explicit transactions (`BEGIN TRAN`, `COMMIT TRAN`, `ROLLBACK TRAN`).
+- **Query Hints:** Use query hints (`OPTION (...)`) sparingly and only when necessary, as they can override the optimizer and become outdated.
+- **Execution Plan Analysis:** Use SQL Server Management Studio (SSMS) or Azure Data Studio to view estimated and actual execution plans.
+
+## AI Instructions
+- **Schema Prefixing:** Generate object references prefixed with the schema name (e.g., `Sales.Orders`).
+- **Semicolon Termination:** Ensure all generated T-SQL statements end with a semicolon.
+- **Data Type Recommendations:** Suggest modern SQL Server types like `DATETIME2`, `NVARCHAR`.
+- **Index Syntax:** Generate correct syntax for clustered, nonclustered, filtered, and included-column indexes.
+- **Stored Procedure Structure:** Generate T-SQL stored procedures with standard structure, including `SET NOCOUNT ON` and `TRY...CATCH` blocks.
+- **Window Function Usage:** Generate T-SQL using window functions.
+- **CTE Usage:** Structure complex queries with CTEs.
+- **MERGE Statement Generation:** Generate `MERGE` statements for upsert scenarios.
+- **Transaction Blocks:** Wrap related DML statements in `BEGIN TRAN`/`COMMIT TRAN` blocks.

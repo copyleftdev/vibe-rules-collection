@@ -1,0 +1,39 @@
+# Windsurf Rules: macOS System Administration Scripting
+
+## Guiding Principles
+- **Shell Choice:** Assume Zsh as the default shell for modern macOS, but write scripts to be POSIX-compliant or Bash-compatible where feasible for broader use, unless Zsh-specific features are essential.
+- **Standard Shell Practices:** Follow general shell scripting best practices (see `shell_scripting_best_practices.windsurfrules`):
+    - Use linters (`shellcheck`).
+    - Quote variables correctly (`"$variable"`).
+    - Use `[[ ... ]]` for tests in Bash/Zsh, `[ ... ]` for POSIX.
+    - Check command exit codes (`if command; then ...`).
+    - Use functions for organization.
+    - Avoid parsing `ls`.
+- **macOS Command-Line Tools:** Leverage standard macOS utilities:
+    - `defaults`: Read, write, and delete application and system preference domains (`.plist` files).
+    - `PlistBuddy`: More robust tool for reading/manipulating Plist files, especially complex ones.
+    - `launchctl`: Manage launchd agents and daemons (background services, scheduled tasks).
+    - `profiles`: Install, remove, and manage configuration profiles (requires privileges).
+    - `softwareupdate`: Manage macOS software updates.
+    - `dscl`: Interact with Directory Services (local users/groups, network accounts).
+    - `networksetup`: Configure network settings.
+    - `diskutil`: Manage disks and volumes.
+    - `systemsetup`: Configure various system settings.
+    - `security`: Interact with Keychain, certificates, code signing.
+    - `tmutil`: Manage Time Machine backups.
+- **Error Handling:** Check the exit status (`$?`) of critical macOS commands. Provide informative error messages.
+- **Privilege Escalation:** Use `sudo` only when necessary. Check if the script is running as root (`if [[ "$(id -u)" -ne 0 ]]; then ...`) before attempting privileged operations.
+- **Script Parameters:** Use `getopt` (POSIX) or Zsh's `zparseopts` for robust command-line argument parsing.
+- **User Context:** Be aware of whether a script needs to run as the logged-in user (for `defaults` affecting the user domain) or as root (for system-wide changes).
+- **MDM Awareness:** While not directly scripting MDM commands (which vary by vendor), write scripts that can be deployed *via* MDM (e.g., scripts that install packages, configure settings using `defaults` or `profiles`). Design scripts to be idempotent where possible.
+- **Logging:** Implement logging, especially for scripts run non-interactively (e.g., via launchd or MDM), writing to standard locations like `/var/log` or user logs.
+
+## AI Instructions
+- **Utilize macOS Tools:** Generate script snippets using `defaults write`, `PlistBuddy`, `launchctl load/unload`, `profiles install`, `softwareupdate -i`, `dscl . -create`, etc., for relevant tasks.
+- **Privilege Checks:** Include checks for root privileges (`id -u`) before commands requiring `sudo`.
+- **Correct `defaults` Domain:** Specify the correct domain for `defaults` commands (e.g., `com.apple.finder`, `NSGlobalDomain`, or a specific app bundle ID).
+- **Plist Manipulation:** Prefer `PlistBuddy` for complex Plist modifications.
+- **Error Checking:** Include checks for `$?` after important macOS command calls.
+- **Parameter Parsing:** Generate parameter parsing logic using standard shell methods.
+- **Logging:** Suggest adding logging statements (`echo "..." >> "$log_file"`).
+- **Idempotency:** Where appropriate, generate checks to see if a configuration is already applied before attempting to apply it again.

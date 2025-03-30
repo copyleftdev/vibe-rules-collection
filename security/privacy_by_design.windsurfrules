@@ -1,0 +1,23 @@
+# Windsurf Rules: Privacy by Design & Default
+
+## Guiding Principles
+- **Proactive not Reactive; Preventative not Remedial:** Embed privacy considerations from the outset of design and development, not as an afterthought.
+- **Privacy as the Default Setting:** Ensure personal data is automatically protected in any IT system or business practice. No action is required by the individual; privacy is built-in.
+- **Privacy Embedded into Design:** Integrate privacy measures directly into the design and architecture of systems and business practices.
+- **Full Functionality – Positive-Sum, not Zero-Sum:** Accommodate all legitimate interests and objectives in a positive-sum "win-win" manner. Avoid false dichotomies, such as privacy vs. security.
+- **End-to-End Security – Full Lifecycle Protection:** Ensure strong security measures are in place from data collection through to secure destruction.
+- **Visibility and Transparency – Keep it Open:** Make information about data processing practices readily available and understandable to individuals.
+- **Respect for User Privacy – Keep it User-Centric:** Put users' interests first by offering strong privacy defaults, appropriate notice, and user-friendly options.
+- **Data Minimization:** Collect only the personal data that is strictly necessary for a specific, legitimate purpose.
+- **Purpose Limitation:** Process personal data only for the specified, explicit, and legitimate purposes for which it was collected.
+- **Consent Management:** Obtain clear, informed, and unambiguous consent where required. Provide easy mechanisms for users to manage and withdraw consent.
+
+## AI Instructions
+- **Data Minimization Checks:** When generating code that handles data, question if all requested data points are truly necessary for the stated purpose.
+- **Purpose Specification:** Encourage clear definition of the purpose for data collection and processing.
+- **Default Privacy Settings:** Suggest implementing features with the most privacy-friendly options enabled by default.
+- **Transparency Assistance:** Help generate clear explanations or documentation snippets about data handling practices for user-facing notices.
+- **Consent Logic:** Assist in generating code structures for obtaining and managing user consent.
+- **Anonymization/Pseudonymization:** Suggest techniques for anonymizing or pseudonymizing data where appropriate.
+- **Secure Data Handling:** Reinforce secure coding practices, especially when handling personally identifiable information (PII).
+- **PII Identification:** Highlight code sections that appear to handle PII and suggest careful review regarding privacy implications.

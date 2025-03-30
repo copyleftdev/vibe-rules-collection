@@ -1,0 +1,29 @@
+# Windsurf Rules: General Git Best Practices
+
+## Guiding Principles
+- **Atomic Commits:** Make small, logical, atomic commits. Each commit should represent a single, complete change (e.g., fix a specific bug, implement a small feature increment, refactor one component).
+- **Meaningful Commit Messages:** Write clear, concise, and informative commit messages.
+    - **Subject Line:** Imperative mood (e.g., "Fix login bug", "Add user profile page"), short (<50-72 chars), capitalize.
+    - **Body (Optional):** Explain *what* the change is and *why* it was made, not just *how*. Separate subject from body with a blank line. Wrap body text (e.g., 72 chars).
+    - **Reference Issues:** Include issue tracker IDs (e.g., "Closes #123") if applicable.
+- **Branching Hygiene:**
+    - Use descriptive branch names (e.g., `feature/user-authentication`, `bugfix/incorrect-calculation`).
+    - Branch off the correct base branch (e.g., `main`, `develop`).
+    - Keep branches short-lived to minimize merge conflicts and integration pain.
+    - Delete merged branches locally (`git branch -d`) and remotely (`git push origin --delete`).
+- **Pull/Fetch Regularly:** Keep your local branches up-to-date with the remote (`git pull` or `git fetch`/`git merge/rebase`) before starting new work or pushing.
+- **Merge vs. Rebase (Context Matters):**
+    - **Merge:** Preserves exact history, creates merge commits. Good for shared branches or when preserving the exact historical context is critical.
+    - **Rebase:** Creates a linear history by replaying commits onto the target branch. Good for feature branches *before* sharing/merging to keep history clean. **Never rebase commits that have already been pushed and shared**, as it rewrites history.
+- **`.gitignore`:** Maintain a comprehensive `.gitignore` file to keep generated files, dependencies, logs, secrets, and editor artifacts out of the repository.
+- **Review Changes Before Committing:** Use `git diff` and `git status` to review changes before staging (`git add`) and committing (`git commit`).
+- **Push Frequently (on feature branches):** Push work on feature branches regularly to back it up and allow for potential collaboration or early feedback.
+- **Avoid Committing Secrets:** Never commit passwords, API keys, or other sensitive credentials directly into the repository. Use environment variables, secret management tools, or configuration files listed in `.gitignore`.
+
+## AI Instructions
+- **Commit Message Generation:** Generate commit messages following the standard format (imperative subject, optional body, issue references).
+- **Branching Commands:** Generate commands for creating branches (`git checkout -b`), switching (`git checkout`), pulling (`git pull --rebase` or `git pull`), pushing (`git push`), and deleting branches.
+- **Merge/Rebase Guidance:** When suggesting updates, recommend `git pull --rebase` for local updates on feature branches and standard `merge` (via Pull Request) for integrating into main/develop.
+- **`.gitignore` Entries:** Suggest adding common file types (logs, dependencies, OS files, secrets files) to `.gitignore`.
+- **Secret Detection:** Highlight potential secrets if detected in generated code or diffs and recommend removal.
+- **Atomic Changes:** When generating code edits, try to keep them focused on a single logical change suitable for an atomic commit.

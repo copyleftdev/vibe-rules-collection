@@ -1,0 +1,35 @@
+# Windsurf Rules: General Performance Tuning Principles
+
+## Guiding Principles
+- **Measure First:** Don't optimize prematurely. Identify actual bottlenecks using profiling tools, monitoring metrics (CPU, memory, I/O, network, latency), and load testing *before* making changes.
+- **Identify Bottlenecks:** Determine whether the system is CPU-bound, memory-bound, I/O-bound (disk or network), or limited by lock contention. Focus optimization efforts on the primary bottleneck.
+- **Optimize Algorithms & Data Structures:** The biggest gains often come from choosing more efficient algorithms (e.g., O(log n) vs O(n^2)) and appropriate data structures for the task (e.g., HashMap/Dictionary for lookups, List/Vector for iteration).
+- **Reduce Work:** Eliminate unnecessary computations, data transfers, or operations. Can the work be avoided, done less frequently, or done more efficiently?
+- **Database Performance:**
+    - **Indexing:** Ensure appropriate database indexes exist for common query patterns.
+    - **Query Optimization:** Write efficient SQL queries. Analyze execution plans (`EXPLAIN`, `EXPLAIN ANALYZE`). Avoid `SELECT *`. Fetch only necessary data.
+    - **Connection Pooling:** Use connection pools to reuse database connections, reducing connection overhead.
+    - **N+1 Problem:** Avoid fetching related data in loops; use joins or batch loading techniques.
+- **Caching:** Implement caching at appropriate levels (database query cache, application-level cache, CDN, browser cache) to store and reuse frequently accessed or computationally expensive data.
+- **Concurrency & Parallelism:** Utilize multiple cores/threads/processes or asynchronous operations (non-blocking I/O) to perform tasks in parallel where appropriate. Be mindful of synchronization overhead and complexity.
+- **Network Optimization:**
+    - **Reduce Round Trips:** Minimize the number of network calls between components (e.g., client-server, server-database).
+    - **Payload Size:** Reduce the size of data transferred (compression, selective fetching, efficient serialization formats).
+    - **HTTP/2 or HTTP/3:** Leverage newer protocols for multiplexing and header compression.
+    - **CDNs:** Use Content Delivery Networks to serve static assets closer to users.
+- **Memory Management:**
+    - **Reduce Allocations:** Minimize object creation/allocations, especially in hot paths.
+    - **Memory Leaks:** Identify and fix memory leaks.
+    - **Efficient Data Representation:** Use memory-efficient data structures and types.
+- **System Configuration:** Tune operating system, database, web server, runtime (JVM, CLR, Node.js) configurations based on workload and hardware.
+- **Code Level Optimizations:** Focus on hot spots identified by profilers. Optimize loops, reduce function call overhead, use efficient library functions.
+
+## AI Instructions
+- **Profiling Reminder:** Suggest using profiling tools (language-specific profilers, database profilers, browser dev tools) to identify bottlenecks before generating optimization code.
+- **Algorithmic Suggestions:** Suggest alternative algorithms or data structures if a potentially inefficient pattern is detected.
+- **Query Optimization:** Generate optimized SQL queries (using joins, appropriate `WHERE` clauses, avoiding `SELECT *`). Suggest relevant indexes.
+- **Caching Patterns:** Generate code implementing common caching strategies (e.g., memoization, using caching libraries/frameworks).
+- **Concurrency/Async:** Generate code using threading, async/await, or relevant concurrency primitives/libraries.
+- **Network Efficiency:** Suggest batching API calls, using specific fields in GraphQL, or enabling compression.
+- **Memory Allocation:** Highlight potential areas of high memory allocation in generated code.
+- **N+1 Detection:** Identify potential N+1 query patterns in ORM or data access code and suggest eager loading or batching alternatives.

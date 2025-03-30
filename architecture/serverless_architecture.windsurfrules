@@ -1,0 +1,23 @@
+# Windsurf Rules: Serverless Architecture (FaaS/BaaS)
+
+## Guiding Principles
+- **Function Granularity:** Design functions (FaaS, e.g., AWS Lambda, Azure Functions, Google Cloud Functions) to be small, single-purpose, and focused on one event or task.
+- **Stateless Functions:** Assume functions are stateless. Persist required state in external services (databases, caches, state machines like AWS Step Functions).
+- **Event-Driven:** Trigger functions based on events from various sources (API Gateway requests, message queues, database changes, object storage events, schedules).
+- **API Gateway:** Use API Gateway services to expose functions as HTTP endpoints. Manage routing, request validation, authentication, and authorization at the gateway level where possible.
+- **Managed Services (BaaS):** Leverage managed backend services (e.g., DynamoDB, S3, Cognito, Firebase, Auth0) for databases, storage, authentication, etc., reducing operational overhead.
+- **Infrastructure as Code (IaC):** Define and manage serverless resources (functions, APIs, event sources, databases) using IaC tools (e.g., Serverless Framework, AWS SAM, Terraform, CDK).
+- **Cold Starts:** Be mindful of function cold starts and their impact on latency. Optimize function size and dependencies.
+- **Configuration & Secrets:** Manage function configuration and secrets using provided mechanisms (environment variables, Secrets Manager, Parameter Store).
+- **Observability:** Implement logging, monitoring, and tracing suitable for distributed, event-driven systems.
+
+## AI Instructions
+- **Function Structure:** Generate small, focused function handlers.
+- **Statelessness:** Remind that function instances may not retain state between invocations. Generate code that relies on external state management.
+- **Event Triggers:** Generate function configurations or IaC definitions for common event triggers (API Gateway, SQS, S3, etc.).
+- **API Gateway Integration:** Generate API Gateway configurations (e.g., in OpenAPI/Swagger spec, or IaC definitions) for routing requests to functions.
+- **Managed Service Usage:** Suggest appropriate managed BaaS services for common needs (database, auth, storage).
+- **IaC Generation:** Assist in generating IaC definitions (Serverless Framework `serverless.yml`, AWS SAM `template.yaml`, etc.) for deploying serverless applications.
+- **Environment Variables/Secrets:** Generate code that reads configuration and secrets from environment variables or platform-specific secret management services.
+- **Cold Start Considerations:** Mention potential cold start issues and suggest optimizations (e.g., minimizing package size) when generating complex functions.
+- **Logging:** Include basic logging statements within generated function code.

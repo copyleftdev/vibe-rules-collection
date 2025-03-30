@@ -1,0 +1,31 @@
+# Windsurf Rules: High Integrity C++ (HIC++) Coding Standard
+
+## Guiding Principles
+- **Goal:** Prioritize safety, security, reliability, and maintainability, often for embedded or safety-critical systems.
+- **Subset of C++:** HIC++ defines a subset of C++, restricting or banning features considered potentially unsafe or complex.
+- **Key Restrictions/Recommendations (Examples - refer to specific HIC++ version for details):
+    - **Memory Management:** Strict rules on dynamic memory allocation (`new`/`delete`). Often restricted or banned in favor of static allocation or custom allocators. Smart pointers (`unique_ptr`) might be allowed with care.
+    - **Exceptions:** Often banned or heavily restricted.
+    - **RTTI (Run-Time Type Information):** Often banned.
+    - **Templates:** Use with caution due to potential code bloat and complexity. Restrictions on advanced template metaprogramming.
+    - **Multiple Inheritance:** Often restricted or banned (prefer single inheritance of interfaces).
+    - **Operator Overloading:** Use sparingly and only for intuitive operations.
+    - **Implicit Conversions:** Avoid. Use `explicit` constructors and conversion operators.
+    - **Preprocessor Macros:** Minimize use, prefer `inline` functions and `const`/`constexpr` variables.
+    - **Error Handling:** Rely on error codes, return values, or specific state checks rather than exceptions.
+- **Strong Typing:** Emphasize strong typing. Avoid C-style casts; use C++ casts (`static_cast`, `reinterpret_cast` only when absolutely necessary and justified).
+- **Resource Management:** Explicitly manage resources (RAII using `unique_ptr` if allowed, or manual cleanup if not).
+- **Const Correctness:** Strictly enforce `const` correctness.
+- **Code Clarity:** Emphasize simple, understandable control flow. Avoid complex expressions.
+- **Static Analysis:** Relies heavily on static analysis tools to enforce rules.
+
+## AI Instructions
+- **Feature Restriction:** Avoid generating code using features typically banned by HIC++ (exceptions, RTTI, multiple inheritance, complex templates/macros).
+- **Memory Management:** Generate code favoring static allocation or stack allocation. If dynamic allocation is requested, highlight HIC++ concerns and suggest alternatives or careful use of `unique_ptr` if applicable to the specific HIC++ context.
+- **Error Handling:** Generate error handling using return codes or status flags.
+- **Casting:** Generate C++ style casts (`static_cast`) and avoid C-style casts.
+- **Explicit Conversions:** Generate constructors/conversion operators with the `explicit` keyword.
+- **Simplicity:** Generate simple control flow and expressions.
+- **Static Analysis Focus:** Mention that HIC++ compliance relies heavily on static analysis tools.
+- **Const Correctness:** Strictly apply `const`.
+- **Resource Management:** Generate RAII patterns or clear resource management logic.

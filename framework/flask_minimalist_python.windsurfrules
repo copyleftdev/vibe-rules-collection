@@ -1,0 +1,25 @@
+# Windsurf Rules: Flask Best Practices (Python)
+
+## Guiding Principles
+- **Microframework Philosophy:** Keep the core application simple. Add extensions (Flask-SQLAlchemy, Flask-WTF, Flask-Login) as needed, but avoid unnecessary bloat.
+- **Application Factory Pattern:** Structure larger applications using the application factory pattern (`create_app` function) to avoid global application objects, ease testing, and manage configurations.
+- **Blueprints:** Organize larger applications by grouping related views, templates, and static files into Blueprints.
+- **Routing:** Define routes using the `@app.route()` or `@blueprint.route()` decorators. Use variable rules (`<converter:variable_name>`) for dynamic segments.
+- **Request Object:** Access request data (form data, query parameters, JSON body, headers, cookies) via the global `request` object (context-local).
+- **Response Objects:** Return strings, dictionaries (automatically JSONified), `Response` objects, or rendered templates from view functions. Use `make_response` for more control. Use `jsonify` for explicit JSON responses.
+- **Templates (Jinja2):** Use the built-in Jinja2 templating engine for rendering HTML. Keep logic minimal in templates.
+- **Configuration:** Load configuration from environment variables, configuration files (`app.config.from_pyfile`), or objects (`app.config.from_object`).
+- **Context Locals:** Understand Flask's application context (`current_app`, `g`) and request context (`request`, `session`). Access them only when a context is active.
+- **Testing:** Use Flask's test client (`app.test_client()`) and testing utilities (often with `pytest`) to write unit and integration tests.
+- **Extensions:** Leverage Flask extensions for common tasks like ORM integration, form handling, authentication, etc.
+
+## AI Instructions
+- **App Factory Generation:** Generate application structure using the `create_app` factory pattern.
+- **Blueprint Usage:** Generate code organized into Flask Blueprints.
+- **Routing Decorators:** Define routes using `@app.route()` or `@blueprint.route()`.
+- **Request Handling:** Generate code accessing data from the `request` object (e.g., `request.args`, `request.form`, `request.json`).
+- **Response Generation:** Generate view functions returning strings, dictionaries (using `jsonify`), or rendered templates (`render_template`).
+- **Jinja2 Templates:** Generate basic Jinja2 template examples.
+- **Configuration Loading:** Show examples of loading configuration using `app.config.from_object` or environment variables.
+- **Testing Structure:** Generate basic test setups using `pytest` and the Flask test client.
+- **Extension Integration:** Show basic usage patterns for common Flask extensions (e.g., Flask-SQLAlchemy).

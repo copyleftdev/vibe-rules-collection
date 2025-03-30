@@ -1,0 +1,29 @@
+# Windsurf Rules: REST API Design Best Practices
+
+## Guiding Principles
+- **Resource-Oriented:** Design APIs around Resources (nouns), not Actions (verbs). Use standard HTTP methods (GET, POST, PUT, PATCH, DELETE) to operate on these resources.
+- **URI Naming:** Use plural nouns for resource collections (e.g., `/users`, `/orders`). Use resource IDs for specific instances (e.g., `/users/123`, `/orders/456`). Avoid verbs in URIs.
+- **HTTP Methods:**
+    - `GET`: Retrieve resources (safe, idempotent).
+    - `POST`: Create new resources within a collection (not idempotent) or trigger actions.
+    - `PUT`: Replace an existing resource entirely (idempotent).
+    - `PATCH`: Partially update an existing resource (not necessarily idempotent).
+    - `DELETE`: Remove a resource (idempotent).
+- **HTTP Status Codes:** Use standard HTTP status codes accurately to indicate the outcome of requests (e.g., `200 OK`, `201 Created`, `204 No Content`, `400 Bad Request`, `401 Unauthorized`, `403 Forbidden`, `404 Not Found`, `500 Internal Server Error`).
+- **Request/Response Formats:** Use standard formats like JSON for request and response bodies. Be consistent.
+- **Filtering, Sorting, Pagination:** Provide mechanisms for clients to filter, sort, and paginate collection results using query parameters (e.g., `/users?status=active&sort=lastName&limit=25&offset=50`).
+- **Versioning:** Implement API versioning (e.g., via URI path `/v1/users`, custom request header `Api-Version: 1.0`, or Accept header `Accept: application/vnd.myapi.v1+json`) to manage changes without breaking clients.
+- **HATEOAS (Hypermedia as the Engine of Application State):** Consider including links within responses to guide clients to related resources or possible actions.
+- **Error Handling:** Provide clear, informative error messages in response bodies (e.g., JSON format) along with appropriate status codes.
+- **Statelessness:** Each request from a client should contain all information needed to understand and process it. Do not store client state on the server between requests.
+- **Idempotency:** Understand and leverage idempotency of GET, PUT, DELETE for reliable interactions.
+
+## AI Instructions
+- **Resource Naming:** Generate resource URIs using plural nouns and standard path structures.
+- **HTTP Method Usage:** Map create, read, update, delete operations to the correct HTTP methods (POST, GET, PUT/PATCH, DELETE).
+- **Status Code Generation:** Generate responses with appropriate HTTP status codes based on the operation's outcome.
+- **JSON Payload:** Format request/response body examples using JSON.
+- **Filtering/Sorting/Pagination Parameters:** Suggest standard query parameter names for filtering, sorting, and pagination.
+- **Versioning Strategy:** Remind about versioning and suggest common strategies (URI path or headers).
+- **Error Response Structure:** Generate consistent JSON structures for error responses.
+- **HATEOAS Links:** Suggest adding hypermedia links (e.g., `_links` field) in responses where appropriate.

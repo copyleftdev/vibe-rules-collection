@@ -1,0 +1,27 @@
+# Windsurf Rules: PostgreSQL Best Practices
+
+## Guiding Principles (Extends Generic SQL)
+- **Leverage Data Types:** Utilize PostgreSQL's rich data types (e.g., `JSONB`, `ARRAY`, `UUID`, `INET`, geometric types, range types) where appropriate.
+- **Indexing:**
+    - Use standard B-tree indexes for most cases.
+    - Consider specialized index types: `GIN` (for `JSONB`, `ARRAY`, full-text), `GiST` (geometric, full-text), `BRIN` (for large, physically ordered tables).
+    - Use partial indexes (`CREATE INDEX ... WHERE ...`) for subsets of data.
+    - Use expression indexes (`CREATE INDEX ... ON ... (lower(column))`) for case-insensitive or function-based lookups.
+- **Window Functions:** Use powerful window functions (`OVER (...)`) for complex analytical queries, avoiding self-joins or complex subqueries where possible.
+- **Common Table Expressions (CTEs):** Use `WITH` clauses (CTEs) to break down complex queries into logical, readable steps. Use `WITH RECURSIVE` for hierarchical or graph traversal.
+- **Transactions:** Understand transaction isolation levels (`READ COMMITTED` default). Use advisory locks (`pg_advisory_lock`) for application-level locking if needed.
+- **Stored Procedures/Functions (PL/pgSQL):** Use functions (`CREATE FUNCTION ... LANGUAGE plpgsql`) for encapsulating reusable logic on the database server. Be mindful of performance implications.
+- **Partitioning:** Use declarative partitioning for very large tables based on ranges or lists to improve manageability and query performance.
+- **JSONB Operations:** Utilize efficient `JSONB` operators (`@>`, `?`, `->`, `->>`) for querying JSON data.
+- **EXPLAIN ANALYZE:** Use `EXPLAIN ANALYZE` extensively to understand query plans and identify performance bottlenecks.
+- **Vacuuming & Statistics:** Understand the importance of `VACUUM` (especially autovacuum) and `ANALYZE` for maintaining performance and accurate query planning.
+
+## AI Instructions
+- **Data Type Suggestions:** Suggest PostgreSQL-specific types like `JSONB`, `UUID`, `ARRAY` when appropriate for the data model.
+- **Index Type Recommendations:** Recommend specific index types (`GIN`, `GiST`, `BRIN`, partial, expression) based on the query patterns and data types involved.
+- **Window Function Usage:** Generate queries using window functions for ranking, aggregation over partitions, etc.
+- **CTE Generation:** Structure complex queries using CTEs (`WITH` clauses).
+- **PL/pgSQL Snippets:** Generate basic PL/pgSQL function structures.
+- **Partitioning Syntax:** Provide examples of declarative partitioning syntax.
+- **JSONB Query Generation:** Generate queries using `JSONB` operators.
+- **EXPLAIN Command:** Suggest using `EXPLAIN ANALYZE` to profile generated queries.

@@ -1,0 +1,28 @@
+# Windsurf Rules: GraphQL API Design Best Practices
+
+## Guiding Principles
+- **Schema Definition Language (SDL):** Define your API schema using GraphQL SDL. This is the contract between client and server.
+- **Strong Typing:** Leverage the strong type system. Define clear scalar types, object types, interfaces, unions, enums, and input types.
+- **Queries for Reading:** Use `Query` type for data fetching operations. Design queries to fetch specific data needed by the client, avoiding over/under-fetching.
+- **Mutations for Writing:** Use `Mutation` type for data modification operations (create, update, delete). Mutations should typically return the modified data.
+- **Subscriptions for Real-time:** Use `Subscription` type for real-time updates pushed from the server.
+- **Naming Conventions:** Use camelCase for field names, TypeNames in PascalCase, and ENUM_VALUES in ALL_CAPS.
+- **Input Objects for Mutations:** Use input objects (`input InputTypeName { ... }`) for complex mutation arguments to keep mutations clean and extensible.
+- **Clear Nullability:** Be explicit about nullability (`!` indicates non-nullable). Use non-null judiciously where data is guaranteed to exist.
+- **Pagination:** Implement standardized pagination for connections (lists of related objects), typically using cursor-based pagination (Relay spec or similar).
+- **Error Handling:** Return errors in the standard `errors` array alongside partial data (`data` field can be `null` or partial). Provide informative error messages and potentially error codes/extensions.
+- **Schema Evolution:** Design for evolution. Avoid breaking changes. Use field deprecation (`@deprecated`) before removing fields.
+- **Modularity:** Break down large schemas using techniques like schema stitching or federation if necessary.
+- **Documentation:** Use descriptions (using string literals or block strings `"""Description"""`) in the SDL for types, fields, and arguments.
+
+## AI Instructions
+- **SDL Generation:** Generate valid GraphQL SDL for types, queries, mutations, subscriptions, inputs, enums, etc.
+- **Type System Usage:** Utilize appropriate GraphQL types (scalar, object, interface, union, enum, input) based on the data model.
+- **Query/Mutation Structure:** Generate correct structure for `Query` and `Mutation` types and their fields.
+- **Naming Conventions:** Apply standard GraphQL naming conventions (camelCase, PascalCase, ALL_CAPS).
+- **Input Object Generation:** Generate `input` types for mutation arguments.
+- **Nullability Application:** Add/suggest appropriate nullability markers (`!`).
+- **Pagination Patterns:** Generate schema definitions and resolver logic supporting cursor-based pagination (first/after, last/before).
+- **Error Handling Structure:** Show how to structure GraphQL error responses within the `errors` array.
+- **Deprecation:** Add `@deprecated` directive when suggesting removal or modification of fields.
+- **Documentation Generation:** Add descriptions (`"""..."""`) to generated schema elements.

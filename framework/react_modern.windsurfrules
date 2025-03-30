@@ -1,0 +1,23 @@
+# Windsurf Rules: Modern React Development
+
+## Guiding Principles
+- **Functional Components & Hooks:** Strongly prefer functional components with Hooks (`useState`, `useEffect`, `useContext`, etc.) over class components.
+- **Component Composition:** Build UIs by composing small, reusable components. Props should flow down.
+- **State Management:**
+    - Use `useState` for simple local component state.
+    - Use `useReducer` for more complex local state logic.
+    - Use `useContext` for passing data deep down the component tree without prop drilling (consider performance implications).
+    - For global or complex shared state, use established libraries like Redux (with Redux Toolkit), Zustand, or Jotai, following their best practices.
+- **Clear Props:** Define clear and predictable component APIs using PropTypes or TypeScript interfaces/types.
+- **Immutability:** Treat state and props as immutable. Use appropriate patterns (e.g., spread syntax, state updater functions) to update state without direct mutation.
+- **JSX Readability:** Keep JSX clean and readable. Extract complex conditional rendering or mapping logic into helper functions or separate components.
+- **Accessibility (a11y):** Write semantic HTML within JSX and follow accessibility best practices.
+
+## AI Instructions
+- **Functional Components & Hooks:** Generate React code using functional components and Hooks. Avoid class components unless specifically requested or maintaining legacy code.
+- **Hook Usage:** Use the appropriate Hooks for managing state (`useState`, `useReducer`), side effects (`useEffect`), context (`useContext`), and memoization (`useMemo`, `useCallback`). Follow the Rules of Hooks.
+- **Component Structure:** Create small, focused components. Define props clearly using TypeScript or PropTypes.
+- **State Updates:** Generate state update logic that respects immutability.
+- **Conditional Rendering:** Implement conditional rendering clearly within JSX or by extracting logic.
+- **Key Prop:** When rendering lists, always include a stable and unique `key` prop.
+- **TypeScript:** If the project uses TypeScript, generate components with proper type definitions for props and state.

@@ -1,0 +1,23 @@
+# Windsurf Rules: Practical Domain-Driven Design (DDD)
+
+## Guiding Principles
+- **Ubiquitous Language:** Use a common, rigorous language (shared by developers and domain experts) in all project artifacts, including code (class names, methods, variables), discussions, and documentation.
+- **Bounded Contexts:** Identify distinct areas within the domain where specific models and language apply. Define explicit boundaries between contexts and how they interact (e.g., Context Mapping patterns like Shared Kernel, Anti-Corruption Layer).
+- **Core Domain:** Focus design efforts on the core domain—the most critical and complex part of the business that provides a competitive advantage.
+- **Strategic Design Patterns:**
+    - **Aggregates:** Clusters of domain objects (Entities, Value Objects) treated as a single unit. Define clear aggregate roots and enforce consistency boundaries.
+    - **Entities:** Objects with a distinct identity that persists over time.
+    - **Value Objects:** Objects defined by their attributes, lacking conceptual identity (immutable).
+    - **Domain Events:** Model significant occurrences in the domain as events.
+    - **Repositories:** Provide an abstraction for accessing and persisting aggregates.
+    - **Domain Services:** Encapsulate domain logic that doesn't naturally fit within an Entity or Value Object.
+- **Model Richness:** Create domain models that capture behavior and constraints, not just data structures (avoid anemic domain models).
+
+## AI Instructions
+- **Ubiquitous Language:** Use terminology consistent with the domain when generating code (class names, methods, variables). Ask for clarification on domain terms if needed.
+- **Aggregate Design:** When modeling, identify potential aggregate roots and boundaries. Generate code that enforces aggregate consistency rules (e.g., access other objects within the aggregate only via the root).
+- **Entities vs. Value Objects:** Distinguish between Entities (identity matters) and Value Objects (attributes matter, often immutable) when generating domain model code.
+- **Domain Events:** Suggest or generate domain event classes/structs for significant state changes or occurrences.
+- **Repository Abstraction:** Generate repository interfaces (in the domain layer) and implementations (in the infrastructure layer) for aggregate persistence.
+- **Domain Services:** Generate domain service classes/modules for logic that spans multiple domain objects.
+- **Bounded Context Awareness:** When working across different parts of a larger system, be mindful of Bounded Contexts and use appropriate integration patterns (ask if context boundaries are defined).

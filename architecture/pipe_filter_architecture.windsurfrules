@@ -1,0 +1,20 @@
+# Windsurf Rules: Pipe-and-Filter Architecture
+
+## Guiding Principles
+- **Component Roles:** Structure the system as a sequence of processing steps (Filters) connected by channels (Pipes).
+    - **Filters:** Independent components that transform or filter data. They should ideally be stateless and not share data with other filters except via pipes.
+    - **Pipes:** Conduits that pass data between filters. Can be simple buffers, message queues, or other connection mechanisms.
+- **Standardized Data Format:** Filters should agree on a standard data format for communication through pipes.
+- **Filter Independence:** Filters should be independent and unaware of other filters in the pipeline. They only interact with their input and output pipes.
+- **Composability:** The architecture allows for easy composition and reordering of filters to create different processing pipelines.
+- **Concurrency:** Individual filters can potentially run concurrently if the pipe mechanism allows, enabling parallel processing.
+- **Data Flow:** Data flows unidirectionally through the pipeline from a data source, through filters, to a data sink.
+
+## AI Instructions
+- **Filter Definition:** Generate code for individual filters as distinct, reusable components (functions, classes, modules).
+- **Pipe Abstraction:** Use appropriate mechanisms for pipes based on the context (e.g., iterators/generators in Python, channels in Go, message queues in distributed systems). Abstract the pipe mechanism if possible.
+- **Data Format Handling:** Ensure generated filters consume and produce data in the agreed-upon format.
+- **Stateless Filters:** Design generated filters to be stateless where possible.
+- **Pipeline Composition:** Show how to connect generated filters together using pipes to form a complete pipeline.
+- **Error Handling:** Implement error handling within filters or as part of the pipeline orchestration (e.g., error pipes, dead-letter queues).
+- **Concurrency:** Suggest opportunities for running filters in parallel if applicable to the chosen pipe mechanism and filter design.

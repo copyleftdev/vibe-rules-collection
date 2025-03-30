@@ -1,0 +1,26 @@
+# Windsurf Rules: Fluent UI Principles (Microsoft)
+
+## Guiding Principles
+- **Fundamentals:** Adhere to Fluent UI's core principles:
+    - **Layout:** Use recommended spacing, alignment, and responsive grid techniques.
+    - **Typography:** Apply the Fluent type ramp consistently for hierarchy and readability.
+    - **Color:** Utilize Fluent color palettes, theme slots (e.g., `themePrimary`, `neutralSecondary`), and accessibility checkers for contrast.
+    - **Iconography:** Use Fluent UI Icons appropriately.
+    - **Elevation/Layering:** Apply Fluent depth and shadow conventions.
+    - **Motion:** Use subtle, purposeful animations based on Fluent guidelines.
+- **Components:** Use official Fluent UI components (e.g., from `@fluentui/react-components` (v9), older `@fluentui/react` (v8)) according to their intended purpose.
+    - Understand component states (hover, focus, active, disabled).
+- **Theming:** Leverage Fluent UI's theming capabilities (light/dark modes, custom themes). Use theme tokens/slots provided by the library instead of hardcoded values.
+- **Accessibility (a11y):** Build accessible experiences using Fluent components' built-in features. Ensure proper keyboard navigation, focus management, ARIA attributes, and color contrast.
+- **Platform Considerations:** Be mindful of differences if targeting specific platforms (Web, Windows, iOS, Android) where Fluent guidelines might adapt.
+- **Composition:** Build complex UIs by composing simpler Fluent components.
+
+## AI Instructions
+- **Component Usage:** Generate code using standard Fluent UI components (e.g., Button, Checkbox, DetailsList, Dialog) from the relevant library (`@fluentui/react-components` preferred for newer projects).
+- **Theme Tokens:** Refer to theme tokens/slots (e.g., `tokens.colorNeutralBackground1`, `theme.palette.themePrimary`) for styling rather than hardcoded CSS values.
+- **Layout/Spacing:** Apply Fluent layout helpers or standard CSS based on Fluent spacing guidelines.
+- **Icon Integration:** Generate code to include Fluent UI Icons.
+- **Typography:** Apply Fluent styles using library mechanisms (e.g., `<Text>` component with `variant` prop).
+- **Theming:** Generate code compatible with Fluent theming (using `ThemeProvider`).
+- **Accessibility Props:** Include necessary ARIA attributes where not automatically handled by the components.
+- **State Handling:** Show how to manage component states (e.g., `disabled`, `checked`).

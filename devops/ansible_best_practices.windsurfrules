@@ -1,0 +1,24 @@
+# Windsurf Rules: Ansible Best Practices
+
+## Guiding Principles
+- **Project Structure:** Organize Ansible projects logically using standard directories (e.g., `roles/`, `inventories/`, `group_vars/`, `host_vars/`, `library/`).
+- **Roles:** Encapsulate related tasks, handlers, variables, files, and templates into reusable Roles. Prefer roles over monolithic playbooks.
+- **Idempotency:** Ensure tasks are idempotent – running them multiple times should result in the same state without unintended side effects. Use Ansible modules designed for idempotency.
+- **Variables:** Define variables at the appropriate precedence level (e.g., `inventory`, `group_vars`, `host_vars`, `role defaults`, `role vars`, `play vars`). Avoid hardcoding values in tasks.
+- **Inventory Management:** Use static or dynamic inventory sources effectively. Group hosts logically.
+- **Handlers:** Use handlers to trigger actions only when a task makes a change (e.g., restarting a service after a config file update).
+- **Check Mode & Diff Mode:** Utilize `ansible-playbook --check` and `ansible-playbook --diff` for dry runs and previewing changes before applying them.
+- **Vault for Secrets:** Use Ansible Vault to encrypt sensitive data (passwords, API keys) stored in variables files.
+- **Task Naming:** Give tasks clear, descriptive names using the `name:` attribute.
+- **Modules over Shell/Command:** Prefer using specific Ansible modules over generic `shell` or `command` modules whenever possible for better idempotency, error handling, and clarity.
+- **Looping & Conditionals:** Use loops (`loop`, `with_`) and conditionals (`when`) effectively, but keep them readable.
+
+## AI Instructions
+- **Role Structure:** Suggest organizing automation logic into Ansible Roles. Generate basic role directory structures (`tasks/main.yml`, `defaults/main.yml`, etc.).
+- **Idempotent Tasks:** Generate tasks using idempotent Ansible modules. Avoid `shell` or `command` unless necessary, and if used, include checks (`creates`, `removes`) to make them idempotent.
+- **Variable Usage:** Generate tasks that reference variables (`{{ var_name }}`). Suggest appropriate locations for variable definition (`group_vars`, `host_vars`, `defaults/main.yml`).
+- **Handler Implementation:** Generate handler blocks and corresponding `notify:` statements in tasks.
+- **Vault Reminder:** Remind about using Ansible Vault for sensitive variables.
+- **Task Naming:** Automatically add a descriptive `name:` to generated tasks.
+- **Module Preference:** Prioritize suggesting and generating code using specific Ansible modules (e.g., `apt`, `yum`, `copy`, `template`, `service`) over `shell`/`command`.
+- **Check/Diff Mode:** Suggest using `--check` and `--diff` when generating `ansible-playbook` commands.

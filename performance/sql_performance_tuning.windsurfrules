@@ -1,0 +1,37 @@
+# Windsurf Rules: SQL Performance Tuning
+
+## Guiding Principles
+- **Analyze Execution Plans:** This is paramount. Use `EXPLAIN` (MySQL, PostgreSQL), `EXPLAIN PLAN` (Oracle), or graphical plans (SQL Server) to understand how the database executes your query. Identify full table scans, inefficient joins, poor index usage, and high costs.
+- **Effective Indexing:**
+    - **Create Necessary Indexes:** Index columns used in `WHERE` clauses, `JOIN` conditions (`ON`), `ORDER BY`, and `GROUP BY`.
+    - **Index Selectivity:** Prefer indexes on columns with high selectivity (many unique values).
+    - **Compound Indexes:** Create indexes on multiple columns for queries filtering/sorting on those columns. Order matters – match the order used in the query.
+    - **Covering Indexes:** Aim for indexes that include all columns needed by a query (using `INCLUDE` or just by having them in the index key) to avoid table lookups.
+    - **Avoid Over-Indexing:** Too many indexes slow down write operations (INSERT/UPDATE/DELETE) and consume storage. Remove unused indexes.
+    - **Maintain Indexes:** Ensure index statistics are up-to-date (`ANALYZE`, `UPDATE STATISTICS`). Rebuild/reorganize fragmented indexes periodically.
+- **Write Sargable Queries:** Ensure conditions in the `WHERE` clause can effectively use indexes (Search ARGument-able). Avoid:
+    - Functions on indexed columns (e.g., `WHERE UPPER(LastName) = 'SMITH'`). Rewrite if possible (e.g., function-based index or alternative logic).
+    - Leading wildcards in `LIKE` (e.g., `WHERE Name LIKE '%Smith'`).
+    - Type mismatches causing implicit conversions.
+- **Optimize JOINs:**
+    - Ensure join columns are indexed on *both* tables.
+    - Ensure join columns have compatible data types.
+    - Choose the appropriate join type (`INNER`, `LEFT`, `RIGHT`).
+    - Sometimes rewriting subqueries as JOINs (or vice-versa) can improve performance.
+- **Reduce Data Fetched/Processed:**
+    - `SELECT` only the columns you need. Avoid `SELECT *`.
+    - Filter early: Apply `WHERE` clauses as restrictively as possible.
+    - Use `LIMIT`/`TOP`/`ROWNUM` to fetch only the required number of rows.
+- **Minimize Query Complexity:** Break down extremely complex queries into simpler steps using temporary tables, CTEs, or procedural logic if necessary. Simpler queries are often easier for the optimizer to handle.
+- **Batch Operations:** For bulk inserts/updates/deletes, use batching mechanisms provided by the database or client library instead of row-by-row operations.
+- **Connection Pooling:** Use connection pooling in the application to avoid the overhead of establishing new database connections for each query.
+- **Understand Locking & Concurrency:** Analyze lock contention issues (blocking) using database-specific tools. Optimize transactions to be short. Use appropriate transaction isolation levels.
+
+## AI Instructions
+- **Execution Plan Analysis:** When providing SQL, suggest running the database's `EXPLAIN`/`EXPLAIN PLAN` command and interpreting key parts (scans, joins, index usage).
+- **Index Recommendations:** Based on `WHERE`, `JOIN`, `ORDER BY` clauses, suggest specific indexes (simple, compound, covering).
+- **Sargability Checks:** Identify non-sargable conditions in `WHERE` clauses and suggest rewrites or function-based indexes.
+- **Query Rewriting:** Suggest alternative ways to structure a query (e.g., JOIN vs subquery, CTE usage) for potential performance improvements.
+- **Column Selection:** Encourage listing specific columns instead of `SELECT *`.
+- **Batching Code:** Generate application code examples demonstrating batch inserts/updates.
+- **Locking/Concurrency:** Highlight potential locking issues in complex transactions or long-running queries.

@@ -1,0 +1,25 @@
+# Windsurf Rules: CI/CD Pipeline Best Practices (GitHub Actions/GitLab CI)
+
+## Guiding Principles
+- **Pipeline as Code:** Define CI/CD pipelines declaratively in version-controlled files (e.g., `.github/workflows/main.yml`, `.gitlab-ci.yml`).
+- **Stages/Jobs:** Break pipelines into logical stages (e.g., build, test, deploy) and jobs with specific responsibilities.
+- **Fast Feedback:** Structure pipelines so that faster checks (linting, unit tests) run before slower, more resource-intensive ones (integration tests, deployment).
+- **Environment Variables & Secrets:** Use built-in mechanisms for managing environment variables and secrets securely (e.g., GitHub Secrets, GitLab CI/CD Variables). Avoid hardcoding secrets in pipeline definitions.
+- **Artifact Management:** Use pipeline artifacts to pass build outputs (binaries, test reports) between stages/jobs.
+- **Caching:** Utilize caching mechanisms (e.g., GitHub Actions Cache, GitLab CI Cache) to speed up builds by reusing dependencies or intermediate build outputs.
+- **Conditional Execution:** Run stages/jobs conditionally based on branch names, tags, commit messages, or file changes.
+- **Containerized Jobs:** Run jobs within Docker containers to ensure consistent, isolated build environments.
+- **Notifications:** Configure notifications (e.g., Slack, email) for pipeline status (success, failure).
+- **Idempotent Deployments:** Ensure deployment scripts or jobs are idempotent.
+- **Small, Focused Jobs:** Keep individual jobs focused on a single task for clarity and easier debugging.
+
+## AI Instructions
+- **YAML Structure:** Generate CI/CD pipeline definitions with correct YAML syntax for the target platform (GitHub Actions or GitLab CI).
+- **Stage/Job Separation:** Define distinct stages and jobs with clear names and purposes.
+- **Secret Handling:** Generate code that references secrets using the platform's secure mechanisms (e.g., `secrets.MY_SECRET`, CI/CD variables).
+- **Artifact Usage:** Generate steps for uploading and downloading artifacts between jobs/stages.
+- **Caching Implementation:** Suggest and generate configuration for caching dependencies (e.g., `actions/cache`, GitLab `cache:` keyword).
+- **Conditional Logic:** Implement conditional execution using platform-specific keywords (`if:`, `only:`, `except:`, `rules:`).
+- **Container Usage:** Generate job configurations that specify a Docker `container:` or `image:` to run in.
+- **Workflow Triggers:** Define appropriate triggers (`on:`, `workflow_dispatch:`, etc.) for the pipeline.
+- **Environment Variables:** Show how to define and use environment variables (`env:`).

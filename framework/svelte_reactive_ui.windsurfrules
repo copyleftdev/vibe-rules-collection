@@ -1,0 +1,28 @@
+# Windsurf Rules: Svelte Best Practices
+
+## Guiding Principles
+- **Component Structure:** Organize UI into small, reusable components (`.svelte` files).
+- **Reactivity:** Embrace Svelte's built-in reactivity via assignments (`count += 1`). Understand how reactivity is triggered.
+- **Props:** Pass data down from parent to child components using `export let propName;`. Use default values (`export let propName = defaultValue;`).
+- **Events:** Dispatch events up from child to parent using `createEventDispatcher` and `dispatch('eventName', detail)`. Listen using `on:eventName={handler}`.
+- **Bindings:** Use two-way bindings (`bind:value`) for form elements. Bind other properties as needed (`bind:this`, `bind:clientWidth`, etc.).
+- **Logic Blocks:** Use logic blocks (`{#if}`, `{#each}`, `{#await}`) for conditional rendering, loops, and handling promises directly in the markup.
+- **Lifecycle Functions:** Use lifecycle functions (`onMount`, `onDestroy`, `beforeUpdate`, `afterUpdate`) when needed, but prefer reactive declarations where possible.
+- **Stores:** For cross-component state management, use Svelte stores (writable, readable, derived). Keep stores focused.
+- **Slots:** Use slots (`<slot>`) and named slots (`<slot name="name">`) to create flexible, composable components.
+- **Context API:** Use `setContext` and `getContext` for passing data deep down the component tree without prop drilling (use sparingly).
+- **Transitions & Animations:** Utilize Svelte's built-in transition (`transition:fade`) and animation (`animate:flip`) directives for smooth UI effects.
+- **Accessibility (a11y):** Write accessible HTML. Use Svelte's compile-time a11y warnings.
+- **TypeScript Integration:** Use TypeScript (`<script lang="ts">`) for improved type safety.
+
+## AI Instructions
+- **Component Generation:** Generate standard `.svelte` file structure (`<script>`, markup, `<style>`).
+- **Reactivity:** Generate reactive updates using simple assignments.
+- **Props:** Generate components accepting props using `export let`.
+- **Event Handling:** Generate event dispatching (`createEventDispatcher`) and listening (`on:event`).
+- **Bindings:** Generate code using `bind:value` for form inputs.
+- **Logic Blocks:** Utilize `{#if}`, `{#each}`, `{#await}` blocks in generated markup.
+- **Store Usage:** Generate basic store definitions (writable) and component code interacting with stores (`$storeName`).
+- **Slot Implementation:** Generate components using default and named slots.
+- **Lifecycle Functions:** Generate `onMount` for actions needed after the component is added to the DOM.
+- **TypeScript Syntax:** Generate `<script lang="ts">` blocks with typed props and variables if TypeScript is indicated.

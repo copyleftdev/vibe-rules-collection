@@ -1,0 +1,17 @@
+# Windsurf Rules: Rust Clean Architecture & Best Practices
+
+## Guiding Principles
+- **Ownership & Borrowing:** Leverage Rust's ownership and borrowing system for memory safety without a garbage collector. Use lifetimes explicitly where needed, but prefer compiler inference.
+- **Modularity:** Structure code into logical modules (`mod`). Use crates effectively for code organization and reuse. Employ clear visibility rules (`pub`, `pub(crate)`, etc.).
+- **Explicit Error Handling:** Utilize `Result<T, E>` for recoverable errors and `panic!` for unrecoverable errors. Use specific error types or libraries like `thiserror` or `anyhow` for robust error handling.
+- **Immutability by Default:** Prefer immutable variables and data structures unless mutability is explicitly required.
+- **Traits for Abstraction:** Use traits for defining shared behavior and achieving polymorphism, promoting decoupling (key for Clean Architecture).
+- **Clippy Compliance:** Adhere to Rust Clippy lints for idiomatic and correct code.
+
+## AI Instructions
+- **Ownership Compliance:** Generate Rust code that respects the ownership and borrowing rules. Pay attention to lifetimes when necessary.
+- **Error Handling:** Use `Result<T, E>` for functions that can fail recoverably. Implement appropriate error types or use standard error handling crates.
+- **Modularity:** When generating code, suggest or implement logical module structures. Define clear interfaces using traits, especially when dealing with architectural boundaries.
+- **Idiomatic Rust:** Use standard library features, iterators, closures, and pattern matching effectively.
+- **Clippy Lints:** Generate code that generally adheres to Clippy recommendations.
+- **Clean Architecture:** When requested in a Clean Architecture context, ensure dependency rules are followed (e.g., inner layers do not depend on outer layers). Use traits to define interfaces at layer boundaries.

@@ -1,0 +1,21 @@
+# Windsurf Rules: Trunk-Based Development (TBD)
+
+## Guiding Principles
+- **Single Trunk (`main`):** Developers work directly on the `main` branch or very short-lived feature branches that merge back quickly (often within hours or a day).
+- **Frequent Integration:** Integrate code changes into `main` frequently (multiple times per day per developer).
+- **Comprehensive Automated Testing:** Relies heavily on a fast, reliable automated test suite (unit, integration, end-to-end) that runs on every commit/push to `main` to ensure it remains stable.
+- **Feature Flags/Toggles:** Use feature flags to hide incomplete or unreleased features in the `main` branch, allowing code to be merged before the feature is fully ready for users.
+- **CI/CD:** Continuous Integration is essential. Optionally, Continuous Deployment/Delivery from `main` is common.
+- **Small Batches:** Work is broken down into very small, incremental changes.
+- **Avoid Long-Lived Branches:** Actively discourages long-lived feature branches that diverge significantly from `main`.
+- **Release Branches (Optional):** Sometimes short-lived release branches are cut from `main` close to release time for stabilization (`release/vX.Y.Z`), but the primary focus remains on `main` being releasable.
+- **Suited For:** Teams with strong automated testing culture, aiming for high velocity and continuous integration/delivery.
+
+## AI Instructions
+- **Focus on `main`:** Emphasize committing directly to `main` or merging very short-lived branches back to `main` quickly.
+- **Small Commits:** Reinforce the need for small, incremental commits.
+- **Automated Testing Importance:** Stress the critical role of automated tests running on `main`.
+- **Feature Flag Usage:** Suggest using feature flags (`if (featureIsEnabled('new-feature')) { ... }`) to wrap incomplete features being merged to `main`.
+- **CI Trigger:** Highlight that commits to `main` should trigger CI builds and tests.
+- **Branching (Short-lived):** If suggesting branches, specify they should be extremely short-lived and merge back to `main` rapidly.
+- **Release Branch (Optional):** Explain the optional use of short-lived release branches cut from `main` for stabilization if needed.

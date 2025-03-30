@@ -1,0 +1,33 @@
+# Windsurf Rules: Generic SQL Best Practices
+
+## Guiding Principles
+- **Readability & Formatting:**
+    - Use consistent casing for keywords (UPPERCASE often preferred: `SELECT`, `FROM`, `WHERE`).
+    - Use consistent casing for identifiers (lowercase `snake_case` often preferred: `user_id`, `order_details`).
+    - Indent clauses (`FROM`, `WHERE`, `GROUP BY`, `ORDER BY`) for clarity.
+    - Use comments (`--` or `/* ... */`) to explain complex logic.
+- **Explicit Column Listing:** Avoid `SELECT *`. Explicitly list the columns needed to improve clarity, performance, and resilience to schema changes.
+- **Meaningful Aliases:** Use clear and concise aliases for tables (`FROM users u`) and columns (`SELECT count(*) AS total_users`).
+- **WHERE Clause Effectiveness:**
+    - Place filtering conditions in the `WHERE` clause, not in `JOIN ON` clauses where possible (unless it's outer join logic).
+    - Ensure `WHERE` clauses can leverage indexes where appropriate (Sargable queries).
+- **JOINs:**
+    - Prefer ANSI standard `JOIN` syntax (`INNER JOIN`, `LEFT JOIN`) over older comma-based syntax.
+    - Be explicit with `INNER JOIN` vs. `OUTER JOIN` (`LEFT`, `RIGHT`, `FULL`).
+- **Data Types:** Use the most appropriate and specific data types for columns (e.g., `INT` vs `VARCHAR` for numbers, `DATE`/`TIMESTAMP` vs `VARCHAR` for dates).
+- **Indexing:** Understand and create appropriate indexes (e.g., on foreign keys, columns frequently used in `WHERE`, `JOIN`, `ORDER BY`) to optimize query performance. Avoid over-indexing.
+- **Normalization:** Understand database normalization principles (1NF, 2NF, 3NF) and apply them appropriately to avoid data redundancy and anomalies. Denormalize cautiously for performance reasons when necessary.
+- **Transaction Management:** Use transactions (`BEGIN`, `COMMIT`, `ROLLBACK`) to ensure atomicity for operations involving multiple DML statements.
+- **Avoid Vendor Lock-in (where practical):** Stick to standard SQL functions and syntax where possible if portability is a concern. If using vendor-specific features, be aware of the trade-offs.
+- **Security:**
+    - Use parameterized queries or prepared statements in application code to prevent SQL injection.
+    - Grant least privilege to database users.
+
+## AI Instructions
+- **Formatting:** Generate SQL code with consistent keyword casing (UPPERCASE) and identifier casing (lowercase snake_case), and proper indentation.
+- **Explicit Columns:** Generate `SELECT` statements listing specific columns instead of `SELECT *`.
+- **Aliases:** Add meaningful table and column aliases.
+- **Standard JOINs:** Use ANSI `JOIN` syntax.
+- **Index Suggestions:** Suggest potential indexes based on `WHERE`, `JOIN`, and `ORDER BY` clauses in generated queries.
+- **Parameterized Queries:** When generating application code interacting with SQL, use parameterized queries/prepared statements.
+- **Standard Functions:** Prefer standard SQL functions over vendor-specific ones unless explicitly requested or necessary for a specific dialect feature.

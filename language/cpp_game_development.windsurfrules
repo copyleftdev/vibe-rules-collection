@@ -1,0 +1,27 @@
+# Windsurf Rules: C++ for Game Development Principles
+
+## Guiding Principles
+- **Performance is Critical:**
+    - **Memory Layout / Cache Coherency:** Design data structures (`struct`/`class`) with awareness of CPU cache lines. Group frequently accessed data together. Consider Struct-of-Arrays (SoA) vs. Array-of-Structs (AoS) based on access patterns.
+    - **Dynamic Allocation:** Minimize dynamic memory allocation (`new`/`delete`) during gameplay loops to avoid performance spikes and fragmentation. Use custom allocators (pools, arenas), pre-allocation, or stack allocation where possible.
+    - **Virtual Functions:** Be mindful of the performance overhead (v-table lookup). Use sparingly in performance-critical code paths. Consider alternatives like component-based designs or type-switching on enums/indices.
+    - **Branching:** Profile code and minimize branching in tight loops if identified as a bottleneck.
+    - **Copying:** Avoid unnecessary copying of large objects. Use references (`&`), const references (`const&`), pointers (`*`), move semantics (`&&`), or pass by index/ID.
+- **Data-Oriented Design (DOD):** Often preferred over pure OOP for performance-critical systems. Focus on data transformations and layouts.
+- **Iteration:** Write tight, efficient loops over game data.
+- **Math Libraries:** Use optimized math libraries (e.g., GLM, DirectXMath, Eigen, or engine-specific) for vector/matrix operations.
+- **Engine Architecture:** Adhere to the specific patterns and constraints of the chosen game engine (Unreal, Unity (C# uses C++ internally), Godot, custom engines).
+- **Debugging & Tooling:** Write code that is debuggable. Utilize engine-specific profiling and debugging tools.
+- **Readability vs. Performance:** Find a balance. Optimize critical paths, but maintain readability elsewhere.
+- **Platform Considerations:** Be aware of target platform constraints (CPU, GPU, memory) and compiler differences.
+- **Resource Management:** Load/unload game assets (textures, models, sounds) efficiently.
+
+## AI Instructions
+- **Performance Focus:** Generate code prioritizing performance for game loops. Highlight potential performance implications of certain C++ features (virtual functions, dynamic allocation).
+- **Memory Layout Suggestions:** Suggest data structure layouts considering cache efficiency (AoS vs SoA based on context).
+- **Allocation Strategies:** Suggest custom allocators, pre-allocation, or stack allocation instead of frequent `new`/`delete` in critical loops.
+- **Data-Oriented Patterns:** Generate code structures leaning towards DOD where appropriate (e.g., systems processing arrays of components).
+- **Efficient Parameter Passing:** Generate function signatures using `const&`, `*`, or indices/IDs for passing large data structures.
+- **Math Library Usage:** Generate code using common math library types/functions (e.g., `glm::vec3`, `matrix * vector`).
+- **Engine Context:** Ask for or assume a game engine context (Unreal, generic C++) to generate more relevant code.
+- **Avoid Unnecessary Abstraction:** In performance-critical code, prefer concrete types over excessive abstraction layers if they add overhead.

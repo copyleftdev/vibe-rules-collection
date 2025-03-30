@@ -1,0 +1,25 @@
+# Windsurf Rules: Ant Design (Antd) Principles
+
+## Guiding Principles
+- **Design Values:** Understand Antd's underlying values (Natural, Certain, Meaningful, Growing).
+- **Component Library:** Leverage the extensive set of high-quality components provided by Antd (`antd` library, typically for React) for UI construction.
+    - Use components according to their documented API and intended use cases.
+    - Utilize common components: Button, Input, Form, Table, Modal, Layout, Menu, Grid, etc.
+- **Layout:** Use Antd's `Layout` components (Header, Sider, Content, Footer) and `Grid` system (Row, Col) for structuring pages and achieving responsiveness.
+- **Theming & Customization:** Utilize Antd's theme customization capabilities (Less variables, ConfigProvider, theme tokens in v5+) to match brand identity. Prefer theme tokens over hardcoded styles.
+- **Forms:** Use the powerful `Form` component with `Form.Item` for layout, validation rules, and data binding.
+- **Feedback:** Employ standard feedback components like `Message`, `Notification`, `Alert`, `Modal` confirmation for user interaction.
+- **Data Display:** Use components like `Table`, `List`, `Card`, `Tree` effectively for displaying data.
+- **Internationalization (i18n):** Use Antd's built-in i18n support (`ConfigProvider`, `LocaleProvider` for v4) when building multilingual applications.
+- **Accessibility (a11y):** Rely on the accessibility features built into Antd components. Ensure custom interactions are also accessible.
+- **Iconography:** Use icons from `@ant-design/icons`.
+
+## AI Instructions
+- **Component Usage:** Generate code importing and using standard Antd components (`<Button>`, `<Form>`, `<Table>`, `<Layout>`, etc.) with appropriate props.
+- **Layout Generation:** Generate page structures using Antd `<Layout>` and `<Row>`/`<Col>` components.
+- **Form Implementation:** Generate forms using `<Form>` and `<Form.Item>`, including basic validation rules.
+- **Theme Tokens (v5+):** Refer to theme tokens via `ConfigProvider` or `theme.useToken()` hook where applicable, instead of hardcoded values.
+- **Icon Integration:** Generate code importing and using icons from `@ant-design/icons`.
+- **Feedback Components:** Generate code using `message.success()`, `Modal.confirm()`, etc.
+- **Data Display Components:** Generate examples using `<Table>` with column definitions or `<List>`.
+- **i18n Setup:** Show basic configuration for internationalization using `ConfigProvider`.

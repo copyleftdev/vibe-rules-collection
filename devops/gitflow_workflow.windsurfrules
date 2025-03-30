@@ -1,0 +1,26 @@
+# Windsurf Rules: Gitflow Workflow
+
+## Guiding Principles
+- **Main Branches:**
+    - `main` (or `master`): Represents production-ready code. Only receives merges from `release` branches or hotfixes. Should always be stable.
+    - `develop`: Integration branch for features. Represents the latest delivered development changes for the next release. Origin for `feature` branches, target for merges from `feature` branches.
+- **Supporting Branches:**
+    - **`feature/*`:** Branched from `develop`. Used for developing new features. Merged back into `develop` when complete.
+    - **`release/*`:** Branched from `develop` when ready to prepare a new production release. Allows for final testing, bug fixes, and documentation specific to the release. Merged into `main` *and* `develop` upon release.
+    - **`hotfix/*`:** Branched from `main`. Used to fix critical bugs in production *directly*. Merged back into `main` *and* `develop` after fixing.
+- **Tagging:** Tag commits on `main` with version numbers (e.g., `v1.0.0`) upon release.
+- **Workflow:**
+    1. Start new features off `develop` (`feature/my-feature`).
+    2. Merge completed features into `develop`.
+    3. When `develop` has enough features for a release, branch `release/vX.Y.Z` from `develop`.
+    4. Perform release prep (testing, bugfixes) on the `release` branch. Merge necessary fixes back into `develop` periodically.
+    5. When release is ready, merge `release/vX.Y.Z` into `main` and tag `main`.
+    6. Merge `release/vX.Y.Z` back into `develop` to incorporate release fixes.
+    7. For urgent production bugs, branch `hotfix/issue-XYZ` from `main`, fix, merge to `main`, tag, merge back to `develop`.
+- **Suited For:** Projects with scheduled release cycles, where maintaining multiple versions in production might be necessary.
+
+## AI Instructions
+- **Branch Creation:** Generate commands to create branches following Gitflow naming conventions and branching from the correct base (`git checkout -b feature/x develop`, `git checkout -b release/y develop`, `git checkout -b hotfix/z main`).
+- **Merge Targets:** Generate merge commands targeting the correct branches (`git checkout develop && git merge feature/x`, `git checkout main && git merge release/y`, `git checkout develop && git merge release/y`, etc.).
+- **Tagging Commands:** Generate commands for creating annotated tags (`git tag -a vX.Y.Z -m "Version X.Y.Z"`).
+- **Workflow Guidance:** Explain the next step in the Gitflow process based on the current context (e.g., "After finishing the feature, merge it into develop", "To start a release, branch from develop").

@@ -1,0 +1,21 @@
+# Windsurf Rules: Object-Oriented Design (SOLID)
+
+## Guiding Principles
+- **SOLID Principles:**
+    - **S (Single Responsibility Principle):** Each class should have only one reason to change, meaning it should have only one job or responsibility.
+    - **O (Open/Closed Principle):** Software entities (classes, modules, functions) should be open for extension but closed for modification.
+    - **L (Liskov Substitution Principle):** Subtypes must be substitutable for their base types without altering the correctness of the program.
+    - **I (Interface Segregation Principle):** Clients should not be forced to depend on interfaces they do not use. Create smaller, specific interfaces.
+    - **D (Dependency Inversion Principle):** High-level modules should not depend on low-level modules. Both should depend on abstractions (e.g., interfaces). Abstractions should not depend on details; details should depend on abstractions.
+- **Encapsulation:** Hide the internal state and complexity of objects, exposing only necessary functionalities through well-defined interfaces (public methods).
+- **Composition over Inheritance:** Prefer object composition to class inheritance to achieve flexibility and avoid tight coupling.
+- **Clear Interfaces:** Define clear and minimal public interfaces for classes.
+
+## AI Instructions
+- **SRP Adherence:** When generating classes, ensure they have a single, well-defined responsibility.
+- **OCP Application:** Design classes and modules that can be extended (e.g., via inheritance or composition) without modifying their existing code.
+- **LSP Compliance:** Ensure that generated subclasses correctly implement the behavior defined by their superclass or interface.
+- **ISP Focus:** Define granular interfaces. Avoid creating large, monolithic interfaces.
+- **DIP Implementation:** Utilize abstractions (interfaces, abstract classes) to decouple high-level and low-level components. Implement Dependency Injection where appropriate.
+- **Encapsulation:** Generate classes with private/protected members where appropriate, exposing functionality through public methods.
+- **Composition Preference:** Suggest or implement composition patterns where they offer advantages over inheritance.

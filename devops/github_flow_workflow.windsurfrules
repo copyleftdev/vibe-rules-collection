@@ -1,0 +1,22 @@
+# Windsurf Rules: GitHub Flow Workflow
+
+## Guiding Principles
+- **`main` is Deployable:** The `main` branch always contains production-ready, deployable code.
+- **Feature Branches:** Create descriptive branches off `main` for *any* new work (features, bugfixes, chores). (`feature/add-login`, `bugfix/typo-on-homepage`).
+- **Commit Locally:** Make atomic commits locally on your feature branch.
+- **Push Regularly:** Push your feature branch to the remote repository frequently.
+- **Open a Pull Request (PR):** When ready for feedback or merging, open a Pull Request from your feature branch targeting `main`.
+- **Discuss and Review:** Use the PR for code review, discussion, and automated checks (CI tests, linting).
+- **Iterate:** Make further commits to your feature branch based on feedback. These automatically update the PR.
+- **Deploy (Optional but Common):** Deploy the feature branch to a staging/testing environment directly from the PR for verification.
+- **Merge:** Once the PR is approved and checks pass, merge it into `main` (typically using the hosting platform's merge button, often using a squash merge or merge commit).
+- **Deploy `main`:** Deploy the updated `main` branch to production immediately after merging.
+- **Suited For:** Teams practicing Continuous Delivery/Deployment, web applications, projects where quick iteration and deployment are key.
+
+## AI Instructions
+- **Branch Creation:** Generate commands to create descriptive branches from `main` (`git checkout -b feature/xyz main`).
+- **Pull Request Focus:** Frame actions around creating and updating Pull Requests targeting `main`.
+- **Review Simulation:** Describe the typical PR review and iteration cycle.
+- **Merge Suggestion:** Suggest merging the PR into `main` after approval.
+- **Deployment Trigger:** Mention that merging to `main` typically triggers a production deployment in this flow.
+- **Simplicity:** Emphasize the simplicity compared to Gitflow (no `develop` or `release` branches).

@@ -1,0 +1,34 @@
+# Windsurf Rules: Unity C# Scripting Best Practices
+
+## Guiding Principles
+- **Component-Based Architecture:** Embrace Unity's component model. Create small, reusable `MonoBehaviour` scripts with focused responsibilities. Attach scripts to `GameObjects`.
+- **Unity Lifecycle Methods:** Understand and use lifecycle methods correctly (`Awake`, `OnEnable`, `Start`, `Update`, `FixedUpdate`, `LateUpdate`, `OnDisable`, `OnDestroy`). Use `Awake` for self-initialization, `Start` for initialization involving other objects. Minimize work in `Update`.
+- **Performance & Optimization:**
+    - **`Update` Loop:** Avoid expensive calculations or allocations within `Update`, `FixedUpdate`, or `LateUpdate`. Cache component references (`GetComponent`) in `Awake` or `Start`, not repeatedly in `Update`.
+    - **Garbage Collection (GC):** Minimize GC allocations, especially in performance-critical code. Avoid string concatenations in loops, unnecessary boxing, and frequent `Instantiate`/`Destroy` calls during gameplay (consider object pooling).
+    - **`GetComponent`:** Cache results rather than calling repeatedly.
+    - **Physics:** Use `FixedUpdate` for physics-related logic (`Rigidbody` manipulation).
+    - **Coroutines:** Use coroutines (`StartCoroutine`, `yield return`) for time-based operations or sequences, but be mindful they can generate some garbage.
+    - **Profiling:** Use the Unity Profiler extensively to identify bottlenecks.
+- **API Usage:**
+    - **Finding Objects:** Prefer direct references (assigned in the Inspector) over `GameObject.Find`, `FindObjectOfType`, `GetComponentInChildren` during gameplay, as they can be slow. If necessary, use them during initialization (`Awake`/`Start`).
+    - **Serialization:** Use `[SerializeField]` to expose private variables to the Inspector. Avoid making variables `public` just for Inspector access.
+    - **Static Variables:** Use static variables/methods cautiously. They can complicate state management and testing.
+- **Code Organization:**
+    - **Namespaces:** Use namespaces to organize your code and prevent naming conflicts.
+    - **Folder Structure:** Maintain a logical project folder structure (e.g., `Scripts`, `Prefabs`, `Materials`, `Scenes`).
+    - **SOLID Principles:** Apply SOLID principles where appropriate for maintainable code, but balance with Unity's component model.
+- **Readability & C# Best Practices:** Follow general C# coding conventions (PascalCase for methods/classes/properties, camelCase for local variables/parameters). Write clear, commented code.
+- **Asynchronous Operations:** Consider `async`/`await` or libraries like UniTask for managing asynchronous operations more efficiently than standard coroutines in some cases.
+- **Editor Scripting:** Use editor scripts (`Editor` folder, `UnityEditor` namespace) for custom tools, inspectors, and automation. Use `[ExecuteInEditMode]` or `[ExecuteAlways]` sparingly.
+
+## AI Instructions
+- **Component Generation:** Generate `MonoBehaviour` scripts with standard lifecycle methods (`Awake`, `Start`, `Update`).
+- **Performance Emphasis:** Generate code that caches `GetComponent` results. Highlight potential performance issues (GC allocations in `Update`, frequent `Find` calls).
+- **Serialization:** Generate private fields with `[SerializeField]` for Inspector exposure.
+- **API Examples:** Generate code using common Unity APIs (`transform.position`, `Instantiate`, `Destroy`, `Rigidbody.AddForce`, `Input.GetAxis`, `SceneManager.LoadScene`).
+- **Coroutines:** Generate examples of coroutines for timed sequences.
+- **Object Pooling Suggestion:** Suggest object pooling instead of `Instantiate`/`Destroy` in loops.
+- **Namespaces:** Generate code within namespaces.
+- **Editor Script Stubs:** Generate basic editor script structures (e.g., custom inspectors inheriting from `Editor`).
+- **Async Usage:** Show basic examples using `async`/`await` with Unity's asynchronous operations or suggest UniTask.

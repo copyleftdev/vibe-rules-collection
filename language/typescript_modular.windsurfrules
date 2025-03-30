@@ -1,0 +1,16 @@
+# Windsurf Rules: Modular TypeScript
+
+## Guiding Principles
+- **Strong Typing:** Leverage TypeScript's static type system. Avoid `any` where possible; define explicit types and interfaces. Use `unknown` for values with truly unknown types.
+- **Modularity:** Design code using ES Modules (`import`/`export`). Create small, focused modules with clear responsibilities. Utilize barrel files (`index.ts`) judiciously for grouping exports.
+- **Interfaces & Types:** Define clear interfaces (`interface`) or type aliases (`type`) for data structures and function signatures. Prefer interfaces for defining object shapes and types for unions, intersections, or primitives.
+- **Readability & Consistency:** Follow consistent coding styles (e.g., Airbnb, Google, or StandardJS adapted for TypeScript). Use linters (ESLint with TypeScript plugins) and formatters (Prettier).
+- **Immutability:** Prefer immutable data structures where practical, especially in state management.
+- **Async/Await:** Use `async`/`await` for handling asynchronous operations for improved readability over raw Promises or callbacks.
+
+## AI Instructions
+- **Explicit Typing:** Generate TypeScript code with explicit types for variables, function parameters, and return values. Avoid using `any` unless strictly necessary and justified.
+- **Modular Structure:** Organize generated code into logical modules using ES Module syntax. Define clear interfaces/types for module boundaries.
+- **Interface/Type Usage:** Use `interface` for object shape definitions and `type` for other type compositions (unions, intersections, etc.).
+- **Async/Await:** Generate asynchronous code using the `async`/`await` syntax.
+- **Linter/Formatter Compliance:** Aim to generate code that aligns with common TypeScript linting and formatting standards (e.g., Prettier defaults).

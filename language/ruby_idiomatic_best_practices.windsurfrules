@@ -1,0 +1,26 @@
+# Windsurf Rules: Idiomatic Ruby Best Practices
+
+## Guiding Principles
+- **Readability & Expressiveness:** Write clear, concise, and expressive Ruby code. Embrace Ruby's syntax sugars where they improve readability (e.g., postfix `if`/`unless`, implicit returns).
+- **Duck Typing:** Rely on object capabilities (methods they respond to) rather than explicit types/classes where appropriate. ("If it walks like a duck and quacks like a duck...").
+- **Enumerable & Blocks:** Leverage the rich set of methods in the `Enumerable` module (`each`, `map`, `select`, `reject`, `reduce`, etc.) with blocks for collection processing. Prefer functional approaches over explicit loops where clearer.
+- **Symbols vs. Strings:** Use Symbols (`:symbol`) for identifiers, hash keys, method names, etc., where identity matters. Use Strings for textual data.
+- **Hash Syntax:** Prefer the modern hash syntax (`{ key: 'value' }`) over the older hash-rocket syntax (`{ :key => 'value' }`) when keys are symbols.
+- **Naming Conventions:** Follow Ruby conventions: `snake_case` for variables and methods, `PascalCase` for classes and modules, `SCREAMING_SNAKE_CASE` for constants.
+- **Error Handling:** Use exceptions (`begin`/`rescue`/`ensure`/`end`) for exceptional conditions. Rescue specific exception classes. Avoid rescuing `Exception` directly.
+- **Modules for Mixins & Namespacing:** Use modules (`module ... end`) for namespacing code and for sharing behavior via mixins (`include` or `extend`).
+- **Dependency Management (Bundler/Gems):** Use Bundler (`Gemfile`, `bundle install`) to manage gem dependencies.
+- **Testing:** Embrace testing culture (RSpec, Minitest). Write tests for your code.
+- **Style Guides (e.g., RuboCop):** Adhere to community style guides, often enforced by tools like RuboCop. Focus on consistent formatting, avoiding overly complex methods, and using idiomatic constructs.
+- **Truthiness:** Understand Ruby's truthiness (only `false` and `nil` are falsey; everything else, including `0`, `[]`, `{}`, `""`, is truthy).
+- **Metaprogramming:** Use metaprogramming cautiously. While powerful, it can reduce readability and make debugging harder if overused.
+
+## AI Instructions
+- **Idiomatic Constructs:** Generate code using common Ruby idioms: `map`, `select`, `reduce`, block syntax, symbol hash keys, postfix conditionals, implicit returns.
+- **Naming Conventions:** Apply standard Ruby naming conventions.
+- **Enumerable Usage:** Utilize `Enumerable` methods for collection manipulation instead of manual loops.
+- **Exception Handling:** Generate `begin`/`rescue` blocks, rescuing specific standard error types.
+- **Module Usage:** Generate code using modules for namespacing or simple mixins.
+- **Bundler Awareness:** Assume Bundler is used; generate `require` statements for gems.
+- **Style Guide Compliance:** Generate code that generally aligns with common RuboCop rules (e.g., line length, method length, indentation, spacing).
+- **Symbol/String Usage:** Use symbols for hash keys and identifiers where appropriate.

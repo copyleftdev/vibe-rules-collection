@@ -1,0 +1,29 @@
+# Windsurf Rules: Modern C++ Best Practices (C++11/14/17/20+)
+
+## Guiding Principles
+- **Resource Management (RAII):** Use Resource Acquisition Is Initialization (RAII) extensively. Employ smart pointers (`std::unique_ptr`, `std::shared_ptr`, `std::weak_ptr`) and standard containers to manage memory and other resources automatically. Avoid raw `new`/`delete` and owning raw pointers.
+- **Prefer Standard Library:** Use components from the C++ Standard Library (STL containers, algorithms, utilities) whenever possible instead of reinventing the wheel or using C-style alternatives.
+- **Value Semantics:** Prefer passing and returning objects by value or const reference (`const T&`) where appropriate. Use move semantics (`std::move`) for efficient transfer of resources when ownership changes.
+- **Const Correctness:** Use `const` wherever possible – for member functions that don't modify state, for variables whose values shouldn't change, and for references/pointers to immutable data.
+- **Modern Features:** Leverage modern C++ features:
+    - `auto` for type deduction where it improves readability.
+    - Range-based for loops for iterating over containers.
+    - Smart pointers (see RAII).
+    - Lambda expressions for concise inline functions/callbacks.
+    - Move semantics.
+    - `nullptr` instead of `NULL` or `0`.
+    - `constexpr` for compile-time computation.
+    - Standard library concurrency features (`std::thread`, `std::mutex`, `std::atomic`, `std::async`).
+- **Error Handling:** Prefer exceptions for reporting errors that cannot be handled locally. Use `std::error_code` or `std::expected` (C++23) for recoverable errors where appropriate. Avoid returning error codes directly unless interfacing with C APIs.
+- **Header Files:** Use include guards (`#pragma once` or traditional `#ifndef`/`#define`/`#endif`) to prevent multiple inclusions. Minimize includes in header files; prefer forward declarations where possible.
+- **Readability & Style:** Follow a consistent coding style (e.g., Google C++ Style Guide, LLVM Coding Standards). Use meaningful names. Keep functions short and focused.
+
+## AI Instructions
+- **RAII Implementation:** Generate code using `std::unique_ptr` or `std::shared_ptr` for dynamic memory management. Use standard containers.
+- **STL Usage:** Utilize STL algorithms (`std::find`, `std::sort`, etc.) and containers (`std::vector`, `std::string`, `std::map`, etc.).
+- **Const Correctness:** Add `const` qualifiers to generated functions, variables, and parameters where applicable.
+- **Modern Syntax:** Generate code using `auto`, range-based for loops, lambdas, `nullptr`, etc.
+- **Move Semantics:** Apply `std::move` when transferring ownership of resources (e.g., returning `std::unique_ptr`).
+- **Error Handling:** Generate exception-based error handling (`try`/`catch`) or use `std::error_code`/`std::expected` where appropriate.
+- **Header Guards:** Include standard header guards in generated header files.
+- **Style Consistency:** Generate code attempting to follow common C++ style guidelines (e.g., naming conventions, indentation).

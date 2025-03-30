@@ -1,0 +1,25 @@
+# Windsurf Rules: Kubernetes Manifests (YAML)
+
+## Guiding Principles
+- **Declarative Configuration:** Define desired state using Kubernetes API objects (Deployments, Services, ConfigMaps, Secrets, etc.) in YAML format.
+- **API Version:** Use stable API versions (`apiVersion`) where available (e.g., `apps/v1` for Deployments) instead of beta or alpha versions for production workloads.
+- **Labels & Selectors:** Use meaningful labels consistently on objects (Pods, Services, Deployments) for selection, organization, and querying. Ensure selectors in Services, Deployments, etc., accurately match Pod labels.
+- **Annotations:** Use annotations for non-identifying metadata, tool-specific configurations, or descriptions.
+- **Resource Requests & Limits:** Specify CPU and memory requests and limits for containers to ensure proper scheduling and resource allocation, preventing resource contention.
+- **Readiness & Liveness Probes:** Define readiness and liveness probes for containers in Deployments/StatefulSets to help Kubernetes manage Pod health and traffic routing.
+- **ConfigMaps & Secrets:** Externalize configuration using ConfigMaps and sensitive data using Secrets. Mount them as volumes or environment variables; avoid hardcoding in Pod specs.
+- **Service Types:** Choose the appropriate Service type (`ClusterIP`, `NodePort`, `LoadBalancer`, `ExternalName`) based on exposure requirements.
+- **Rolling Updates:** Prefer `RollingUpdate` strategy for Deployments for zero-downtime updates. Configure `maxUnavailable` and `maxSurge` appropriately.
+- **RBAC:** Define Roles/ClusterRoles and RoleBindings/ClusterRoleBindings to enforce least privilege access for users and service accounts.
+- **Namespaces:** Use namespaces to logically separate resources within a cluster (e.g., by environment, team, or application).
+
+## AI Instructions
+- **Standard Objects:** Generate standard Kubernetes object manifests (Deployment, Service, ConfigMap, Secret, Ingress, etc.) with correct `apiVersion`, `kind`, and `metadata`.
+- **Labels:** Automatically add standard labels (e.g., `app`, `tier`, `environment`) to generated manifests and ensure selectors match.
+- **Resource Requests/Limits:** Include placeholders or default values for `resources.requests` and `resources.limits` in container specs, reminding the user to adjust them.
+- **Probes:** Generate basic skeletons for `livenessProbe` and `readinessProbe`.
+- **Config/Secret Usage:** Generate Pod specs that consume ConfigMaps/Secrets via environment variables (`envFrom`, `valueFrom`) or volume mounts.
+- **Service Generation:** Create corresponding Service manifests when generating Deployments/StatefulSets.
+- **RBAC Placeholders:** Generate basic Role/RoleBinding structures when discussing access control.
+- **Namespacing:** Include the `metadata.namespace` field where appropriate.
+- **API Version Selection:** Use stable API versions by default.

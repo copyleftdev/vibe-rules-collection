@@ -1,0 +1,25 @@
+# Windsurf Rules: SQLite Best Practices
+
+## Guiding Principles (Extends Generic SQL)
+- **Simplicity:** Leverage SQLite's simplicity. It's serverless, file-based, and transactional.
+- **Typelessness (Type Affinity):** Understand SQLite's type affinity. Columns accept most data types, but prefer declared types (`INTEGER`, `REAL`, `TEXT`, `BLOB`, `NUMERIC`) for clarity and potential affinity behavior. Use `STRICT` tables (SQLite 3.37.0+) to enforce data types.
+- **Primary Keys:** Prefer `INTEGER PRIMARY KEY` (typically auto-incrementing, alias for `rowid`) for simple unique row identifiers unless a natural key exists.
+- **Indexing:** Create indexes (`CREATE INDEX`) on columns used in `WHERE` clauses and `ORDER BY` for performance. SQLite automatically indexes primary keys and `UNIQUE` constraints.
+- **Transactions:** Use transactions (`BEGIN`, `COMMIT`, `ROLLBACK`) explicitly, especially for multiple writes, to ensure atomicity and improve performance (reduces disk I/O per statement).
+- **WAL Mode:** Consider enabling Write-Ahead Logging (`PRAGMA journal_mode=WAL;`) for better concurrency (readers don't block writers, writers don't block readers).
+- **Prepared Statements:** Use prepared statements (parameter binding `?`) in application code to prevent SQL injection and improve performance (avoids re-parsing SQL).
+- **PRAGMA Statements:** Use `PRAGMA` commands to configure SQLite behavior (e.g., `journal_mode`, `synchronous`, `foreign_keys`, `optimize`).
+- **Foreign Keys:** Enable foreign key constraints (`PRAGMA foreign_keys = ON;`) per connection if needed, as they are off by default.
+- **Full-Text Search (FTS):** Utilize built-in FTS extensions (FTS3/4, FTS5) for efficient text searching by creating virtual tables.
+- **Generated Columns:** Use generated columns (`GENERATED ALWAYS AS ... STORED/VIRTUAL`) for derived data (SQLite 3.31.0+).
+
+## AI Instructions
+- **Type Affinity:** Remind about type affinity. Suggest using `STRICT` tables where appropriate and type enforcement is desired.
+- **Primary Key:** Default to `INTEGER PRIMARY KEY` for table creation.
+- **Index Syntax:** Generate standard `CREATE INDEX` statements.
+- **Transaction Wrapping:** Wrap multiple DML statements in `BEGIN`/`COMMIT`.
+- **WAL Mode Suggestion:** Suggest enabling WAL mode for improved concurrency.
+- **Prepared Statements:** Generate application code examples using parameterized queries (`?`).
+- **PRAGMA Usage:** Include relevant `PRAGMA` statements (e.g., `PRAGMA foreign_keys = ON;`).
+- **FTS Table Creation:** Generate syntax for creating FTS virtual tables.
+- **Generated Column Syntax:** Generate syntax for generated columns.

@@ -1,0 +1,28 @@
+# Windsurf Rules: PowerShell Scripting Best Practices
+
+## Guiding Principles
+- **Verb-Noun Cmdlet Naming:** Adhere strictly to the `Verb-Noun` naming convention for functions (e.g., `Get-Service`, `Set-ADUser`, `New-VM`). Use approved verbs (`Get-Verb`).
+- **Advanced Functions:** Write reusable scripts as advanced functions. Use `[CmdletBinding()]` and `param()` blocks to support common parameters (`-Verbose`, `-Debug`, `-ErrorAction`, etc.), parameter validation, and pipeline input.
+- **Parameter Validation:** Use parameter attributes for validation (`[Parameter(Mandatory=$true)]`, `[ValidateSet(...)]`, `[ValidateRange(...)]`, `[ValidatePattern(...)]`) instead of manual `if` checks inside the function body.
+- **Pipeline Input:** Design functions to accept pipeline input (`ValueFromPipeline`, `ValueFromPipelineByPropertyName`) where appropriate to enable composition (`Get-Process | Stop-Process`). Process pipeline input in `process {}` blocks.
+- **Error Handling:**
+    - Use `try`/`catch`/`finally` blocks for terminating errors.
+    - Use `$ErrorActionPreference = 'Stop'` or the `-ErrorAction Stop` parameter on individual cmdlets to turn non-terminating errors into terminating ones when necessary for `try/catch`.
+    - Write specific error messages using `Write-Error` with appropriate `-ErrorId` and `-Category`.
+- **Output:** Use `Write-Output` (or just let objects fall through) for data output intended for the pipeline. Use `Write-Host` *only* for direct console output that should *not* go down the pipeline (use sparingly, often for user interaction or status). Use `Write-Verbose`, `Write-Debug`, `Write-Warning` for their specific purposes.
+- **Modularity:** Break down complex scripts into smaller, reusable functions. Consider creating PowerShell modules (`.psm1`) for organizing related functions.
+- **Readability:** Use comments (`#`) to explain complex logic. Use consistent indentation and spacing. Use meaningful variable names (e.g., `$computerName`, `$userServicePrincipalName`).
+- **Avoid Aliases:** Use full cmdlet names (e.g., `Get-ChildItem` instead of `ls` or `gci`) in scripts for clarity and maintainability. Aliases are fine for interactive use.
+- **Cross-Platform Compatibility (PowerShell 7+):** If targeting PowerShell Core/7+, be mindful of cmdlets or .NET APIs that might not be available on Linux/macOS.
+- **Security:** Avoid storing credentials directly in scripts. Use secure methods like Windows Credential Manager, Azure Key Vault, or prompt for credentials (`Get-Credential`). Be careful with commands that make system changes.
+- **Help Content:** Add comment-based help (`<# .SYNOPSIS ... #>`) to functions so `Get-Help` works.
+
+## AI Instructions
+- **Cmdlet Generation:** Generate functions following `Verb-Noun` naming and using `[CmdletBinding()]` and `param()` blocks.
+- **Parameter Validation:** Generate parameter blocks with appropriate validation attributes.
+- **Pipeline Handling:** Generate `process {}` blocks for pipeline input handling using `$_` or named pipeline parameters.
+- **Error Handling Code:** Generate `try/catch` blocks and use `-ErrorAction Stop` where needed to handle errors robustly.
+- **Output Cmdlets:** Use `Write-Output` for pipeline data, and `Write-Verbose`/`Write-Debug`/`Write-Warning` appropriately.
+- **Full Cmdlet Names:** Generate scripts using full cmdlet names, not aliases.
+- **Help Generation:** Include boilerplate comment-based help blocks.
+- **Credential Handling:** Suggest secure methods or prompt using `Get-Credential` instead of hardcoding credentials.

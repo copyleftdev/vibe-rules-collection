@@ -1,0 +1,18 @@
+# Windsurf Rules: Open Source Contribution
+
+## Guiding Principles
+- **Clear Communication:** Follow project-specific contribution guidelines (often in CONTRIBUTING.md). Write clear commit messages, pull request descriptions, and issue reports.
+- **Code Style Consistency:** Adhere strictly to the project's established coding style and conventions. Use any provided linters or formatters.
+- **Minimal Dependencies:** Avoid introducing new external dependencies unless essential and discussed with maintainers.
+- **Robust Documentation:** Document new features, API changes, or complex logic clearly. Update existing documentation as needed.
+- **Testing:** Provide comprehensive tests for any new code or bug fixes. Ensure all existing tests pass.
+- **Atomic Commits:** Make small, logical commits that represent a single unit of work.
+- **Respectful Interaction:** Engage respectfully and constructively with maintainers and other contributors.
+
+## AI Instructions
+- **Adhere to Project Style:** When contributing to an existing open-source project, prioritize matching the established code style, even if it differs from other rulesets.
+- **Clear Explanations:** Generate clear commit messages and PR descriptions explaining the changes made.
+- **Dependency Awareness:** Highlight if generated code introduces new external dependencies.
+- **Documentation Generation:** Assist in generating or updating documentation (READMEs, code comments, API docs) related to the changes.
+- **Test Generation:** Generate relevant unit or integration tests for the contributed code.
+- **Focus on Clarity:** Generate code that is easy for maintainers and other contributors to understand and review.

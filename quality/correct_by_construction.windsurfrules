@@ -1,0 +1,20 @@
+# Windsurf Rules: Correct by Construction (CbC)
+
+## Guiding Principles
+- **Make Illegal States Unrepresentable:** Design data types, classes, and APIs such that invalid states or configurations simply cannot be created or expressed in the code. Leverage the type system.
+- **Strong Typing:** Utilize the type system to enforce invariants and constraints at compile time. Prefer specific types over primitive types (e.g., an `EmailAddress` type instead of a raw `string`).
+- **Immutability:** Favor immutable data structures to prevent unintended state changes after construction.
+- **Encapsulation & Information Hiding:** Hide internal representation details and expose well-defined interfaces that maintain invariants.
+- **Valid Construction:** Ensure objects can only be constructed in a valid state, often using patterns like the Builder pattern or factory functions with validation.
+- **Restrict Operations:** Design APIs so that only valid operations can be performed on objects based on their current state (e.g., using the State pattern enforced by types).
+- **Compile-Time Checks:** Prioritize checks that can be performed by the compiler or static analysis over runtime checks.
+- **Fail Fast:** If runtime checks are necessary, perform them as early as possible (e.g., in constructors or immediately upon receiving input).
+
+## AI Instructions
+- **Type System Leverage:** Suggest and utilize strong, specific types to represent domain concepts and enforce constraints (e.g., non-empty lists, validated input types).
+- **API Design for Correctness:** Generate function signatures and class interfaces that guide users towards correct usage and prevent invalid inputs (e.g., non-nullable parameters, constrained generic types).
+- **Invariant Enforcement:** Help design classes and data structures where invariants are maintained by construction and subsequent operations.
+- **Pattern Suggestions:** Propose design patterns (Builder, Factory Method, State, Value Object) that aid in ensuring correctness by construction.
+- **Immutability Promotion:** Generate code using immutable data structures or patterns where appropriate.
+- **Static Analysis Focus:** Highlight opportunities to replace runtime checks with compile-time guarantees through better type design or language features.
+- **Error Handling via Types:** Suggest using result types (like `Result<T, E>` or `Option<T>`) to explicitly handle potential failures in a type-safe manner, rather than relying solely on exceptions for expected conditions.

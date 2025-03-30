@@ -1,0 +1,18 @@
+# Windsurf Rules: Pair Programming Collaboration
+
+## Guiding Principles
+- **Simplicity & Readability:** Prioritize code that is extremely easy for both partners to understand immediately. Minimize cognitive load.
+- **Explicit Logic:** Make control flow and logic structures very clear. Avoid overly clever or obscure constructs.
+- **Verbal Communication:** Rules should support clear verbal explanation between pairs. Code should mirror the spoken logic as much as possible.
+- **Small Steps:** Encourage small, incremental changes that are easy to review and agree upon.
+- **Shared Understanding:** Code style should facilitate quick consensus and shared understanding between partners.
+- **Refactoring Together:** Build in opportunities to refactor collaboratively for clarity and simplicity.
+- **Driver/Navigator Roles:** While not a code rule itself, the rules should support the dynamic: the driver focuses on typing, the navigator on thinking ahead, reviewing, and guiding. Code clarity helps this.
+
+## AI Instructions
+- **Prioritize Clarity:** Generate the simplest, most straightforward code possible to achieve the required functionality.
+- **Explicit Steps:** Break down complex logic into smaller, clearly named functions or steps.
+- **Avoid Obscurity:** Avoid complex language features or idioms that might require extra explanation between partners, unless clearly beneficial and understood.
+- **Standard Naming:** Use clear, descriptive, and standard naming conventions.
+- **Incremental Generation:** Generate code in small, manageable chunks that align with typical pair programming steps.
+- **Facilitate Discussion:** Generate code that is easy to talk about (e.g., well-named variables, clear function boundaries).

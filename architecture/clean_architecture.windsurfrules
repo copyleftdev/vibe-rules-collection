@@ -1,0 +1,18 @@
+# Windsurf Rules: Clean Architecture
+
+## Guiding Principles
+- **Layering:** Structure the application into distinct layers (e.g., Entities, Use Cases, Interface Adapters, Frameworks & Drivers).
+- **The Dependency Rule:** Source code dependencies must only point inwards. Inner layers (e.g., Entities, Use Cases) must not know anything about outer layers (e.g., UI, Database, Web Frameworks).
+- **Entities:** Represent enterprise-wide business rules. Least likely to change when external factors change.
+- **Use Cases:** Contain application-specific business rules. Orchestrate the flow of data to and from Entities.
+- **Interface Adapters:** Convert data between formats suitable for Use Cases/Entities and external agencies (e.g., Database, Web). Includes Presenters, Controllers, Gateways.
+- **Frameworks & Drivers:** Outermost layer containing frameworks, tools, UI, database, external interfaces. Details that inner layers must not depend on.
+- **Dependency Inversion:** Use interfaces (ports) defined in inner layers and implemented by outer layers to invert dependencies, adhering to the Dependency Rule.
+
+## AI Instructions
+- **Layer Placement:** Place generated code within the appropriate layer based on its responsibility (business logic in Entities/Use Cases, data conversion in Interface Adapters, framework specifics in Frameworks & Drivers).
+- **Dependency Rule Enforcement:** Ensure generated code adheres to the Dependency Rule. Never add dependencies from inner layers to outer layers.
+- **Interface Definition (Ports):** Define interfaces (ports) in inner layers (Use Cases) to specify required functionalities (e.g., data access).
+- **Adapter Implementation:** Implement adapters (in the Interface Adapters layer) that satisfy the ports defined in inner layers, interacting with specific external tools (e.g., database implementations).
+- **Data Transfer Objects (DTOs):** Use simple DTOs to transfer data across layer boundaries, preventing inner layers from depending on complex framework-specific models.
+- **Dependency Injection:** Utilize dependency injection to provide implementations (adapters) to inner layers without them having direct knowledge of concrete implementations.

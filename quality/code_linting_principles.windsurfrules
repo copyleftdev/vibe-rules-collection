@@ -1,0 +1,28 @@
+# Windsurf Rules: Code Linting Principles
+
+## Guiding Principles
+- **Purpose:** Utilize linters and formatters primarily to:
+    - **Enforce Consistency:** Ensure code adheres to a defined style guide across the entire codebase and team.
+    - **Prevent Errors:** Catch potential bugs, anti-patterns, and questionable constructs early.
+    - **Improve Readability:** Promote code that is easier to read, understand, and maintain.
+    - **Automate Style Debates:** Reduce time spent on subjective style discussions in code reviews.
+- **Standard Configuration:** Choose a standard, community-accepted style guide and linter configuration for your language/framework (e.g., PEP 8 via Flake8/Ruff for Python, PSR-12 via PHP_CodeSniffer for PHP, standard RuboCop config for Ruby, ESLint/Prettier standards for JS/TS). Check the configuration file (`.eslintrc.js`, `.rubocop.yml`, `pyproject.toml`, etc.) into version control.
+- **Automation is Key:** Integrate linting and formatting into the development workflow:
+    - **IDE Integration:** Configure your editor/IDE to show lint errors and format code on save.
+    - **Pre-commit Hooks:** Use tools like `pre-commit` to run linters/formatters before committing code, preventing style issues from entering the repository.
+    - **CI/CD Pipeline:** Include a linting step in your Continuous Integration pipeline to fail builds that don't meet standards.
+- **Address Violations:** Treat linting violations seriously. Fix them promptly. Avoid littering the codebase with suppression comments (`# noqa`, `// eslint-disable-line`) unless absolutely necessary and justified.
+- **Formatter Synergy:** Use automatic code formatters (e.g., Black, Prettier, gofmt, rustfmt) alongside linters. Let the formatter handle pure style issues (whitespace, line breaks), allowing the linter to focus more on code quality and potential errors.
+- **Sensible Customization:** Stick to standard configurations as much as possible. If customizing rules, have a clear justification and document the rationale. Avoid excessive customization that deviates significantly from community norms.
+- **Focus on Value:** Remember that linting is a tool, not the end goal. The primary aim is better quality, more maintainable code, not just achieving a "zero lint errors" badge through excessive rule disabling or contorted code.
+
+## AI Instructions
+- **Generate Lint-Friendly Code:** Generate code that inherently adheres to common style guides and linting rules for the target language regarding:
+    - Naming conventions (variables, functions, classes, constants).
+    - Indentation and spacing.
+    - Line length limits.
+    - Avoiding overly complex functions/methods (cyclomatic complexity).
+    - Avoiding common anti-patterns (unused variables, potential null issues, inefficient loops).
+- **Assume Standard Linters:** Generate code assuming standard linters (like those mentioned in language-specific rules) are in use.
+- **Avoid Generating Suppression Comments:** Do not generate code that includes linter suppression comments unless specifically instructed to work around a known, unavoidable linter issue with a valid reason.
+- **Promote Formatting:** Suggest using standard auto-formatters for the language.
