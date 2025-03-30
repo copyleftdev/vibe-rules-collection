@@ -44,6 +44,7 @@ This repo provides a language- and framework-aware vibe system for smoother deve
 
 ## 📦 Contents
 
+- [Overview](#overview)
 - [Purpose](#purpose)
 - [Usage](#usage)
 - [Rule Categories](#rule-categories)
@@ -130,7 +131,7 @@ We vibe respectfully. All interactions are governed by the [Code of Conduct](COD
 
 ## 📄 License
 
-MIT License © 2025 copyleftdev
+MIT License 2025 copyleftdev
 
 See [LICENSE](LICENSE) for full terms.
 
@@ -139,4 +140,3 @@ See [LICENSE](LICENSE) for full terms.
 <p align="center">
   <strong>🌀 Keep the code clean. Ride the right patterns. Respect the vibes. 🌀</strong>
 </p>
-
