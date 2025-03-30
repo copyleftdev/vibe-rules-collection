@@ -120,6 +120,13 @@ Configure your project to load rule files automatically or use them contextually
 ### Quality
 - Linting principles
 
+### Security
+- OWASP Top 10, Secrets Management, Input Validation
+
+### Testing
+- `mutation_testing_principles.windsurfrules`
+- `hypothesis_property_based_testing.windsurfrules`
+
 ---
 
 ## 🤝 Contributing

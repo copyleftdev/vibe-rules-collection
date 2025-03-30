@@ -1,0 +1,32 @@
+# Windsurf Rules: Mutation Testing Principles
+
+## Guiding Principles
+
+- **Goal:** Evaluate the quality and effectiveness of a test suite by checking if it can detect small, artificially introduced faults (mutations) in the code.
+- **Concept:**
+    - Introduce small changes (mutations) to the source code one by one (e.g., change `+` to `-`, `>` to `>=`, remove a line).
+    - Run the existing test suite against each mutated version.
+    - **Killed Mutant:** If at least one test fails, the mutation is 'killed'. This is good – it means the tests detected the fault.
+    - **Survived Mutant:** If all tests pass despite the mutation, the mutant 'survives'. This indicates a potential weakness in the test suite – it couldn't detect that specific change.
+- **Metrics:** The primary metric is the **Mutation Score:** `(Killed Mutants / Total Mutants) * 100%`. A higher score indicates a more effective test suite.
+- **Interpreting Survivors:**
+    - **Test Gap:** The most common reason. The tests don't cover the mutated code path or don't assert the specific behavior affected by the mutation.
+    - **Equivalent Mutant:** The mutation, although syntactically different, results in code that is semantically identical to the original. These are unavoidable noise and should ideally be identified and ignored.
+    - **Redundant Code:** The mutated code is dead or unreachable.
+- **Tooling (e.g., Stryker):** Mutation testing frameworks automate the process of generating mutants, running tests, and reporting scores.
+- **Practical Use:**
+    - Focus on critical code sections first.
+    - Use mutation testing periodically to identify test weaknesses, not necessarily in every CI run (can be slow).
+    - Aim for a high score, but understand that 100% might be impractical due to equivalent mutants.
+    - Prioritize fixing tests to kill surviving mutants over adding new tests for uncovered code (though both are valuable).
+
+## AI Instructions
+
+- **Explain the Goal:** When discussing test effectiveness or coverage, introduce mutation testing as a way to measure *quality* of tests, not just quantity (line/branch coverage).
+- **Clarify Survivor Analysis:** When generating or discussing mutation testing reports (like those from Stryker), explain the likely reasons for surviving mutants (test gap, equivalent mutant).
+- **Suggest Test Improvements:** If a mutant survives, suggest ways to improve the tests:
+    - Add assertions targeting the specific behavior changed by the mutation.
+    - Add new test cases to cover the specific scenario affected.
+- **Tooling Integration:** If the user project uses a mutation testing tool like Stryker, generate commands for running it (e.g., `npx stryker run`, `dotnet stryker`).
+- **Focus on Actionable Insights:** Frame mutation testing results in terms of actionable steps: "This surviving mutant suggests your tests for function `X` don't check the boundary condition `Y`. Consider adding an assertion or test case for that."
+- **Manage Expectations:** Remind the user that mutation testing can be computationally expensive and is often run less frequently than unit tests.
