@@ -1,0 +1,42 @@
+# Windsurf Rules: Model Context Protocol (MCP) Python SDK Guidelines
+
+## Guiding Principles
+
+Based on project guidelines (CLAUDE.md) and best practices for the MCP Python SDK:
+
+- **Package Management:** Use `uv` exclusively. `pip install` and `uv pip install` are forbidden. Dependency versions should be pinned; avoid `@latest`.
+- **Code Formatting:** Adhere strictly to Ruff formatting, with a maximum line length of 88 characters.
+- **Code Quality:**
+    - Public APIs (non-underscored functions, classes, methods) MUST have docstrings.
+    - Use `anyio` for async operations and testing, preferring it over `asyncio`. Use `anyio.sleep`.
+    - Avoid bare `except:` clauses; specify exception types.
+    - Use the structured logging framework (`get_logger`) instead of `print()` for diagnostics.
+    - Ensure code passes `ruff format`, `ruff check`, and `pyright`.
+- **Testing:** New features require tests. Bug fixes require regression tests using `pytest` and `anyio`.
+- **Commits & PRs:**
+    - Commit messages MUST NOT contain `Co-authored-by:` trailers.
+    - Use `Reported-by:` or `Github-Issue:` trailers when relevant.
+    - Keep commits and PRs small and focused.
+    - PR descriptions should focus on the problem and high-level solution.
+    - Check `git status` before committing.
+- **CI:** Fix CI failures in the order: Formatting -> Type Errors -> Linting Errors.
+
+## AI Instructions
+
+- **Package Management:**
+    - Generate `uv add <package>` or `uv add --dev <package>` for adding dependencies. NEVER generate `pip install` or `uv pip install`.
+    - When generating commands or documentation showing dependency addition, specify versions (e.g., `package==1.2.3`) or ranges; do not use `@latest`.
+    - Remind the user of core `uv` commands: `uv add`, `uv sync`, `uv run`.
+- **Code Generation:**
+    - Format generated Python code to adhere to an 88-character line limit.
+    - Automatically generate docstrings for all public functions, async functions, methods, and classes created. Docstrings should explain purpose, args, and returns.
+    - When generating async code, use `anyio` primitives (e.g., `await anyio.sleep(...)`, `anyio.create_task_group`). Avoid generating `import asyncio` or direct `asyncio` calls like `asyncio.sleep`.
+    - When generating `try...except` blocks, always specify the exception type(s) (e.g., `except ValueError:`). Avoid generating bare `except:`.
+    - Use the logging framework for output. Generate code like `from mcp.server.fastmcp.utilities.logging import get_logger; logger = get_logger(__name__)` and use `logger.info()`, `logger.debug()`, etc., instead of `print()`.
+- **Process Reminders:**
+    - Remind the user to run `uv run ruff format .`, `uv run ruff check . --fix`, and `uv run pyright` before committing.
+    - Remind the user to add tests for new features and bug fixes using `pytest` and `anyio`.
+    - When generating commit messages or PR descriptions, DO NOT include `Co-authored-by:` trailers.
+    - When appropriate, prompt the user if `Reported-by:` or `Github-Issue:` trailers should be added to commit messages.
+    - Advise the user to keep changes minimal and focused per commit/PR.
+    - Remind the user about the preferred CI failure resolution order (Format -> Types -> Lint).
