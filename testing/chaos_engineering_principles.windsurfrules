@@ -1,0 +1,34 @@
+# Windsurf Rules: Chaos Engineering Principles
+
+## Guiding Principles
+
+- **Goal:** Build confidence in the system's capability to withstand turbulent conditions in production by proactively experimenting with controlled failures.
+- **It's NOT just breaking things:** It's about controlled experiments to learn about weaknesses.
+- **Core Principles:**
+    1.  **Define Steady State:** Establish measurable, normal behavior metrics for the system (e.g., throughput, latency, error rate).
+    2.  **Hypothesize:** Formulate a hypothesis about how the system will react to a specific failure (e.g., "If the primary database fails, traffic will switch to the read replica within 30 seconds with less than 5% error rate increase").
+    3.  **Introduce Real-World Failures:** Simulate realistic failure modes:
+        - Resource exhaustion (CPU, memory, disk, network bandwidth).
+        - Network issues (latency, packet loss, blackholing traffic).
+        - Service/dependency unavailability (database, cache, downstream API failure).
+        - Instance/node termination.
+    4.  **Run Experiments in Production (Carefully):** Start in testing/staging, but the real value comes from running in production to uncover unknown unknowns. Minimize the blast radius initially.
+    5.  **Automate Experiments:** Integrate chaos experiments into the CI/CD pipeline or run them continuously.
+    6.  **Measure & Compare:** Monitor the steady-state metrics during the experiment. Compare the actual outcome against the hypothesis.
+    7.  **Minimize Blast Radius:** Start small. Target a small subset of traffic or instances. Have clear stop conditions and rollback plans.
+- **Benefits:** Uncovers hidden vulnerabilities, improves system resilience and incident response, validates failover mechanisms, builds confidence in system robustness.
+- **Tools:** Chaos Toolkit, Gremlin, AWS Fault Injection Simulator, Azure Chaos Studio, LitmusChaos.
+
+## AI Instructions
+
+- **Introduce Chaos Engineering:** When discussing high availability, resilience, or preparing for production failures, introduce chaos engineering concepts.
+- **Shift Left vs. Shift Right:** Explain that while unit/integration tests ("shift left") verify correctness, chaos engineering ("shift right") verifies resilience in realistic environments.
+- **Experiment Design:** Guide the user in designing a chaos experiment:
+    - Prompt for defining the steady state (key metrics).
+    - Help formulate a specific hypothesis about a failure scenario.
+    - Suggest relevant failure modes to inject based on the application architecture.
+- **Safety First:** Strongly emphasize starting in pre-production environments and minimizing the blast radius (e.g., targeting specific hosts, users, or a percentage of traffic).
+- **Recommend Tools:** Mention relevant chaos engineering tools.
+- **Focus on Learning:** Frame experiments as learning opportunities. Even if the system behaves as expected, the experiment builds confidence. If it fails, it reveals a weakness to be fixed.
+- **Automate Gradually:** Suggest starting with manual experiments and gradually automating them as confidence grows.
+- **Connect to Monitoring:** Highlight the dependency on good monitoring and alerting to observe the impact of experiments.

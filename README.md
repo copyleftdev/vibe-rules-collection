@@ -126,6 +126,10 @@ Configure your project to load rule files automatically or use them contextually
 ### Testing
 - `mutation_testing_principles.windsurfrules`
 - `hypothesis_property_based_testing.windsurfrules`
+- `contract_testing_pact.windsurfrules`
+- `performance_testing_principles.windsurfrules`
+- `chaos_engineering_principles.windsurfrules`
+- `accessibility_testing_a11y.windsurfrules`
 
 ---
 

@@ -1,0 +1,41 @@
+# Windsurf Rules: Performance Testing Principles
+
+## Guiding Principles
+
+- **Goal:** Evaluate system responsiveness, stability, scalability, and resource utilization under expected and stress conditions.
+- **Types of Performance Tests:**
+    - **Load Testing:** Simulate expected user load to check performance under normal conditions (response time, throughput).
+    - **Stress Testing:** Push the system beyond normal operational capacity to find its breaking point and identify bottlenecks.
+    - **Soak Testing (Endurance Testing):** Run a sustained load over a long period to detect issues like memory leaks or resource degradation.
+    - **Spike Testing:** Simulate sudden bursts of high load.
+    - **Scalability Testing:** Determine how well the system scales (up or out) as load increases.
+    - **Volume Testing:** Test with large amounts of data to identify data-related performance issues.
+- **Key Metrics:**
+    - **Response Time:** Time taken to respond to a request (average, percentiles like 95th, 99th).
+    - **Throughput:** Rate of successful transactions processed per unit of time (e.g., requests per second).
+    - **Error Rate:** Percentage of requests resulting in errors.
+    - **Resource Utilization:** CPU, memory, network I/O, disk I/O on servers, databases, etc.
+- **Methodology:**
+    - **Define Objectives:** What are you trying to measure? What are the success criteria (e.g., 95th percentile response time < 500ms)?
+    - **Identify Key Scenarios:** Focus on critical user flows or API endpoints.
+    - **Create Realistic Test Scripts:** Simulate user behavior accurately.
+    - **Establish Baseline:** Measure performance before changes or optimizations.
+    - **Configure Test Environment:** Should ideally mirror production closely, but be isolated.
+    - **Execute Tests & Monitor:** Run the tests while monitoring application and system metrics.
+    - **Analyze Results:** Identify bottlenecks, compare against objectives, look for trends.
+    - **Tune & Retest:** Make improvements and re-run tests to verify effectiveness.
+- **Tools:** Many tools exist (k6, JMeter, Locust, Gatling, platform-specific tools).
+- **Considerations:** Test data management, environment consistency, impact of monitoring on performance itself.
+
+## AI Instructions
+
+- **Identify Need:** Suggest performance testing when discussing application deployment, scalability requirements, or investigating slow response times.
+- **Define Objectives:** Prompt the user to define clear performance goals (e.g., "What is the target response time for the login endpoint under 100 concurrent users?").
+- **Select Test Type:** Based on the objective, suggest the appropriate type of performance test (load, stress, soak).
+- **Recommend Tools:** Mention common performance testing tools relevant to the user's tech stack (e.g., k6 for JavaScript/Go, Locust for Python, JMeter for Java).
+- **Generate Basic Scripts:** Provide simple examples of test scripts for chosen tools, focusing on hitting target endpoints.
+    - Example (k6): `export default function () { http.get('https://test.k6.io'); sleep(1); }`
+- **Emphasize Metrics:** Remind the user of key metrics to monitor (response time percentiles, throughput, error rate, resource utilization).
+- **Environment Importance:** Stress the need for a representative test environment.
+- **Analysis Focus:** Suggest focusing analysis on identifying bottlenecks (e.g., slow database queries, CPU-bound code, insufficient resources).
+- **Iterative Process:** Frame performance testing as an iterative process of testing, analyzing, tuning, and retesting.

@@ -1,0 +1,44 @@
+# Windsurf Rules: Contract Testing (Pact)
+
+## Guiding Principles
+
+- **Goal:** Ensure that independently developed services (Consumers and Providers) can communicate correctly without requiring slow, brittle end-to-end integration tests.
+- **Concept (Consumer-Driven):**
+    1.  **Consumer Test:** The Consumer code defines its expectations of the Provider API in a test. This test generates a 'pact file' (the contract) specifying requests the Consumer will make and the minimal responses it expects.
+    2.  **Contract Sharing:** The pact file is shared with the Provider (often via a Pact Broker).
+    3.  **Provider Verification:** The Provider uses the pact file to verify it fulfills the expectations. It mocks requests based on the pact and checks if its actual responses match the expected responses defined in the contract.
+- **Key Benefits:**
+    - Fast, reliable feedback on integration points.
+    - Enables independent deployment of services.
+    - Avoids complex E2E test setup and maintenance.
+    - Clearly documents API interactions from the consumer's perspective.
+- **Pact Workflow:**
+    - Consumer writes tests defining expectations -> Generates Pact file.
+    - Consumer publishes Pact file (e.g., to Pact Broker).
+    - Provider fetches Pact file -> Verifies contract against its API.
+    - Provider publishes verification results.
+    - Deployment can be gated based on verification status.
+- **Best Practices:**
+    - Test only the integration points, not internal logic.
+    - Consumers define only what they *need* from the response, not the entire response.
+    - Keep contracts focused on specific interactions.
+    - Use a Pact Broker for managing and sharing contracts.
+    - Integrate verification into the Provider's CI/CD pipeline.
+
+## AI Instructions
+
+- **Suggest Contract Tests:** When generating code for API clients (Consumers) or API servers (Providers), especially in a microservices context, suggest using contract testing with Pact.
+- **Consumer Test Structure:** Generate boilerplate code for a Pact consumer test, showing:
+    - Setting up the Pact mock service.
+    - Defining interactions (request expected, minimal response required).
+    - Running the consumer code against the mock service.
+    - Writing the pact file.
+    - Example (Python/Pact-Python): `pact.given(...).upon_receiving(...).with_request(...).will_respond_with(...)`
+- **Provider Verification Structure:** Generate boilerplate for a Pact provider verification test, showing:
+    - Setting up the Provider state (if required by the contract).
+    - Pointing the verifier to the Pact file source (Broker or local).
+    - Running the verification process.
+    - Example (Python/Pact-Python): Configure provider state URL, pact source, run `pytest --pact-verifier`.
+- **Explain Pact Broker:** Mention the role of a Pact Broker in managing contracts between teams.
+- **Focus on Integration:** Remind the user that Pact tests the *communication contract*, not the internal business logic of either service (which should be covered by unit tests).
+- **Minimal Response:** When generating consumer expectations, emphasize specifying only the necessary fields in the expected response.

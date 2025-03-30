@@ -1,0 +1,38 @@
+# Windsurf Rules: Accessibility (A11y) Testing Principles
+
+## Guiding Principles
+
+- **Goal:** Ensure web applications and digital content are usable by everyone, including people with disabilities (visual, auditory, motor, cognitive).
+- **Standards:** Primarily based on Web Content Accessibility Guidelines (WCAG) - current version is 2.1/2.2, with levels A, AA, AAA. Level AA is the most common target.
+- **Core Principles (WCAG - POUR):**
+    - **Perceivable:** Information and UI components must be presentable to users in ways they can perceive (e.g., alt text for images, captions for videos, sufficient color contrast).
+    - **Operable:** UI components and navigation must be operable (e.g., keyboard accessibility for all functionality, no keyboard traps, sufficient time limits, no content that causes seizures).
+    - **Understandable:** Information and the operation of the UI must be understandable (e.g., clear language, predictable navigation, consistent layout, helpful error messages).
+    - **Robust:** Content must be robust enough that it can be interpreted reliably by a wide variety of user agents, including assistive technologies (e.g., valid HTML, correct use of ARIA attributes where needed).
+- **Testing Approaches:**
+    - **Automated Testing:** Tools (e.g., Axe, WAVE, Lighthouse) can catch many common violations (missing alt text, contrast issues, some ARIA misuse). Good for CI/CD integration but limited.
+    - **Manual Testing:** Essential for verifying usability aspects automated tools miss.
+        - **Keyboard Navigation:** Can you operate everything using only the Tab, Shift+Tab, Enter, Space, Arrow keys?
+        - **Screen Reader Testing:** Use a screen reader (NVDA, JAWS, VoiceOver) to navigate and interact. Does it read content logically? Are controls announced correctly?
+        - **Visual Inspection:** Check color contrast, text resizing, zoom functionality.
+    - **Assistive Technology Testing:** Directly use various assistive technologies.
+    - **User Testing:** Involve users with disabilities in the testing process (most effective).
+- **Key Areas for Code:**
+    - **Semantic HTML:** Use appropriate HTML tags (`<nav>`, `<button>`, `<main>`, `<h1>-<h6>`, etc.) as they provide built-in accessibility.
+    - **Image Alt Text:** Provide descriptive `alt` attributes for informative images; use `alt=""` for decorative images.
+    - **Form Labels:** Associate labels with form controls explicitly (`<label for="id">`) or implicitly.
+    - **ARIA Attributes:** Use Accessible Rich Internet Applications (ARIA) attributes (`role`, `aria-label`, `aria-describedby`, etc.) *only when necessary* to enhance semantics where native HTML is insufficient. Avoid incorrect/overuse.
+    - **Keyboard Focus Management:** Ensure logical focus order and visible focus indicators.
+    - **Color Contrast:** Ensure text and UI elements have sufficient contrast against their background.
+
+## AI Instructions
+
+- **Generate Accessible HTML:** Prioritize generating semantic HTML elements over generic `<div>` or `<span>` elements with ARIA roles added later.
+- **Prompt for Alt Text:** When generating image tags (`<img>`), prompt the user for descriptive alt text or suggest leaving it empty (`alt=""`) if purely decorative.
+- **Generate Form Labels:** Automatically generate `<label>` elements associated with form inputs (`<input>`, `<textarea>`, `<select>`).
+- **Suggest ARIA Sparingly:** If generating complex custom components (like custom dropdowns or modals), suggest appropriate ARIA roles and attributes, but emphasize using native elements first.
+- **Keyboard Navigation Reminders:** Include comments reminding the developer to test keyboard navigation, especially for interactive components.
+- **Focus Indicator Reminder:** Remind the developer to ensure focus indicators are visible.
+- **Color Contrast Checks:** Suggest using online tools or browser devtools to check color contrast ratios against WCAG standards.
+- **Recommend Automated Tools:** Suggest integrating automated accessibility checkers (like Axe) into the development workflow or CI pipeline.
+- **Emphasize Manual Testing:** Stress that automated tools only catch a fraction of issues and manual testing (especially keyboard and screen reader testing) is crucial.
