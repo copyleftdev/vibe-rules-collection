@@ -96,6 +96,10 @@ Configure your project to load rule files automatically or use them contextually
 ### DevOps
 - Git workflows, Terraform, Shell, PowerShell
 
+### Financial
+- `algorithmic_trading_principles.windsurfrules`
+- `alpaca_python_sdk.windsurfrules`
+
 ### Frameworks
 - Express, Flask, Rails, Unity, ASP.NET Core
 

@@ -1,0 +1,33 @@
+# Windsurf Rules: Alpaca Trading API (Python SDK)
+
+## Guiding Principles
+
+- **API Client Initialization:**
+    - Instantiate the correct client based on needs: `REST` for historical data/orders/account info, `Stream` for real-time data.
+    - Pass API keys (`key_id`, `secret_key`) securely, typically via environment variables (`APCA_API_KEY_ID`, `APCA_API_SECRET_KEY`) or a configuration mechanism. Avoid hardcoding keys.
+    - Specify paper trading (`paper=True`) explicitly during development and testing.
+- **Rate Limiting:** Be mindful of Alpaca API rate limits. Implement delays or backoff strategies if necessary, especially when making frequent requests.
+- **Order Submission:**
+    - Use the `submit_order` method correctly, specifying `symbol`, `qty` or `notional`, `side`, `type`, and `time_in_force`.
+    - Handle potential exceptions during order submission (e.g., `APIError`).
+    - Check order status after submission or use the streaming API for real-time updates.
+- **Market Data:**
+    - Use `get_bars` for historical data, understanding the different timeframes available.
+    - Use `get_latest_trade`, `get_latest_quote` for recent data.
+    - For real-time data, use the `Stream` client and register appropriate handlers (`@stream.on_trade`, `@stream.on_quote`, `@stream.on_bar`).
+- **Asynchronous Operations:** The `Stream` client relies on `asyncio`. Use `async`/`await` correctly when interacting with the streaming data.
+- **Account Management:** Use methods like `get_account()`, `list_positions()`, `get_position(symbol)` to query account status and holdings.
+- **Error Handling:** Wrap API calls in `try...except APIError` blocks to catch specific Alpaca errors and handle them gracefully (e.g., logging, retrying).
+- **Data Formatting:** Be aware of the data types and formats returned by the API (e.g., timestamps, numerical precision).
+
+## AI Instructions
+
+- **Client Instantiation:** Generate code that instantiates `REST` or `Stream` clients, retrieving keys from environment variables by default.
+    - Example: `api = REST(os.getenv('APCA_API_KEY_ID'), os.getenv('APCA_API_SECRET_KEY'), base_url=URL('https://paper-api.alpaca.markets'))`
+- **Secure Key Handling:** Explicitly show fetching keys from environment variables. Add comments warning against hardcoding keys.
+- **Order Generation:** Generate calls to `api.submit_order(...)` with common parameters. Include a `try...except APIError` block around the call.
+- **Market Data Examples:** Generate examples using `api.get_bars(...)` for historical data and basic `Stream` client setup with decorator handlers (`@stream.on_trade(...) async def ...`) for real-time data.
+- **Async Code:** When generating code for the `Stream` client, use `async def` for handlers and `await` where necessary.
+- **Rate Limit Reminder:** Include comments mentioning potential rate limits when generating code that might make frequent API calls.
+- **Error Handling:** Automatically wrap generated API calls (`submit_order`, `get_bars`, etc.) in `try...except APIError as e:` blocks, including basic logging of the error.
+- **Paper Trading:** Default to using the paper trading URL (`https://paper-api.alpaca.markets`) in generated examples unless live trading is explicitly requested.

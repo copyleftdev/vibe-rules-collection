@@ -1,0 +1,44 @@
+# Windsurf Rules: Algorithmic Trading Principles
+
+## Guiding Principles
+
+- **Risk Management is Paramount:**
+    - Implement clear rules for position sizing (e.g., fixed fractional, Kelly criterion adjusted).
+    - Define and implement stop-loss mechanisms.
+    - Understand and manage leverage carefully.
+    - Diversify strategies or assets where appropriate.
+- **Thorough Backtesting:**
+    - Backtest strategies rigorously on historical data before live deployment.
+    - Account for slippage, commissions, and other transaction costs in backtests.
+    - Be wary of overfitting the strategy to historical data. Validate on out-of-sample data.
+- **Data Quality & Handling:**
+    - Ensure the quality and reliability of market data (historical and real-time).
+    - Handle missing data points or errors gracefully.
+    - Be aware of survivorship bias in historical data.
+- **Order Execution Logic:**
+    - Understand different order types (market, limit, stop, stop-limit) and their implications.
+    - Consider latency and potential slippage in execution.
+    - Implement robust logic for order placement, modification, and cancellation.
+- **Robust Error Handling & Resilience:**
+    - Handle API errors (rate limits, connection issues, invalid orders) gracefully.
+    - Implement retry logic where appropriate but avoid infinite loops.
+    - Design the system to recover from failures or disconnections.
+- **Logging & Monitoring:**
+    - Implement comprehensive logging for trades, orders, errors, and system state.
+    - Monitor system performance, connectivity, and strategy P&L in real-time.
+- **Security:**
+    - Securely manage API keys and credentials. Avoid hardcoding them in source code. Use environment variables or secure configuration management.
+- **Modularity & Testability:**
+    - Structure the trading bot code modularly (e.g., data handling, signal generation, execution, risk management).
+    - Write unit and integration tests for different components.
+
+## AI Instructions
+
+- **Risk Management Emphasis:** When generating strategy logic, prompt for or include placeholders for position sizing and stop-loss rules. Highlight the importance of risk management.
+- **Backtesting Context:** Frame strategy generation within the context of backtesting first. Remind the user to account for costs and slippage.
+- **Data Handling Code:** Generate code that includes basic checks for data validity or placeholders for error handling related to data feeds.
+- **Order Logic:** Generate code using specific order types and include error handling around order submission calls (e.g., `try...except` blocks for API errors).
+- **Logging Generation:** Include logging statements (`logger.info`, `logger.error`, etc.) for key events like order placement, fills, errors, and strategy signals.
+- **Security Best Practices:** Generate code that retrieves API keys from environment variables or configuration files, not hardcoded strings. Include reminders about secure key management.
+- **Error Handling Placeholders:** Include `try...except` blocks for API calls and network operations.
+- **Modular Structure:** Suggest organizing the code into separate functions or classes for different responsibilities (e.g., `fetch_data`, `generate_signals`, `execute_trade`, `manage_risk`).
