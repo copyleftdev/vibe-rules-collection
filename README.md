@@ -1,7 +1,24 @@
 # Vibe Rules Collection by copyleftdev
 
+<p align="center">
+  <img src="assets/logo.png" alt="Vibe Rules Collection Logo" width="200"/>
+</p>
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.1-ff69b4.svg)](CODE_OF_CONDUCT.md)
+
+[![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)](language/pythonic.windsurfrules)
+[![C++](https://img.shields.io/badge/C%2B%2B-00599C?style=flat&logo=cplusplus&logoColor=white)](language/cpp_modern_best_practices.windsurfrules)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)](language/typescript_modular.windsurfrules) <!-- Assuming TS rules cover JS well -->
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)](language/typescript_modular.windsurfrules)
+[![Go](https://img.shields.io/badge/Go-00ADD8?style=flat&logo=go&logoColor=white)](language/golang_best_practices.windsurfrules)
+[![Rust](https://img.shields.io/badge/Rust-000000?style=flat&logo=rust&logoColor=white)](language/rust_clean_architecture.windsurfrules)
+[![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white)](language/php_modern_best_practices.windsurfrules)
+[![Ruby](https://img.shields.io/badge/Ruby-CC342D?style=flat&logo=ruby&logoColor=white)](language/ruby_idiomatic_best_practices.windsurfrules)
+[![SQL](https://img.shields.io/badge/SQL-Various-blue?style=flat&logo=postgresql&logoColor=white)](database/generic_sql_best_practices.windsurfrules)
+[![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)](devops/dockerfile_best_practices.windsurfrules)
+[![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=flat&logo=kubernetes&logoColor=white)](devops/kubernetes_manifests.windsurfrules)
+[![Terraform](https://img.shields.io/badge/Terraform-7B42BC?style=flat&logo=terraform&logoColor=white)](devops/terraform_best_practices.windsurfrules)
 
 A curated collection of `.windsurfrules` files designed to guide AI coding assistants (like Codeium's Cascade) in generating code that adheres to various best practices, architectural patterns, language idioms, and framework conventions.
 
