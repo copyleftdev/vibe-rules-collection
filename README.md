@@ -47,8 +47,10 @@ The goal is to provide a centralized repository of "vibes" or guidelines that ca
 
 Modern AI coding assistants can significantly accelerate development, but guiding them to produce code that matches specific project requirements, team conventions, or nuanced best practices can be challenging. This collection aims to bridge that gap by providing explicit rule sets (`.windsurfrules`) that define these expectations.
 
+These rules are designed primarily for **Windsurf**, the agentic IDE by [Codeium](https://codeium.com/), to guide its AI assistant, **Cascade**. By defining a "vibe" or set of instructions within a `.windsurfrules` file, developers can influence how Cascade generates and suggests code.
+
 By using these rules, developers can:
-- Improve the consistency and quality of AI-generated code.
+- Improve the consistency and quality of AI-generated code within Windsurf.
 - Enforce specific architectural patterns or design choices.
 - Ensure adherence to language idioms and framework conventions.
 - Reduce the time spent refactoring or correcting AI suggestions.
